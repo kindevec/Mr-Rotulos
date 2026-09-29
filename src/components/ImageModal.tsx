@@ -39,13 +39,13 @@ export const ImageModal: React.FC<ImageModalProps> = ({ project, onClose }) => {
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-[#E8E5DF] text-[#191919] max-h-[92vh] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-200"
+        className="relative w-full max-w-4xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-[#E8E5DF] text-[#191919] max-h-[92dvh] flex flex-col md:flex-row animate-in fade-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-white/90 hover:bg-[#191919] hover:text-white text-[#191919] flex items-center justify-center shadow-md transition-all cursor-pointer"
+          className="absolute top-4 right-4 z-30 w-11 h-11 rounded-full bg-white/90 hover:bg-[#191919] hover:text-white text-[#191919] flex items-center justify-center shadow-md transition-all cursor-pointer active:scale-95"
           aria-label="Cerrar vista detallada"
         >
           <X className="w-5 h-5" />

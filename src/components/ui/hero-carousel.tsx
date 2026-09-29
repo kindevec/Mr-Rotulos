@@ -346,13 +346,13 @@ export function HeroCarousel({
 
           {active.meta?.length ? (
             <div
-              className="ml-auto flex items-end"
-              style={{ gap: `${Math.max(16, box.w * 0.055)}px` }}
+              className="ml-auto flex flex-wrap items-end"
+              style={{ gap: `${Math.max(8, box.w * 0.04)}px` }}
             >
               {active.meta.map((fact, i) => (
                 <motion.span
                   key={`${index}-${fact}`}
-                  className="font-mono whitespace-nowrap uppercase tracking-[0.14em] text-white/90 font-bold bg-black/40 px-2.5 py-1 rounded-md border border-white/10"
+                  className="font-mono whitespace-nowrap uppercase tracking-[0.12em] text-white/90 font-bold bg-black/50 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md border border-white/10"
                   style={{ fontSize: label }}
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 0.9, y: 0 }}

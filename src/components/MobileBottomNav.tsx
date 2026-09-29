@@ -42,7 +42,7 @@ export const MobileBottomNav: React.FC = () => {
   return (
     <nav 
       aria-label="Navegación Móvil" 
-      className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#E8E5DF] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-2 py-1.5"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#E8E5DF] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-2 py-1.5"
     >
       <div className="grid grid-cols-5 items-center max-w-md mx-auto h-13">
         {/* Tab 1: Inicio */}

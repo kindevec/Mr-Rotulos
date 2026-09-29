@@ -292,22 +292,22 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                 </CarouselContent>
               </Carousel>
 
-              {/* Flecha Izquierda Flotante (Aparece en Hover) */}
+              {/* Flecha Izquierda Flotante */}
               <button
                 onClick={() => carouselApi?.scrollPrev()}
                 disabled={!canScrollPrev}
                 aria-label="Anterior rótulo"
-                className="absolute -left-3 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-[#191919] hover:bg-[#8C0000] hover:border-[#8C0000] hover:text-white shadow-xl flex items-center justify-center transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0 disabled:pointer-events-none cursor-pointer active:scale-95 hover:scale-105"
+                className="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-[#191919] hover:bg-[#8C0000] hover:border-[#8C0000] hover:text-white shadow-xl flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 disabled:opacity-0 disabled:pointer-events-none cursor-pointer active:scale-95 hover:scale-105"
               >
                 <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
-              {/* Flecha Derecha Flotante (Aparece en Hover) */}
+              {/* Flecha Derecha Flotante */}
               <button
                 onClick={() => carouselApi?.scrollNext()}
                 disabled={!canScrollNext}
                 aria-label="Siguiente rótulo"
-                className="absolute -right-3 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-[#191919] hover:bg-[#8C0000] hover:border-[#8C0000] hover:text-white shadow-xl flex items-center justify-center transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0 disabled:pointer-events-none cursor-pointer active:scale-95 hover:scale-105"
+                className="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-[#191919] hover:bg-[#8C0000] hover:border-[#8C0000] hover:text-white shadow-xl flex items-center justify-center transition-all duration-300 opacity-90 sm:opacity-0 sm:group-hover/carousel:opacity-100 disabled:opacity-0 disabled:pointer-events-none cursor-pointer active:scale-95 hover:scale-105"
               >
                 <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>

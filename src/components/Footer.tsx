@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
   return (
     <footer
       id="main-footer"
-      className="relative z-10 border-t border-[#8C0000]/50 pt-8 sm:pt-12 pb-28 md:pb-10 overflow-hidden text-[#F0EDE8] shadow-[0_-8px_30px_rgba(140,0,0,0.3)] bg-[#0d0202]"
+      className="relative z-10 border-t border-[#8C0000]/50 pt-8 sm:pt-12 pb-28 lg:pb-10 overflow-hidden text-[#F0EDE8] shadow-[0_-8px_30px_rgba(140,0,0,0.3)] bg-[#0d0202]"
     >
       {/* ========================================================
           FONDO DIFUMINADO ROJO #8C0000

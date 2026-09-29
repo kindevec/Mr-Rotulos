@@ -33,7 +33,7 @@ export const FloatingWhatsApp: React.FC = () => {
   }, []);
 
   const handleButtonClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const isMobileView = typeof window !== 'undefined' && window.innerWidth < 768;
+    const isMobileView = typeof window !== 'undefined' && window.innerWidth < 1024;
 
     if (isMobileView) {
       // Si en móvil está recogido, el primer toque NO va a WhatsApp, solo lo revela
@@ -65,7 +65,7 @@ export const FloatingWhatsApp: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] md:bottom-[calc(1.75rem+env(safe-area-inset-bottom,0px))] right-0 z-50 flex items-center select-none pointer-events-auto"
+      className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] lg:bottom-[calc(1.75rem+env(safe-area-inset-bottom,0px))] right-0 z-50 flex items-center select-none pointer-events-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

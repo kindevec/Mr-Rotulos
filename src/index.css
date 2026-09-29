@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-xs: 420px;
   --font-display: "Playwrite AU VIC", cursive, sans-serif;
   --font-sans: "Plus Jakarta Sans", sans-serif;
   --font-playwrite: "Playwrite AU VIC", cursive, sans-serif;

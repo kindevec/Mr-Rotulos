@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-[#191919] border-b border-[#2d2d2d] transition-shadow duration-300">
-      <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 h-16 sm:h-18 lg:h-20 flex items-center justify-between">
+      <div className="w-full max-w-[1800px] mx-auto px-3 xs:px-4 sm:px-8 lg:px-12 xl:px-16 h-16 sm:h-18 lg:h-20 flex items-center justify-between">
         
         {/* LADO IZQUIERDO: 3 Secciones de navegación */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-10 2xl:gap-12 text-base lg:text-lg xl:text-xl font-extrabold text-[#F0EDE8] flex-1 justify-end">
@@ -40,21 +40,21 @@ export const Header: React.FC = () => {
         </nav>
 
         {/* CENTRO: Logo y Nombre del Negocio */}
-        <div className="flex items-center justify-center px-6 xl:px-10 2xl:px-12">
-          <a href="#" className="flex items-center gap-3.5 group">
+        <div className="flex items-center justify-center px-0 xs:px-2 sm:px-6 xl:px-10 2xl:px-12">
+          <a href="#" className="flex items-center gap-2 xs:gap-3 sm:gap-3.5 group">
             <img
               src="/logo.png"
               alt="Mr. Rótulos"
-              className="w-11 h-11 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain group-hover:scale-105 transition-transform duration-200 shrink-0"
+              className="w-9 h-9 xs:w-10 xs:h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 object-contain group-hover:scale-105 transition-transform duration-200 shrink-0"
             />
-            <span className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-white uppercase leading-none whitespace-nowrap font-display">
+            <span className="text-base xs:text-lg sm:text-2xl lg:text-3xl font-black tracking-tight text-white uppercase leading-none whitespace-nowrap font-display">
               Mr <span className="text-[#8C0000]">Rótulos</span>
             </span>
           </a>
         </div>
 
         {/* LADO DERECHO: 2 Secciones restantes + Botones */}
-        <div className="flex items-center gap-4 sm:gap-5 flex-1 justify-start">
+        <div className="flex items-center gap-2 xs:gap-3 sm:gap-5 flex-1 justify-end">
           <nav className="hidden lg:flex items-center gap-6 xl:gap-10 2xl:gap-12 text-base lg:text-lg xl:text-xl font-extrabold text-[#F0EDE8]">
             <a href="#catalogo" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
               Catálogo
@@ -64,7 +64,7 @@ export const Header: React.FC = () => {
             </a>
           </nav>
 
-          <div className="ml-auto flex items-center gap-3.5 sm:gap-4">
+          <div className="ml-auto flex items-center gap-2 xs:gap-3 sm:gap-4">
 
           {/* Botón Llamar */}
           <a
@@ -82,19 +82,19 @@ export const Header: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => handleWhatsAppClick('header_whatsapp')}
-            className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-extrabold text-white bg-[#8C0000] hover:bg-[#730000] rounded-xl shadow-md transition-all duration-200 active:scale-95 whitespace-nowrap"
+            className="inline-flex items-center gap-1.5 xs:gap-2 px-3 xs:px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-extrabold text-white bg-[#8C0000] hover:bg-[#730000] rounded-xl shadow-md transition-all duration-200 active:scale-95 whitespace-nowrap"
           >
-            <WhatsAppIcon className="w-4 h-4 fill-current" />
+            <WhatsAppIcon className="w-3.5 h-3.5 xs:w-4 xs:h-4 fill-current" />
             <span>WhatsApp</span>
           </a>
 
           {/* Botón de Menú Móvil */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl text-white hover:bg-white/10 transition-colors ml-1 cursor-pointer"
+            className="lg:hidden p-2 sm:p-2.5 rounded-xl text-white hover:bg-white/10 transition-colors cursor-pointer min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Abrir menú de navegación"
           >
-            {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+            {mobileMenuOpen ? <X className="w-6 h-6 sm:w-7 sm:h-7" /> : <Menu className="w-6 h-6 sm:w-7 sm:h-7" />}
           </button>
         </div>
         </div>
