@@ -153,8 +153,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .color-changing-border {
-  border: 2px solid #8C0000 !important;
-  animation: colorCycleBorder 4.5s ease-in-out infinite !important;
+  border: 2px solid #8C0000;
+  animation: colorCycleBorder 4.5s ease-in-out infinite;
+}
+
+@media (max-width: 639px) {
+  .color-changing-border {
+    border-left: none !important;
+    border-right: none !important;
+  }
 }
 
 

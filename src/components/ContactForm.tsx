@@ -145,7 +145,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   const generatedWhatsAppMessage = `Hola Mr Rótulos, acabo de enviar mi cotización web:%0A- *Nombre:* ${encodeURIComponent(formData.nombre)} ${companyName ? `(${encodeURIComponent(companyName)})` : ''}%0A- *Teléfono:* ${encodeURIComponent(formData.telefono)}%0A- *Servicio:* ${encodeURIComponent(getServiceLabel(formData.servicio))}%0A- *Detalles / Medidas:* ${encodeURIComponent(formData.medidas || 'Pendiente por definir')}%0A- *Requiere Visita en Quito:* ${formData.visitaTecnica ? 'Sí' : 'No'}`;
 
   return (
-    <section id="contactos" className="relative w-full bg-[#f8f9fa]">
+    <section id="contactos" className="relative w-full bg-white sm:bg-[#f8f9fa]">
       
       {/* ========================================================
           1. HEADER BANNER SUPERIOR CON FONDO EXACTO DEL HERO / BANNER
@@ -187,10 +187,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       </div>
 
       {/* ========================================================
-          2. TARJETA FLOTANTE BLANCA PRINCIPAL (ADAPTADA A PANTALLA COMPLETA EN MÓVIL)
+          2. TARJETA FLOTANTE BLANCA PRINCIPAL (100% ANCHO COMPLETO EN MÓVIL)
          ======================================================== */}
-      <div className="max-w-7xl mx-auto px-2 xs:px-3 sm:px-6 lg:px-8 -mt-24 sm:-mt-32 relative z-20 mb-12 sm:mb-24 w-full">
-        <div className="bg-white rounded-2xl xs:rounded-3xl sm:rounded-[44px] shadow-[0_25px_70px_rgba(0,0,0,0.14)] p-4 xs:p-6 sm:p-12 md:p-16 lg:p-20 color-changing-border w-full">
+      <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 -mt-24 sm:-mt-32 relative z-20 mb-0 sm:mb-24 w-full">
+        <div className="bg-white rounded-t-3xl rounded-b-none sm:rounded-[44px] shadow-[0_25px_70px_rgba(0,0,0,0.14)] px-5 py-8 xs:px-8 sm:p-12 md:p-16 lg:p-20 color-changing-border w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-start">
             
             {/* ----------------------------------------------------
