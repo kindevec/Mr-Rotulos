@@ -187,43 +187,43 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       </div>
 
       {/* ========================================================
-          2. TARJETA FLOTANTE BLANCA PRINCIPAL (AMPLIADA HORIZONTAL Y VERTICALMENTE)
+          2. TARJETA FLOTANTE BLANCA PRINCIPAL (ADAPTADA A PANTALLA COMPLETA EN MÓVIL)
          ======================================================== */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 sm:-mt-32 relative z-20 mb-16 sm:mb-24">
-        <div className="bg-white rounded-[32px] sm:rounded-[44px] shadow-[0_25px_70px_rgba(0,0,0,0.14)] p-8 sm:p-12 md:p-16 lg:p-20 color-changing-border">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 xl:gap-20 items-start">
+      <div className="max-w-7xl mx-auto px-2 xs:px-3 sm:px-6 lg:px-8 -mt-24 sm:-mt-32 relative z-20 mb-12 sm:mb-24 w-full">
+        <div className="bg-white rounded-2xl xs:rounded-3xl sm:rounded-[44px] shadow-[0_25px_70px_rgba(0,0,0,0.14)] p-4 xs:p-6 sm:p-12 md:p-16 lg:p-20 color-changing-border w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-start">
             
             {/* ----------------------------------------------------
                 COLUMNA IZQUIERDA: Información de Contacto Directo
                ---------------------------------------------------- */}
-            <div className="lg:col-span-5 space-y-8">
+            <div className="lg:col-span-5 space-y-6 sm:space-y-8">
               
               <div>
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#191919] font-display tracking-tight mb-3">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#191919] font-display tracking-tight mb-2 sm:mb-3">
                   Atención Directa
                 </h3>
-                <p className="text-sm sm:text-base text-slate-500 leading-relaxed">
+                <p className="text-xs sm:text-base text-slate-500 leading-relaxed">
                   Comunícate directamente con nuestro equipo de ingenieros publicitarios y maestros de taller en Quito.
                 </p>
               </div>
 
               {/* Lista de Filas con Íconos Circulares de Alto Contraste */}
-              <div className="space-y-6 pt-1 text-sm sm:text-base">
+              <div className="space-y-4 sm:space-y-6 pt-1 text-sm sm:text-base">
                 
                 {/* 1. Taller & Showroom */}
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
-                    <MapPin className="w-5 h-5 stroke-[2.2] text-white" />
+                <div className="flex items-start gap-3 sm:gap-4 group">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2] text-white" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-[#191919] text-sm sm:text-base">
+                    <h4 className="font-extrabold text-[#191919] text-xs sm:text-base">
                       Taller Principal & Showroom
                     </h4>
                     <a
                       href="https://maps.google.com/maps?q=-0.1444,-78.4839&z=13"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-slate-600 hover:text-black hover:underline transition-colors leading-relaxed block mt-1 text-xs sm:text-sm font-medium"
+                      className="text-slate-600 hover:text-black hover:underline transition-colors leading-relaxed block mt-0.5 sm:mt-1 text-xs sm:text-sm font-medium"
                     >
                       Av. Galo Plaza Lasso y Capitán Ramón Borja, Quito Norte
                     </a>
@@ -231,17 +231,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 </div>
 
                 {/* 2. Correo Electrónico */}
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
-                    <Mail className="w-5 h-5 stroke-[2.2] text-white" />
+                <div className="flex items-start gap-3 sm:gap-4 group">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
+                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2] text-white" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-[#191919] text-sm sm:text-base">
+                    <h4 className="font-extrabold text-[#191919] text-xs sm:text-base">
                       Correo Electrónico
                     </h4>
                     <a
                       href="mailto:ventas@mrrotulosquito.com"
-                      className="text-slate-600 hover:text-black hover:underline transition-colors block mt-1 text-xs sm:text-sm font-medium"
+                      className="text-slate-600 hover:text-black hover:underline transition-colors block mt-0.5 sm:mt-1 text-xs sm:text-sm font-medium"
                     >
                       ventas@mrrotulosquito.com
                     </a>
@@ -249,12 +249,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 </div>
 
                 {/* 3. Teléfono / WhatsApp */}
-                <div className="flex items-start gap-4 group">
-                  <div className="w-12 h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
-                    <Phone className="w-5 h-5 stroke-[2.2] text-white" />
+                <div className="flex items-start gap-3 sm:gap-4 group">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2] text-white" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-[#191919] text-sm sm:text-base">
+                    <h4 className="font-extrabold text-[#191919] text-xs sm:text-base">
                       Llamadas & WhatsApp
                     </h4>
                     <a
@@ -264,7 +264,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         label: 'Llamada desde Get in touch',
                         source: 'contact_call',
                       })}
-                      className="text-slate-600 hover:text-black font-bold block mt-1 transition-colors text-xs sm:text-sm"
+                      className="text-slate-600 hover:text-black font-bold block mt-0.5 sm:mt-1 transition-colors text-xs sm:text-sm"
                     >
                       {FORMATTED_PHONE} · +593 99 195 2889
                     </a>
@@ -274,46 +274,46 @@ export const ContactForm: React.FC<ContactFormProps> = ({
               </div>
 
               {/* Redes Sociales Oficiales en Íconos Circulares */}
-              <div className="pt-6 border-t border-slate-100">
-                <span className="block text-xs sm:text-sm font-bold text-slate-700 mb-3.5">
+              <div className="pt-4 sm:pt-6 border-t border-slate-100">
+                <span className="block text-xs sm:text-sm font-bold text-slate-700 mb-2.5 sm:mb-3.5">
                   Síguenos en Redes Sociales
                 </span>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2.5 sm:gap-3">
                   <a
                     href="https://www.tiktok.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="TikTok Mr. Rótulos"
-                    className="w-9 h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
+                    className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
                   >
-                    <TikTokIcon className="w-4 h-4" />
+                    <TikTokIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </a>
                   <a
                     href="https://www.instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram Mr. Rótulos"
-                    className="w-9 h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
+                    className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
                   >
-                    <InstagramIcon className="w-4 h-4" />
+                    <InstagramIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </a>
                   <a
                     href="https://www.facebook.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook Mr. Rótulos"
-                    className="w-9 h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
+                    className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
                   >
-                    <FacebookIcon className="w-4 h-4" />
+                    <FacebookIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </a>
                   <a
                     href={buildWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp Mr. Rótulos"
-                    className="w-9 h-9 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-xs transition-all hover:scale-105"
+                    className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-xs transition-all hover:scale-105"
                   >
-                    <WhatsAppIcon className="w-4.5 h-4.5 fill-current" />
+                    <WhatsAppIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-current" />
                   </a>
                 </div>
               </div>
@@ -323,16 +323,16 @@ export const ContactForm: React.FC<ContactFormProps> = ({
             {/* ----------------------------------------------------
                 COLUMNA DERECHA: "Envíanos un mensaje" Formulario
                ---------------------------------------------------- */}
-            <div className="lg:col-span-7 lg:pl-6">
+            <div className="lg:col-span-7 lg:pl-6 w-full">
               
-              <div className="mb-8">
+              <div className="mb-5 sm:mb-8">
                 <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#191919] font-display tracking-tight">
                   Envíanos un mensaje
                 </h3>
               </div>
 
               {!submitted ? (
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-8">
                   {/* Honeypot field (hidden from real users, traps automated spam bots) */}
                   <div className="hidden" aria-hidden="true">
                     <input
@@ -352,9 +352,9 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   )}
 
                   {/* Fila 1: Nombre & Negocio */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
                     <div className="relative group">
-                      <label htmlFor="nombre" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                      <label htmlFor="nombre" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1 sm:mb-1.5">
                         Nombre Completo *
                       </label>
                       <input
@@ -364,11 +364,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         value={formData.nombre}
                         onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
                         placeholder="Tu Nombre"
-                        className="w-full pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] placeholder:text-slate-400 outline-none transition-colors"
+                        className="w-full pb-2.5 sm:pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] placeholder:text-slate-400 outline-none transition-colors"
                       />
                     </div>
                     <div className="relative group">
-                      <label htmlFor="company" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                      <label htmlFor="company" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1 sm:mb-1.5">
                         Empresa / Local Comercial
                       </label>
                       <input
@@ -377,15 +377,15 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         value={companyName}
                         onChange={(e) => setCompanyName(e.target.value)}
                         placeholder="Nombre de tu negocio"
-                        className="w-full pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] placeholder:text-slate-400 outline-none transition-colors"
+                        className="w-full pb-2.5 sm:pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] placeholder:text-slate-400 outline-none transition-colors"
                       />
                     </div>
                   </div>
 
                   {/* Fila 2: Teléfono & Servicio */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
                     <div className="relative group">
-                      <label htmlFor="telefono" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                      <label htmlFor="telefono" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1 sm:mb-1.5">
                         Teléfono / WhatsApp *
                       </label>
                       <input
@@ -395,11 +395,11 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                         value={formData.telefono}
                         onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
                         placeholder="099 123 4567"
-                        className="w-full pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] placeholder:text-slate-400 outline-none transition-colors"
+                        className="w-full pb-2.5 sm:pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] placeholder:text-slate-400 outline-none transition-colors"
                       />
                     </div>
                     <div className="relative group">
-                      <label htmlFor="servicio" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1.5">
+                      <label htmlFor="servicio" className="block text-xs sm:text-sm font-bold text-slate-700 mb-1 sm:mb-1.5">
                         Servicio a Cotizar *
                       </label>
                       <select
@@ -411,7 +411,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                           setFormData({ ...formData, servicio: val });
                           onServiceChange(val);
                         }}
-                        className="w-full pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] outline-none transition-colors cursor-pointer"
+                        className="w-full pb-2.5 sm:pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] outline-none transition-colors cursor-pointer"
                       >
                         <option value="">Selecciona una opción...</option>
                         <option value="rotulos-luminosos">Rótulos Luminosos & Fachadas</option>
