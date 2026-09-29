@@ -35,6 +35,10 @@ interface ContactFormProps {
   onServiceChange: (service: ServiceId | '') => void;
 }
 
+const sanitizeInput = (val: string): string => {
+  return val.replace(/[<>]/g, '').trim();
+};
+
 export const ContactForm: React.FC<ContactFormProps> = ({ 
   selectedService, 
   onServiceChange 
@@ -48,6 +52,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
   });
 
   const [companyName, setCompanyName] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -63,12 +68,23 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     e.preventDefault();
     setErrorMsg('');
 
-    if (!formData.nombre.trim()) {
+    // Anti-spam Honeypot Check
+    if (honeypot.trim()) {
+      setSubmitted(true);
+      return;
+    }
+
+    const cleanNombre = sanitizeInput(formData.nombre);
+    const cleanPhone = sanitizeInput(formData.telefono);
+    const cleanCompany = sanitizeInput(companyName);
+    const cleanMedidas = sanitizeInput(formData.medidas);
+
+    if (!cleanNombre) {
       setErrorMsg('Por favor ingresa tu nombre.');
       return;
     }
-    if (!formData.telefono.trim() || formData.telefono.length < 8) {
-      setErrorMsg('Ingresa un número de teléfono o WhatsApp válido.');
+    if (!cleanPhone || cleanPhone.replace(/\D/g, '').length < 8) {
+      setErrorMsg('Ingresa un número de teléfono o WhatsApp válido (mínimo 8 dígitos).');
       return;
     }
     if (!formData.servicio) {
@@ -79,12 +95,12 @@ export const ContactForm: React.FC<ContactFormProps> = ({
     setLoading(true);
 
     const submissionPayload = {
-      nombre: companyName ? `${formData.nombre.trim()} (${companyName.trim()})` : formData.nombre.trim(),
-      telefono: formData.telefono.startsWith('0') 
-        ? `+593 ${formData.telefono.substring(1)}` 
-        : `+593 ${formData.telefono}`,
+      nombre: cleanCompany ? `${cleanNombre} (${cleanCompany})` : cleanNombre,
+      telefono: cleanPhone.startsWith('0') 
+        ? `+593 ${cleanPhone.substring(1)}` 
+        : cleanPhone.startsWith('+') ? cleanPhone : `+593 ${cleanPhone}`,
       servicio: formData.servicio,
-      medidas: formData.medidas.trim() || 'No especificadas aún (coordinar en llamada)',
+      medidas: cleanMedidas || 'No especificadas aún (coordinar en llamada)',
       visitaTecnica: formData.visitaTecnica,
       fecha: new Date().toISOString(),
     };
@@ -317,6 +333,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Honeypot field (hidden from real users, traps automated spam bots) */}
+                  <div className="hidden" aria-hidden="true">
+                    <input
+                      type="text"
+                      name="website_company_url"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
                   
                   {errorMsg && (
                     <div className="p-3.5 bg-red-50 border border-red-200 text-[#8C0000] text-xs sm:text-sm rounded-xl font-medium">

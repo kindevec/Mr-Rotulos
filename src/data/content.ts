@@ -75,12 +75,12 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     description: 'Rótulo con letras 3D más rótulo giratorio de 60 cm.',
     client: 'Sabores Lojanos',
     location: 'Quito, Ecuador',
-    image: '/catalog/catalog-1.jpg',
+    image: '/catalog/catalog-1.webp',
     images: [
-      '/catalog/catalog-1.jpg',
-      '/hero/hero-1.png',
-      '/hero/hero-7.png',
-      '/hero/hero-8.jpg'
+      '/catalog/catalog-1.webp',
+      '/hero/hero-1.webp',
+      '/hero/hero-7.webp',
+      '/hero/hero-8.webp'
     ],
     lightingType: 'Iluminación LED 3D Frontal + Caja Giratoria',
     dimension: 'Fachada completa + Rótulo giratorio 60cm',
@@ -97,12 +97,12 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     description: 'Rótulo de alto impacto visual para restaurantes, asaderos y locales gastronómicos.',
     client: 'El Arepazo Paisa',
     location: 'Quito, Ecuador',
-    image: '/catalog/catalog-2.jpg',
+    image: '/catalog/catalog-2.webp',
     images: [
-      '/catalog/catalog-2.jpg',
-      '/hero/hero-4.png',
-      '/hero/hero-2.jpg',
-      '/hero/terramanaba-hero.png'
+      '/catalog/catalog-2.webp',
+      '/hero/hero-4.webp',
+      '/hero/hero-2.webp',
+      '/hero/terramanaba-hero.webp'
     ],
     lightingType: 'Luz LED 110V de alto brillo',
     dimension: 'A medida según fachada',
@@ -120,12 +120,12 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     description: 'Rótulos comerciales y fachadas de gran formato para negocios de alto tráfico vehicular y peatonal.',
     client: 'Asia Repuestos & La Trigana',
     location: 'Sector Comercial, Quito',
-    image: '/catalog/catalog-3.jpg',
+    image: '/catalog/catalog-3.webp',
     images: [
-      '/catalog/catalog-3.jpg',
-      '/hero/hero-3.png',
-      '/hero/hero-6.png',
-      '/hero/hero-1.png'
+      '/catalog/catalog-3.webp',
+      '/hero/hero-3.webp',
+      '/hero/hero-6.webp',
+      '/hero/hero-1.webp'
     ],
     lightingType: 'Cajas de luz LED + Vinil traslúcido UV',
     dimension: 'Gran formato en doble nivel',
@@ -143,12 +143,12 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     description: 'Elegancia y distinción para peluquerías, barberías y centros estéticos.',
     client: 'Karissma Peluquería & Salón',
     location: 'Quito, Ecuador',
-    image: '/catalog/catalog-4.jpg',
+    image: '/catalog/catalog-4.webp',
     images: [
-      '/catalog/catalog-4.jpg',
-      '/hero/hero-3.png',
-      '/hero/hero-5.png',
-      '/hero/hero-7.png'
+      '/catalog/catalog-4.webp',
+      '/hero/hero-3.webp',
+      '/hero/hero-5.webp',
+      '/hero/hero-7.webp'
     ],
     lightingType: 'Luz LED 110V frontal difusa',
     dimension: 'Fachada frontal completa',
@@ -165,12 +165,12 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     description: 'Letras corpóreas de máxima distinción y durabilidad en acero inoxidable 304, aptas para exterior e interior.',
     client: 'Dentrix Odontología Especializada',
     location: 'Centro Médico, Quito',
-    image: '/catalog/catalog-5.jpg',
+    image: '/catalog/catalog-5.webp',
     images: [
-      '/catalog/catalog-5.jpg',
-      '/hero/hero-6.png',
-      '/hero/hero-8.jpg',
-      '/hero/hero-1.png'
+      '/catalog/catalog-5.webp',
+      '/hero/hero-6.webp',
+      '/hero/hero-8.webp',
+      '/hero/hero-1.webp'
     ],
     lightingType: 'Opciones con o sin iluminación LED',
     dimension: 'Formato corpóreo volumétrico',
@@ -189,11 +189,11 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     description: 'Rótulo corpóreo sobre fondo de alucobónd tipo madera con logotipo circular y letras en acrílico con iluminación en la base.',
     client: 'Panadería Pastelería & Cafetería Kelly',
     location: 'Quito, Ecuador',
-    image: '/catalog/catalog-6.jpg',
+    image: '/catalog/catalog-6.webp',
     images: [
-      '/catalog/catalog-6.jpg',
-      '/reypollo-rotulo.jpg',
-      '/autotec-rotulo.jpg'
+      '/catalog/catalog-6.webp',
+      '/reypollo-rotulo.webp',
+      '/autotec-rotulo.webp'
     ],
     lightingType: 'Iluminación LED en la base y letras de acrílico',
     dimension: 'A medida según fachada comercial',

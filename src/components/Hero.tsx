@@ -6,35 +6,35 @@ import { buildWhatsAppUrl, trackConversionEvent } from '../utils/analytics';
 
 const SIGNAGE_ITEMS: FlexCarouselItem[] = [
   {
-    src: '/hero/hero-1.png',
+    src: '/hero/hero-1.webp',
     alt: 'Rótulo circular retroiluminado LED Moonlight Mocktails'
   },
   {
-    src: '/hero/hero-2.jpg',
+    src: '/hero/hero-2.webp',
     alt: 'Letrero Neón Flex Oh My Dog! Masco Terra'
   },
   {
-    src: '/hero/hero-3.png',
+    src: '/hero/hero-3.webp',
     alt: 'Letrero luminoso Neón Rosa BE Clinique'
   },
   {
-    src: '/hero/hero-4.png',
+    src: '/hero/hero-4.webp',
     alt: 'Letrero Neón Flex decorativo diseño Burger'
   },
   {
-    src: '/hero/hero-5.png',
+    src: '/hero/hero-5.webp',
     alt: 'Figura decorativa Neón LED Campanas'
   },
   {
-    src: '/hero/hero-6.png',
+    src: '/hero/hero-6.webp',
     alt: 'Letras 3D corpóreas con iluminación LED Odontología Parker'
   },
   {
-    src: '/hero/hero-7.png',
+    src: '/hero/hero-7.webp',
     alt: 'Rótulo circular retroiluminado con detalles dorados Rich Baby Store'
   },
   {
-    src: '/hero/hero-8.jpg',
+    src: '/hero/hero-8.webp',
     alt: 'Rótulo corpóreo 3D en base de alucobónd Sabores Lojanos'
   }
 ];

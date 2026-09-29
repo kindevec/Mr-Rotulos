@@ -27,15 +27,15 @@ export const Catalog: React.FC = () => {
     setLikedIds((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const toggleFlip = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
+  const toggleFlip = (id: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
     setFlippedIds((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleQuoteClick = (project: GalleryProject, e: React.MouseEvent) => {
     e.stopPropagation();
     trackConversionEvent('click_whatsapp', {
-      category: 'Catalog',
+      category: 'Lead',
       label: `Cotizar Producto: ${project.title}`,
       source: 'catalog_card_cta',
     });

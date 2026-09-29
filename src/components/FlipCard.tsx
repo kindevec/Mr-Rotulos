@@ -245,7 +245,7 @@ export const FlipCard: React.FC<FlipCardProps> = ({
     '--fc-gx': gxPct,
     '--fc-gy': gyPct,
     '--fc-sheen': sheen
-  } as React.CSSProperties;
+  } as unknown as React.CSSProperties;
 
   const styleCustom = {
     '--fc-w': typeof width === 'number' ? `${width}px` : width,
@@ -306,11 +306,11 @@ export const FlipCard: React.FC<FlipCardProps> = ({
         />
       ) : null}
       <motion.div className="flip-card__rotor" style={reduce ? undefined : rotorStyle}>
-        <div className="flip-card__face flip-card__face--front" aria-hidden={shown} inert={shown ? '' : undefined}>
+        <div className="flip-card__face flip-card__face--front" aria-hidden={shown} inert={shown || undefined}>
           {front}
           {glare ? <span className="flip-card__glare" aria-hidden="true" /> : null}
         </div>
-        <div className="flip-card__face flip-card__face--back" aria-hidden={!shown} inert={!shown ? '' : undefined}>
+        <div className="flip-card__face flip-card__face--back" aria-hidden={!shown} inert={!shown || undefined}>
           {back}
           {glare ? <span className="flip-card__glare" aria-hidden="true" /> : null}
         </div>

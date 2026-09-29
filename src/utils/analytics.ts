@@ -11,7 +11,20 @@ declare global {
   }
 }
 
-export type ConversionSource = 'header_call' | 'hero_call' | 'contact_call' | 'header_whatsapp' | 'hero_whatsapp' | 'floating_whatsapp' | 'service_quote' | 'form_submission';
+export type ConversionSource = 
+  | 'header_call' 
+  | 'hero_call' 
+  | 'contact_call' 
+  | 'header_whatsapp' 
+  | 'hero_whatsapp' 
+  | 'hero_primary_cta' 
+  | 'floating_whatsapp' 
+  | 'service_quote' 
+  | 'form_submission' 
+  | 'catalog_card_cta' 
+  | 'catalog_modal' 
+  | 'footer_whatsapp'
+  | 'contact_direct';
 
 export const trackConversionEvent = (
   eventName: string,
