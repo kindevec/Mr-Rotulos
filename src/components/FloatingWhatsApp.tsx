@@ -65,11 +65,11 @@ export const FloatingWhatsApp: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-[calc(5.25rem+env(safe-area-inset-bottom,0px))] lg:bottom-[calc(1.75rem+env(safe-area-inset-bottom,0px))] right-0 z-50 flex items-center select-none pointer-events-auto"
+      className="fixed bottom-[calc(5.5rem+env(safe-area-inset-bottom,0px))] lg:bottom-[calc(2rem+env(safe-area-inset-bottom,0px))] right-0 z-50 flex items-center select-none pointer-events-auto"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Botón Flotante de WhatsApp: Verde Oficial con Sombra y Pulso */}
+      {/* Botón Flotante de WhatsApp: Tamaño Ampliado, Rojo Milano con Blanco y Efecto de Cambio de Color */}
       <a
         href={whatsappUrl}
         target="_blank"
@@ -78,22 +78,25 @@ export const FloatingWhatsApp: React.FC = () => {
         onClick={handleButtonClick}
         onFocus={() => setIsHovered(true)}
         onBlur={() => setIsHovered(false)}
-        className={`relative group flex items-center justify-center w-11 h-11 xs:w-12 xs:h-12 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-full bg-gradient-to-tr from-[#128C7E] via-[#25D366] to-[#20BA5A] border-2 border-white/80 shadow-[0_6px_20px_rgba(0,0,0,0.4),0_0_15px_rgba(37,211,102,0.5)] hover:shadow-[0_10px_28px_rgba(0,0,0,0.5),0_0_22px_rgba(37,211,102,0.7)] transition-all duration-400 ease-out cursor-pointer active:scale-95 ${
+        className={`relative group flex items-center justify-center w-14 h-14 xs:w-15 xs:h-15 sm:w-16 sm:h-16 md:w-18 md:h-18 rounded-full border-[2.5px] border-white shadow-[0_10px_30px_rgba(140,0,0,0.7),0_0_22px_rgba(140,0,0,0.5)] hover:shadow-[0_14px_38px_rgba(230,46,0,0.85),0_0_28px_rgba(255,59,48,0.75)] transition-all duration-400 ease-out cursor-pointer active:scale-95 whatsapp-red-pulse ${
           isVisible
-            ? '-translate-x-3 sm:-translate-x-4 md:-translate-x-5 md:scale-110'
-            : 'translate-x-6 sm:translate-x-7 md:translate-x-8 md:hover:translate-x-0'
+            ? '-translate-x-3.5 sm:-translate-x-4 md:-translate-x-6 md:scale-105'
+            : 'translate-x-[62%] sm:translate-x-[60%] md:translate-x-8 md:hover:translate-x-0'
         }`}
         aria-label="Contactar por WhatsApp a Mr. Rótulos"
       >
-        {/* Anillo de pulso verde cuando está en reposo */}
+        {/* Anillo de pulso rojo cuando está en reposo */}
         <span
-          className={`absolute inset-0 rounded-full bg-[#25D366] transition-opacity duration-300 pointer-events-none ${
-            isVisible ? 'opacity-0' : 'opacity-45 animate-ping'
+          className={`absolute inset-0 rounded-full bg-[#8C0000] transition-opacity duration-300 pointer-events-none ${
+            isVisible ? 'opacity-0' : 'opacity-55 animate-ping'
           }`}
         />
 
-        {/* Ícono Oficial de WhatsApp en color blanco */}
-        <WhatsAppOfficialIcon className="w-6 h-6 sm:w-7 sm:h-7 md:w-7.5 md:h-7.5 text-white relative z-10 shrink-0 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]" />
+        {/* Destello de luz reflectante diagonal */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/35 via-white/10 to-transparent pointer-events-none rounded-full" />
+
+        {/* Ícono Oficial de WhatsApp en tamaño ampliado y color blanco puro */}
+        <WhatsAppOfficialIcon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white relative z-10 shrink-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]" />
       </a>
     </div>
   );

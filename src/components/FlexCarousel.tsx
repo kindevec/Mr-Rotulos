@@ -104,7 +104,7 @@ const BEND_PRESETS: Record<string, any> = {
 
 const FIT_ASPECT: Record<string, number> = { portrait: 0.75, square: 1, landscape: 4 / 3 };
 const TAPS = 12;
-const PIXEL_BUDGET = 4.5e6;
+const PIXEL_BUDGET = 12e6;
 const INTRO_DURATION: Record<string, number> = { rise: 2.1, bloom: 1.6, spin: 2.2, deal: 1.5, fade: 0.35 };
 
 const wrap = (value: number, size: number) => ((((value + size / 2) % size) + size) % size) - size / 2;
@@ -386,10 +386,10 @@ export const FlexCarousel: React.FC<FlexCarouselProps> = ({
     if (!container) return undefined;
 
     const renderer = new Renderer({
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
+      dpr: Math.min(window.devicePixelRatio || 1, 2.5),
       alpha: true,
       premultipliedAlpha: true,
-      antialias: false,
+      antialias: true,
       depth: false
     });
     const gl = renderer.gl;
@@ -402,6 +402,7 @@ export const FlexCarousel: React.FC<FlexCarouselProps> = ({
     canvas.style.display = 'block';
     canvas.style.width = '100%';
     canvas.style.height = '100%';
+    canvas.style.imageRendering = '-webkit-optimize-contrast';
     canvas.setAttribute('aria-hidden', 'true');
     container.prepend(canvas);
 
@@ -464,7 +465,8 @@ export const FlexCarousel: React.FC<FlexCarouselProps> = ({
     });
 
     const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    const anisotropy = renderer.getExtension('EXT_texture_filter_anisotropic') ? 8 : 0;
+    const anisoExt = renderer.getExtension('EXT_texture_filter_anisotropic');
+    const anisotropy = anisoExt ? Math.min(16, gl.getParameter((anisoExt as any).MAX_TEXTURE_MAX_ANISOTROPY_EXT) || 16) : 0;
 
     let slots: any[] = [];
     let width = 1;
@@ -743,7 +745,7 @@ export const FlexCarousel: React.FC<FlexCarouselProps> = ({
     const resize = () => {
       width = Math.max(1, container.clientWidth);
       height = Math.max(1, container.clientHeight);
-      renderer.dpr = Math.min(window.devicePixelRatio || 1, 2, Math.sqrt(PIXEL_BUDGET / (width * height)));
+      renderer.dpr = Math.min(window.devicePixelRatio || 1, 2.5, Math.sqrt(PIXEL_BUDGET / (width * height)));
       renderer.setSize(width, height);
       target.setSize(Math.max(2, Math.round(width * renderer.dpr)), Math.max(2, Math.round(height * renderer.dpr)));
       lensUniforms.tScene.value = target.texture;

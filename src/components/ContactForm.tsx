@@ -207,51 +207,51 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 </p>
               </div>
 
-              {/* Lista de Filas con Íconos Circulares de Alto Contraste */}
+              {/* Lista de Filas con Íconos Dinámicos con Efecto de Cambio de Color */}
               <div className="space-y-4 sm:space-y-6 pt-1 text-sm sm:text-base">
                 
                 {/* 1. Taller & Showroom */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
-                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2] text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white icon-color-shift mt-0.5 shadow-sm">
+                    <MapPin className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
                     <h4 className="font-extrabold text-[#191919] text-xs sm:text-base">
                       Taller Principal & Showroom
                     </h4>
                     <a
-                      href="https://maps.google.com/maps?q=-0.1444,-78.4839&z=13"
+                      href="https://maps.google.com/maps?q=Av.+Maldonado+s38-200+y+Susana+Letor,+Quito,+Ecuador"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-slate-600 hover:text-black hover:underline transition-colors leading-relaxed block mt-0.5 sm:mt-1 text-xs sm:text-sm font-medium"
                     >
-                      Av. Galo Plaza Lasso y Capitán Ramón Borja, Quito Norte
+                      Av. Maldonado s38-200 y Susana Letor, Quito
                     </a>
                   </div>
                 </div>
 
                 {/* 2. Correo Electrónico */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
-                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2] text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white icon-color-shift mt-0.5 shadow-sm">
+                    <Mail className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
                     <h4 className="font-extrabold text-[#191919] text-xs sm:text-base">
                       Correo Electrónico
                     </h4>
                     <a
-                      href="mailto:ventas@mrrotulosquito.com"
+                      href="mailto:mrrotulosquito@gmail.com"
                       className="text-slate-600 hover:text-black hover:underline transition-colors block mt-0.5 sm:mt-1 text-xs sm:text-sm font-medium"
                     >
-                      ventas@mrrotulosquito.com
+                      mrrotulosquito@gmail.com
                     </a>
                   </div>
                 </div>
 
                 {/* 3. Teléfono / WhatsApp */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#191919] text-white flex items-center justify-center shrink-0 shadow-sm border border-slate-700 mt-0.5 group-hover:bg-black transition-colors">
-                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2] text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white icon-color-shift mt-0.5 shadow-sm">
+                    <Phone className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
                     <h4 className="font-extrabold text-[#191919] text-xs sm:text-base">
@@ -266,14 +266,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                       })}
                       className="text-slate-600 hover:text-black font-bold block mt-0.5 sm:mt-1 transition-colors text-xs sm:text-sm"
                     >
-                      {FORMATTED_PHONE} · +593 99 195 2889
+                      {FORMATTED_PHONE}
                     </a>
                   </div>
                 </div>
 
               </div>
 
-              {/* Redes Sociales Oficiales en Íconos Circulares */}
+              {/* Redes Sociales Oficiales con Colores Distintivos */}
               <div className="pt-4 sm:pt-6 border-t border-slate-100">
                 <span className="block text-xs sm:text-sm font-bold text-slate-700 mb-2.5 sm:mb-3.5">
                   Síguenos en Redes Sociales
@@ -284,36 +284,36 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="TikTok Mr. Rótulos"
-                    className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black border border-white/25 text-white flex items-center justify-center shadow-[0_0_14px_rgba(254,44,85,0.45),0_0_10px_rgba(37,244,238,0.4)] transition-all hover:scale-110"
                   >
-                    <TikTokIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <TikTokIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </a>
                   <a
                     href="https://www.instagram.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram Mr. Rótulos"
-                    className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] border border-white/25 text-white flex items-center justify-center shadow-[0_0_16px_rgba(220,39,67,0.55)] transition-all hover:scale-110"
                   >
-                    <InstagramIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <InstagramIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </a>
                   <a
                     href="https://www.facebook.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook Mr. Rótulos"
-                    className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-[#191919] hover:bg-black text-white flex items-center justify-center shadow-xs transition-all hover:scale-105 border border-slate-700"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#1877F2] hover:bg-[#166fe5] border border-white/25 text-white flex items-center justify-center shadow-[0_0_16px_rgba(24,119,242,0.55)] transition-all hover:scale-110"
                   >
-                    <FacebookIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <FacebookIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </a>
                   <a
                     href={buildWhatsAppUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="WhatsApp Mr. Rótulos"
-                    className="w-8.5 h-8.5 sm:w-9 sm:h-9 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-xs transition-all hover:scale-105"
+                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#25D366] hover:bg-[#20ba59] border border-white/25 text-white flex items-center justify-center shadow-[0_0_16px_rgba(37,211,102,0.55)] transition-all hover:scale-110"
                   >
-                    <WhatsAppIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5 fill-current" />
+                    <WhatsAppIcon className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-current" />
                   </a>
                 </div>
               </div>
@@ -488,7 +488,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
                   <div className="pt-2">
                     <a
-                      href={`https://wa.me/593991952889?text=${generatedWhatsAppMessage}`}
+                      href={`https://wa.me/593994957377?text=${generatedWhatsAppMessage}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs shadow-md transition-all"
@@ -531,7 +531,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       <div className="w-full h-[320px] sm:h-[400px] border-t border-[#E8E5DF] relative">
         <iframe
           title="Ubicación de Mr. Rótulos en Quito, Ecuador"
-          src="https://maps.google.com/maps?q=-0.1444,-78.4839&z=14&output=embed"
+          src="https://maps.google.com/maps?q=Av.+Maldonado+s38-200+y+Susana+Letor,+Quito,+Ecuador&z=15&output=embed"
           width="100%"
           height="100%"
           style={{ border: 0 }}

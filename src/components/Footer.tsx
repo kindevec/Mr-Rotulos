@@ -114,15 +114,15 @@ export const Footer: React.FC = () => {
                 </div>
                 <div className="flex flex-col text-left relative z-10">
                   <span className="font-black text-base sm:text-lg lg:text-xl tracking-tight text-white uppercase leading-none font-display">
-                    MR <span className="text-[#8C0000]">RÓTULOS</span>
+                    MR <span className="text-white">RÓTULOS</span>
                   </span>
-                  <span className="text-[9.5px] sm:text-[10.5px] tracking-[0.2em] font-bold uppercase text-[#8C0000] drop-shadow-[0_0_8px_rgba(140,0,0,0.8)] select-none mt-1">
+                  <span className="text-[9.5px] sm:text-[10.5px] tracking-[0.2em] font-bold uppercase text-white select-none mt-1">
                     INGENIERÍA PUBLICITARIA
                   </span>
                 </div>
               </motion.a>
 
-              {/* En móvil: redes sociales compactas en la misma fila */}
+              {/* En móvil: redes sociales compactas en la misma fila con sus colores distintivos */}
               <div className="flex sm:hidden items-center gap-1.5 shrink-0">
                 <motion.a
                   href="https://www.tiktok.com"
@@ -131,7 +131,7 @@ export const Footer: React.FC = () => {
                   aria-label="TikTok Mr. Rótulos"
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick('TikTok')}
-                  className="w-7 h-7 rounded-lg bg-black border border-white/20 flex items-center justify-center text-white hover:bg-[#191919] shadow-xs"
+                  className="w-7 h-7 rounded-lg bg-black border border-white/25 flex items-center justify-center text-white shadow-[0_0_12px_rgba(254,44,85,0.45),0_0_8px_rgba(37,244,238,0.4)]"
                 >
                   <TikTokIcon className="w-3.5 h-3.5 text-white" />
                 </motion.a>
@@ -142,7 +142,7 @@ export const Footer: React.FC = () => {
                   aria-label="Instagram Mr. Rótulos"
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick('Instagram')}
-                  className="w-7 h-7 rounded-lg bg-black border border-white/20 flex items-center justify-center text-white hover:bg-[#191919] shadow-xs"
+                  className="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] border border-white/25 flex items-center justify-center text-white shadow-[0_0_12px_rgba(220,39,67,0.5)]"
                 >
                   <Instagram className="w-3.5 h-3.5 text-white stroke-[2.2]" />
                 </motion.a>
@@ -153,7 +153,7 @@ export const Footer: React.FC = () => {
                   aria-label="Facebook Mr. Rótulos"
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick('Facebook')}
-                  className="w-7 h-7 rounded-lg bg-black border border-white/20 flex items-center justify-center text-white hover:bg-[#191919] shadow-xs"
+                  className="w-7 h-7 rounded-lg bg-[#1877F2] border border-white/25 flex items-center justify-center text-white shadow-[0_0_12px_rgba(24,119,242,0.5)]"
                 >
                   <Facebook className="w-3.5 h-3.5 text-white stroke-[2.2]" />
                 </motion.a>
@@ -164,7 +164,7 @@ export const Footer: React.FC = () => {
                   aria-label="WhatsApp Mr. Rótulos"
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick('WhatsApp')}
-                  className="w-7 h-7 rounded-lg bg-[#25D366] flex items-center justify-center text-white shadow-xs"
+                  className="w-7 h-7 rounded-lg bg-[#25D366] border border-white/25 flex items-center justify-center text-white shadow-[0_0_12px_rgba(37,211,102,0.5)]"
                 >
                   <WhatsAppOfficialIcon className="w-3.5 h-3.5 text-white" />
                 </motion.a>
@@ -176,7 +176,7 @@ export const Footer: React.FC = () => {
               Especialistas en rótulos luminosos LED, letras corpóreas 3D, cajas de luz y revestimientos de fachadas comerciales en Quito, Cumbayá y todo el Valle de los Chillos.
             </p>
 
-            {/* Redes Sociales Oficiales en PC/Tablet */}
+            {/* Redes Sociales Oficiales en PC/Tablet con sus Colores Distintivos */}
             <div className="hidden sm:block pt-1">
               <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-300 mb-2.5">
                 Síguenos en Redes
@@ -190,7 +190,7 @@ export const Footer: React.FC = () => {
                   whileHover={{ scale: 1.12, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick('TikTok')}
-                  className="w-8.5 h-8.5 rounded-xl bg-black hover:bg-[#191919] border border-white/20 hover:border-white/40 flex items-center justify-center text-white shadow-[0_0_12px_rgba(0,0,0,0.5)] transition-all duration-300"
+                  className="w-8.5 h-8.5 rounded-xl bg-black border border-white/25 hover:border-white/50 flex items-center justify-center text-white shadow-[0_0_14px_rgba(254,44,85,0.45),0_0_10px_rgba(37,244,238,0.4)] transition-all duration-300"
                 >
                   <TikTokIcon className="w-4 h-4 text-white" />
                 </motion.a>
@@ -203,7 +203,7 @@ export const Footer: React.FC = () => {
                   whileHover={{ scale: 1.12, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick('Instagram')}
-                  className="w-8.5 h-8.5 rounded-xl bg-black hover:bg-[#191919] border border-white/20 hover:border-white/40 flex items-center justify-center text-white shadow-[0_0_12px_rgba(0,0,0,0.5)] transition-all duration-300"
+                  className="w-8.5 h-8.5 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] border border-white/25 hover:border-white/50 flex items-center justify-center text-white shadow-[0_0_16px_rgba(220,39,67,0.55)] transition-all duration-300"
                 >
                   <Instagram className="w-4 h-4 text-white stroke-[2.2]" />
                 </motion.a>
@@ -216,7 +216,7 @@ export const Footer: React.FC = () => {
                   whileHover={{ scale: 1.12, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick('Facebook')}
-                  className="w-8.5 h-8.5 rounded-xl bg-black hover:bg-[#191919] border border-white/20 hover:border-white/40 flex items-center justify-center text-white shadow-[0_0_12px_rgba(0,0,0,0.5)] transition-all duration-300"
+                  className="w-8.5 h-8.5 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] border border-white/25 hover:border-white/50 flex items-center justify-center text-white shadow-[0_0_16px_rgba(24,119,242,0.55)] transition-all duration-300"
                 >
                   <Facebook className="w-4 h-4 text-white stroke-[2.2]" />
                 </motion.a>
@@ -229,7 +229,7 @@ export const Footer: React.FC = () => {
                   whileHover={{ scale: 1.12, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleSocialClick('WhatsApp')}
-                  className="w-8.5 h-8.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] flex items-center justify-center text-white shadow-[0_0_14px_rgba(37,211,102,0.4)] transition-all duration-300"
+                  className="w-8.5 h-8.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] border border-white/25 hover:border-white/50 flex items-center justify-center text-white shadow-[0_0_16px_rgba(37,211,102,0.55)] transition-all duration-300"
                 >
                   <WhatsAppOfficialIcon className="w-4.5 h-4.5 text-white" />
                 </motion.a>
@@ -358,25 +358,25 @@ export const Footer: React.FC = () => {
               Contacto
             </h4>
 
-            <div className="space-y-2 sm:space-y-2.5 text-[11.5px] sm:text-[12.5px] font-medium">
+            <div className="space-y-2.5 sm:space-y-3 text-[11.5px] sm:text-[12.5px] font-medium">
               
               {/* Ubicación */}
               <motion.div
                 whileHover={{ x: 3 }}
                 className="flex items-start gap-2.5 group cursor-default select-none"
               >
-                <div className="relative w-6.5 h-6.5 sm:w-7.5 sm:h-7.5 rounded-lg bg-black border border-white/25 flex items-center justify-center shrink-0 shadow-xs mt-0.5 text-white">
-                  <MapPin className="w-3.5 h-3.5 text-white stroke-[2.4]" />
+                <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl border-2 flex items-center justify-center shrink-0 shadow-xs mt-0.5 text-white icon-color-shift">
+                  <MapPin className="w-4 h-4 text-white stroke-[2.3]" />
                 </div>
                 <div className="leading-snug pt-0.5">
                   <a
-                    href="https://maps.google.com/maps?q=-0.1444,-78.4839&z=13"
+                    href="https://maps.google.com/maps?q=Av.+Maldonado+s38-200+y+Susana+Letor,+Quito,+Ecuador"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-slate-300 hover:text-white transition-colors block font-medium hover:underline"
                     title="Abrir ubicación en Google Maps"
                   >
-                    Av. Galo Plaza Lasso y Capitán Ramón Borja, Quito Norte
+                    Av. Maldonado s38-200 y Susana Letor, Quito
                   </a>
                 </div>
               </motion.div>
@@ -386,8 +386,8 @@ export const Footer: React.FC = () => {
                 whileHover={{ x: 3 }}
                 className="flex items-center gap-2.5 group cursor-pointer"
               >
-                <div className="relative w-6.5 h-6.5 sm:w-7.5 sm:h-7.5 rounded-lg bg-black border border-white/25 flex items-center justify-center shrink-0 shadow-xs text-white">
-                  <Phone className="w-3.5 h-3.5 text-white stroke-[2.4]" />
+                <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl border-2 flex items-center justify-center shrink-0 shadow-xs text-white icon-color-shift">
+                  <Phone className="w-4 h-4 text-white stroke-[2.3]" />
                 </div>
                 <a
                   href={`tel:${PHONE_NUMBER}`}
@@ -407,14 +407,14 @@ export const Footer: React.FC = () => {
                 whileHover={{ x: 3 }}
                 className="flex items-center gap-2.5 group cursor-pointer"
               >
-                <div className="relative w-6.5 h-6.5 sm:w-7.5 sm:h-7.5 rounded-lg bg-black border border-white/25 flex items-center justify-center shrink-0 shadow-xs text-white">
-                  <Mail className="w-3.5 h-3.5 text-white stroke-[2.4]" />
+                <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl border-2 flex items-center justify-center shrink-0 shadow-xs text-white icon-color-shift">
+                  <Mail className="w-4 h-4 text-white stroke-[2.3]" />
                 </div>
                 <a
-                  href="mailto:ventas@mrrotulosquito.com"
+                  href="mailto:mrrotulosquito@gmail.com"
                   className="text-slate-300 group-hover:text-white transition-colors truncate max-w-[220px] font-semibold"
                 >
-                  ventas@mrrotulosquito.com
+                  mrrotulosquito@gmail.com
                 </a>
               </motion.div>
 
@@ -423,8 +423,8 @@ export const Footer: React.FC = () => {
                 whileHover={{ x: 3 }}
                 className="flex items-center gap-2.5 group cursor-default select-none"
               >
-                <div className="relative w-6.5 h-6.5 sm:w-7.5 sm:h-7.5 rounded-lg bg-black border border-white/25 flex items-center justify-center shrink-0 shadow-xs text-white">
-                  <Clock className="w-3.5 h-3.5 text-white stroke-[2.4]" />
+                <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl border-2 flex items-center justify-center shrink-0 shadow-xs text-white icon-color-shift">
+                  <Clock className="w-4 h-4 text-white stroke-[2.3]" />
                 </div>
                 <div className="leading-snug text-slate-300 select-none">
                   <span>Lun - Sáb: 8:30 AM - 6:30 PM</span>

@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Star, Sparkles, RotateCcw, CheckCircle } from 'lucide-react';
+import { Star, Sparkles, RotateCcw, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { GALLERY_PROJECTS } from '../data/content';
 import { GalleryProject } from '../types';
 import { ImageModal } from './ImageModal';
 import { ImageGallery } from './ui/carousel-circular-image-gallery';
 import { buildWhatsAppUrl, trackConversionEvent } from '../utils/analytics';
+
+const ITEMS_PER_PAGE = 9;
 
 // Reviews count mapped by project id to match the mockup (e.g. 124, 98, 76)
 const PROJECT_REVIEWS: Record<string, { rating: number; count: number }> = {
@@ -15,12 +17,26 @@ const PROJECT_REVIEWS: Record<string, { rating: number; count: number }> = {
   'proj-4': { rating: 5, count: 112 },
   'proj-5': { rating: 5, count: 76 },
   'proj-6': { rating: 5, count: 108 },
+  'proj-7': { rating: 5, count: 95 },
+  'proj-8': { rating: 5, count: 110 },
+  'proj-9': { rating: 5, count: 88 },
+  'proj-10': { rating: 5, count: 104 },
+  'proj-11': { rating: 5, count: 120 },
+  'proj-12': { rating: 5, count: 115 },
+  'proj-13': { rating: 5, count: 122 },
+  'proj-14': { rating: 5, count: 118 },
+  'proj-15': { rating: 5, count: 116 },
 };
 
 export const Catalog: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<GalleryProject | null>(null);
   const [likedIds, setLikedIds] = useState<Record<string, boolean>>({});
   const [flippedIds, setFlippedIds] = useState<Record<string, boolean>>({});
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(GALLERY_PROJECTS.length / ITEMS_PER_PAGE);
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const currentProjects = GALLERY_PROJECTS.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   const toggleLike = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -39,7 +55,7 @@ export const Catalog: React.FC = () => {
       label: `Cotizar Producto: ${project.title}`,
       source: 'catalog_card_cta',
     });
-    const message = `Hola Mr Rótulos, estoy interesado en cotizar el modelo de su catálogo: *${project.title}* (${project.price || 'A convenir'}). ¿Podrían brindarme más información?`;
+    const message = `Hola Mr Rótulos, estoy interesado en cotizar el modelo de su catálogo: *${project.title}*. ¿Podrían brindarme más información?`;
     window.open(buildWhatsAppUrl(message), '_blank', 'noopener,noreferrer');
   };
 
@@ -88,9 +104,9 @@ export const Catalog: React.FC = () => {
             2. GRILLA CONTINUA DE PRODUCTOS / CARDS FLIP 3D
            ======================================================== */}
 
-          {/* Product Cards Grid */}
+          {/* Product Cards Grid (9 items per view) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 justify-items-center">
-            {GALLERY_PROJECTS.map((project, index) => {
+            {currentProjects.map((project, index) => {
               const reviews = PROJECT_REVIEWS[project.id] || { rating: 5, count: 85 };
               const isFlipped = !!flippedIds[project.id];
               const projectImages = project.images && project.images.length > 0 
@@ -149,18 +165,6 @@ export const Catalog: React.FC = () => {
                           {project.title}
                         </h3>
 
-                        {/* Precios */}
-                        <div className="flex items-baseline gap-2 py-1.5 border-y border-white/10">
-                          <span className="text-2xl sm:text-3xl font-black text-[#8C0000] font-display">
-                            {project.price || 'A convenir'}
-                          </span>
-                          {project.originalPrice && (
-                            <span className="text-xs sm:text-sm font-semibold text-slate-400 line-through">
-                              {project.originalPrice}
-                            </span>
-                          )}
-                        </div>
-
                         {/* Descripción del producto */}
                         {project.description && (
                           <p className="text-xs sm:text-sm leading-relaxed text-slate-300 font-normal">
@@ -174,6 +178,12 @@ export const Catalog: React.FC = () => {
                             <div className="flex items-start gap-2">
                               <CheckCircle className="w-3.5 h-3.5 text-[#8C0000] shrink-0 mt-0.5" />
                               <span><strong className="text-white font-semibold">Iluminación:</strong> {project.lightingType}</span>
+                            </div>
+                          )}
+                          {project.materials && project.materials.length > 0 && (
+                            <div className="flex items-start gap-2">
+                              <CheckCircle className="w-3.5 h-3.5 text-[#8C0000] shrink-0 mt-0.5" />
+                              <span><strong className="text-white font-semibold">Materiales:</strong> {Array.isArray(project.materials) ? project.materials.join(', ') : project.materials}</span>
                             </div>
                           )}
                           {project.dimension && (
@@ -209,6 +219,73 @@ export const Catalog: React.FC = () => {
               );
             })}
           </div>
+
+          {/* ========================================================
+              3. PAGINACIÓN Y CONTROL DE VISTAS (FLECHAS)
+             ======================================================== */}
+          {totalPages > 1 && (
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-12 sm:mt-16">
+              {/* Botón Anterior */}
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentPage((prev) => Math.max(prev - 1, 1));
+                  document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                disabled={currentPage === 1}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 border ${
+                  currentPage === 1
+                    ? 'opacity-30 cursor-not-allowed border-white/10 bg-white/5 text-gray-400'
+                    : 'cursor-pointer border-white/20 bg-[#1c0202]/90 hover:bg-[#8C0000] text-white hover:border-[#8C0000] shadow-lg shadow-[#8C0000]/25 hover:scale-105 active:scale-95'
+                }`}
+                aria-label="Página anterior"
+              >
+                <ChevronLeft className="w-5 h-5" />
+                <span>Anterior</span>
+              </button>
+
+              {/* Indicadores de Página */}
+              <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-inner">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => {
+                      setCurrentPage(page);
+                      document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className={`w-10 h-10 rounded-full font-extrabold text-sm transition-all duration-200 cursor-pointer flex items-center justify-center ${
+                      currentPage === page
+                        ? 'bg-[#8C0000] text-white shadow-lg shadow-[#8C0000]/50 scale-105 border border-red-500/40'
+                        : 'text-gray-300 hover:text-white hover:bg-white/10'
+                    }`}
+                    aria-label={`Ir a página ${page}`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+
+              {/* Botón Siguiente */}
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+                  document.getElementById('catalogo')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                disabled={currentPage === totalPages}
+                className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 border ${
+                  currentPage === totalPages
+                    ? 'opacity-30 cursor-not-allowed border-white/10 bg-white/5 text-gray-400'
+                    : 'cursor-pointer border-white/20 bg-[#1c0202]/90 hover:bg-[#8C0000] text-white hover:border-[#8C0000] shadow-lg shadow-[#8C0000]/25 hover:scale-105 active:scale-95'
+                }`}
+                aria-label="Página siguiente"
+              >
+                <span>Siguiente</span>
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
         </div>
 
       {/* Zoom / Full detail Modal */}

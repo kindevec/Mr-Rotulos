@@ -164,4 +164,57 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* =========================================================
+   Efecto de Cambio de Color Dinámico y Resplandor para Íconos
+   ========================================================= */
+@keyframes iconColorShift {
+  0%, 100% {
+    background-color: rgba(140, 0, 0, 0.35);
+    border-color: #8C0000;
+    color: #FFFFFF;
+    box-shadow: 0 0 18px rgba(140, 0, 0, 0.55);
+  }
+  33% {
+    background-color: rgba(230, 46, 0, 0.4);
+    border-color: #ff3b30;
+    color: #FFFFFF;
+    box-shadow: 0 0 22px rgba(255, 59, 48, 0.65);
+  }
+  66% {
+    background-color: rgba(179, 0, 59, 0.35);
+    border-color: #e11d48;
+    color: #FFFFFF;
+    box-shadow: 0 0 18px rgba(225, 29, 72, 0.55);
+  }
+}
+
+.icon-color-shift {
+  animation: iconColorShift 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   Efecto de Cambio de Color y Resplandor para Botón Flotante WhatsApp Rojo y Blanco
+   ========================================================= */
+@keyframes whatsappRedColorCycle {
+  0%, 100% {
+    background-color: #8C0000;
+    box-shadow: 0 8px 25px rgba(140, 0, 0, 0.65), 0 0 18px rgba(140, 0, 0, 0.45);
+    border-color: #FFFFFF;
+  }
+  33% {
+    background-color: #D91A1A;
+    box-shadow: 0 8px 30px rgba(230, 46, 0, 0.75), 0 0 24px rgba(255, 59, 48, 0.6);
+    border-color: #FFFFFF;
+  }
+  66% {
+    background-color: #A30029;
+    box-shadow: 0 8px 25px rgba(225, 29, 72, 0.65), 0 0 18px rgba(225, 29, 72, 0.45);
+    border-color: #FFFFFF;
+  }
+}
+
+.whatsapp-red-pulse {
+  animation: whatsappRedColorCycle 3.5s ease-in-out infinite;
+}
+
 

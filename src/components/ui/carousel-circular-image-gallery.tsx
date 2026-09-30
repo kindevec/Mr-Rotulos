@@ -138,7 +138,7 @@ export function ImageGallery({
 
   // Autoplay and timer reset logic
   useEffect(() => {
-    if (!gsapReady || autoPlayInterval <= 0) return
+    if (!gsapReady || autoPlayInterval <= 0 || images.length <= 1) return
 
     if (autoplayTimer.current) {
       clearInterval(autoplayTimer.current)
@@ -151,7 +151,7 @@ export function ImageGallery({
         clearInterval(autoplayTimer.current)
       }
     }
-  }, [opened, gsapReady, next, autoPlayInterval])
+  }, [opened, gsapReady, next, autoPlayInterval, images.length])
 
   return (
     <div className={`relative w-full h-full overflow-hidden select-none group/gallery ${className}`}>
@@ -159,7 +159,15 @@ export function ImageGallery({
         className={`relative w-full h-full ${aspectRatio} overflow-hidden rounded-[28px] bg-[#121212] shadow-sm`}
         onClick={() => onImageClick && onImageClick(images[opened], opened)}
       >
-        {gsapReady ? (
+        {images.length === 1 ? (
+          <div className="w-full h-full">
+            <img 
+              src={images[0]?.url} 
+              alt={images[0]?.title || 'Imagen'} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : gsapReady ? (
           images.map((image, i) => (
             <div
               key={`${image.url}-${i}`}
@@ -189,9 +197,11 @@ export function ImageGallery({
         )}
 
         {/* Circular thumbnails / tabs inside gallery */}
-        <div className="absolute left-0 top-0 z-[50] h-full w-full pointer-events-none">
-          <Tabs images={images} instanceId={instanceId} onSelect={onClick} />
-        </div>
+        {images.length > 1 && (
+          <div className="absolute left-0 top-0 z-[50] h-full w-full pointer-events-none">
+            <Tabs images={images} instanceId={instanceId} onSelect={onClick} />
+          </div>
+        )}
       </div>
 
       {showControls && images.length > 1 && (

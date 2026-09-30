@@ -1,112 +1,162 @@
-import React, { useState, useEffect } from 'react';
-import { Home, Layers, Sparkles, Send } from 'lucide-react';
-import { WhatsAppIcon } from './icons/WhatsAppIcon';
-import { trackConversionEvent, buildWhatsAppUrl } from '../utils/analytics';
+import React, { useState, useEffect, useRef } from 'react';
+import { AnimatedTabBar, TabItem } from './ui/animated-tab-bar';
+import { Home, Layers, Sparkles, Users, Send } from 'lucide-react';
 
 export const MobileBottomNav: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'inicio' | 'servicios' | 'catalogo' | 'nosotros' | 'contactos'>('inicio');
+  const [activeIndex, setActiveIndex] = useState(0);
+  const isNavigatingRef = useRef(false);
+  const navigationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  const scrollToSection = (href: string) => {
+    isNavigatingRef.current = true;
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+    }
+    navigationTimeoutRef.current = setTimeout(() => {
+      isNavigatingRef.current = false;
+    }, 1100);
+
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      const headerOffset = 70;
+      const elementPosition = targetElement.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  // Las 5 secciones oficiales con Catálogo en el medio exacto (índice 2)
+  const mobileTabItems: TabItem[] = [
+    {
+      label: 'Inicio',
+      href: '#inicio',
+      color: '#8C0000',
+      icon: <Home className="w-5 h-5" />,
+      onClick: () => scrollToSection('#inicio'),
+    },
+    {
+      label: 'Servicios',
+      href: '#servicios',
+      color: '#8C0000',
+      icon: <Layers className="w-5 h-5" />,
+      onClick: () => scrollToSection('#servicios'),
+    },
+    {
+      label: 'Catálogo',
+      href: '#catalogo',
+      color: '#8C0000',
+      icon: <Sparkles className="w-5 h-5" />,
+      onClick: () => scrollToSection('#catalogo'),
+    },
+    {
+      label: 'Nosotros',
+      href: '#nosotros',
+      color: '#8C0000',
+      icon: <Users className="w-5 h-5" />,
+      onClick: () => scrollToSection('#nosotros'),
+    },
+    {
+      label: 'Contactos',
+      href: '#contactos',
+      color: '#8C0000',
+      icon: <Send className="w-5 h-5" />,
+      onClick: () => scrollToSection('#contactos'),
+    },
+  ];
+
+  // Escuchar el scroll para sincronizar la pestaña activa en tiempo real
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 200;
-      const servicios = document.getElementById('servicios');
-      const catalogo = document.getElementById('catalogo');
-      const nosotros = document.getElementById('nosotros');
-      const contactos = document.getElementById('contactos');
+    let ticking = false;
+    let rafId: number | null = null;
 
-      if (contactos && scrollPos >= contactos.offsetTop) {
-        setActiveTab('contactos');
-      } else if (catalogo && scrollPos >= catalogo.offsetTop) {
-        setActiveTab('catalogo');
-      } else if (nosotros && scrollPos >= nosotros.offsetTop) {
-        setActiveTab('nosotros');
-      } else if (servicios && scrollPos >= servicios.offsetTop) {
-        setActiveTab('servicios');
-      } else {
-        setActiveTab('inicio');
+    const checkScrollPosition = () => {
+      ticking = false;
+
+      // Si el usuario acaba de presionar una pestaña, ignorar el scroll intermedio
+      if (isNavigatingRef.current) return;
+
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      // Si llegó al fondo de la página, fijar Contactos (última sección)
+      if (scrollY + windowHeight >= docHeight - 80) {
+        setActiveIndex(mobileTabItems.length - 1);
+        return;
+      }
+
+      const triggerPoint = scrollY + windowHeight * 0.38;
+
+      // Mapear cada pestaña a su posición vertical real en la página
+      const tabPositions = mobileTabItems
+        .map((item, index) => {
+          const id = item.href?.replace('#', '');
+          const el = id ? document.getElementById(id) : null;
+          return {
+            index,
+            id,
+            top: el ? el.offsetTop : -1,
+          };
+        })
+        .filter((item) => item.top >= 0)
+        // Ordenar de abajo hacia arriba para detectar la sección activa correcta
+        .sort((a, b) => b.top - a.top);
+
+      for (const tab of tabPositions) {
+        if (triggerPoint >= tab.top) {
+          setActiveIndex((prev) => (prev !== tab.index ? tab.index : prev));
+          break;
+        }
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        rafId = window.requestAnimationFrame(checkScrollPosition);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    checkScrollPosition();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) {
+        window.cancelAnimationFrame(rafId);
+      }
+      if (navigationTimeoutRef.current) {
+        clearTimeout(navigationTimeoutRef.current);
+      }
+    };
   }, []);
 
-  const handleWhatsAppMobile = () => {
-    trackConversionEvent('click_whatsapp', {
-      category: 'Lead',
-      label: 'Clic WhatsApp desde barra móvil inferior',
-      source: 'floating_whatsapp',
-    });
+  const handleTabChange = (index: number) => {
+    isNavigatingRef.current = true;
+    setActiveIndex(index);
+
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+    }
+    navigationTimeoutRef.current = setTimeout(() => {
+      isNavigatingRef.current = false;
+    }, 1100);
   };
 
   return (
-    <nav 
-      aria-label="Navegación Móvil" 
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-[#E8E5DF] shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-2 py-1.5"
+    <aside
+      aria-label="Navegación Móvil"
+      className="fixed -bottom-[1px] inset-x-0 z-40 w-full lg:hidden pointer-events-auto select-none shadow-[0_-8px_30px_rgba(140,0,0,0.35)]"
     >
-      <div className="grid grid-cols-5 items-center max-w-md mx-auto h-13">
-        {/* Tab 1: Inicio */}
-        <a
-          href="#inicio"
-          onClick={() => setActiveTab('inicio')}
-          className={`flex flex-col items-center justify-center min-h-[44px] min-w-[44px] transition-colors ${
-            activeTab === 'inicio' ? 'text-[#8C0000] font-bold' : 'text-slate-500 font-medium'
-          }`}
-        >
-          <Home className="w-5 h-5" />
-          <span className="text-[10px] tracking-tight mt-0.5">Inicio</span>
-        </a>
-
-        {/* Tab 2: Servicios */}
-        <a
-          href="#servicios"
-          onClick={() => setActiveTab('servicios')}
-          className={`flex flex-col items-center justify-center min-h-[44px] min-w-[44px] transition-colors ${
-            activeTab === 'servicios' ? 'text-[#8C0000] font-bold' : 'text-slate-500 font-medium'
-          }`}
-        >
-          <Layers className="w-5 h-5" />
-          <span className="text-[10px] tracking-tight mt-0.5">Servicios</span>
-        </a>
-
-        {/* Tab 3: Central Highlighted WhatsApp Button */}
-        <div className="flex items-center justify-center">
-          <a
-            href={buildWhatsAppUrl('Hola Mr Rótulos, necesito cotizar desde Quito.')}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleWhatsAppMobile}
-            className="pulse-whatsapp -mt-5 w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg border-2 border-white active:scale-95 transition-transform"
-            aria-label="Chatear por WhatsApp"
-          >
-            <WhatsAppIcon className="w-6 h-6 fill-current" />
-          </a>
-        </div>
-
-        {/* Tab 4: Catálogo */}
-        <a
-          href="#catalogo"
-          onClick={() => setActiveTab('catalogo')}
-          className={`flex flex-col items-center justify-center min-h-[44px] min-w-[44px] transition-colors ${
-            activeTab === 'catalogo' ? 'text-[#8C0000] font-bold' : 'text-slate-500 font-medium'
-          }`}
-        >
-          <Sparkles className="w-5 h-5" />
-          <span className="text-[10px] tracking-tight mt-0.5">Catálogo</span>
-        </a>
-
-        {/* Tab 5: Contactos */}
-        <a
-          href="#contactos"
-          onClick={() => setActiveTab('contactos')}
-          className={`flex flex-col items-center justify-center min-h-[44px] min-w-[44px] transition-colors ${
-            activeTab === 'contactos' ? 'text-[#8C0000] font-bold' : 'text-slate-500 font-medium'
-          }`}
-        >
-          <Send className="w-5 h-5" />
-          <span className="text-[10px] tracking-tight mt-0.5">Contactos</span>
-        </a>
-      </div>
-    </nav>
+      <AnimatedTabBar
+        items={mobileTabItems}
+        activeIndex={activeIndex}
+        onTabChange={handleTabChange}
+      />
+    </aside>
   );
 };

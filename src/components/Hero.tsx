@@ -1,52 +1,133 @@
-import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { WhatsAppIcon } from './icons/WhatsAppIcon';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight } from 'lucide-react';
 import FlexCarousel, { FlexCarouselItem } from './FlexCarousel';
-import { buildWhatsAppUrl, trackConversionEvent } from '../utils/analytics';
+
+interface SolutionItem {
+  id: string;
+  name: string;
+  title: string;
+  subtitle: string;
+}
+
+const INTENT_SOLUTIONS: SolutionItem[] = [
+  {
+    id: 'cajas-de-luz',
+    name: 'Cajas de Luz LED',
+    title: 'Cajas de Luz LED y Letreros Luminosos a Medida en Quito',
+    subtitle: 'Cajas de luz slim y doble cara con módulos LED de alto brillo y bajo consumo. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+  },
+  {
+    id: 'letras-corporeas',
+    name: 'Letras 3D Corpóreas',
+    title: 'Letras 3D Corpóreas y Rótulos en Acrílico y Acero en Quito',
+    subtitle: 'Letras volumétricas con corte láser CNC de alta precisión, iluminación frontal o efecto halo. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+  },
+  {
+    id: 'rotulos-luminosos',
+    name: 'Rótulos Luminosos',
+    title: 'Rótulos Luminosos y Fachadas Comerciales en Quito',
+    subtitle: 'Fabricación en Alucobond (ACM), estructuras anticorrosivas e iluminación LED de máxima durabilidad. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+  },
+  {
+    id: 'gigantografias',
+    name: 'Gigantografías',
+    title: 'Gigantografías, Viniles e Impresión Gran Formato en Quito',
+    subtitle: 'Impresión digital ecológica de alta definición resistente al sol andino de Quito. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+  },
+];
 
 const SIGNAGE_ITEMS: FlexCarouselItem[] = [
   {
-    src: '/hero/hero-1.webp',
-    alt: 'Rótulo circular retroiluminado LED Moonlight Mocktails'
+    src: '/hero/hero-panaderiaalemar.png',
+    alt: 'Rótulo Panadería Pastelería Antojitos Alemar letras 3D'
   },
   {
-    src: '/hero/hero-2.webp',
-    alt: 'Letrero Neón Flex Oh My Dog! Masco Terra'
+    src: '/hero/hero-saboreslojanos.png',
+    alt: 'Rótulo comercial Sabores Lojanos con letras 3D y mascota de choclo'
   },
   {
-    src: '/hero/hero-3.webp',
-    alt: 'Letrero luminoso Neón Rosa BE Clinique'
+    src: '/hero/hero-puntoazul.png',
+    alt: 'Rótulo Punto Azul Calzado letras 3D y zapatilla iluminada'
   },
   {
-    src: '/hero/hero-4.webp',
-    alt: 'Letrero Neón Flex decorativo diseño Burger'
+    src: '/hero/hero-abogadosproley.png',
+    alt: 'Rótulo corporativo Abogados Proley letras 3D luminosas'
   },
   {
-    src: '/hero/hero-5.webp',
-    alt: 'Figura decorativa Neón LED Campanas'
+    src: '/hero/hero-arepazopaisa.png',
+    alt: 'Rótulo luminoso El Arepazo Paisa con letras acrílicas'
   },
   {
-    src: '/hero/hero-6.webp',
-    alt: 'Letras 3D corpóreas con iluminación LED Odontología Parker'
+    src: '/hero/hero-fritadassarita.png',
+    alt: 'Rótulo corpóreo 3D Fritadas Sarita en base de alucobond'
   },
   {
-    src: '/hero/hero-7.webp',
-    alt: 'Rótulo circular retroiluminado con detalles dorados Rich Baby Store'
-  },
-  {
-    src: '/hero/hero-8.webp',
-    alt: 'Rótulo corpóreo 3D en base de alucobónd Sabores Lojanos'
+    src: '/hero/hero-perlei-crop.png',
+    alt: 'Rótulo comercial retroiluminado PER LEI Sunglasses'
   }
 ];
 
 export const Hero: React.FC = () => {
-  const handleWhatsAppClick = () => {
-    trackConversionEvent('click_whatsapp', {
-      category: 'Lead',
-      label: 'Clic WhatsApp desde Hero principal',
-      source: 'hero_primary_cta',
-    });
-  };
+  const [activeSolutionIndex, setActiveSolutionIndex] = useState(0);
+  const [isUrlLocked, setIsUrlLocked] = useState(false);
+  const [fade, setFade] = useState(true);
+
+  // Detect Google Ads Search Intent from URL query parameters (e.g. ?servicio=cajas-de-luz or ?kw=cajas+de+luz or ?utm_term=...)
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const query = (
+        params.get('servicio') || 
+        params.get('kw') || 
+        params.get('utm_term') || 
+        params.get('q') || 
+        params.get('buscar') || 
+        ''
+      ).toLowerCase();
+
+      if (query) {
+        if (query.includes('caja') || query.includes('luz')) {
+          setActiveSolutionIndex(0);
+          setIsUrlLocked(true);
+          return;
+        }
+        if (query.includes('letra') || query.includes('corporea') || query.includes('corpórea') || query.includes('3d')) {
+          setActiveSolutionIndex(1);
+          setIsUrlLocked(true);
+          return;
+        }
+        if (query.includes('rotulo') || query.includes('rótulo') || query.includes('letrero') || query.includes('fachada')) {
+          setActiveSolutionIndex(2);
+          setIsUrlLocked(true);
+          return;
+        }
+        if (query.includes('giganto') || query.includes('vinil') || query.includes('impresion') || query.includes('impresión')) {
+          setActiveSolutionIndex(3);
+          setIsUrlLocked(true);
+          return;
+        }
+      }
+    } catch {
+      // fallback to cycling
+    }
+  }, []);
+
+  // Smooth rotation between solutions if not locked to a specific Google Ads URL parameter
+  useEffect(() => {
+    if (isUrlLocked) return;
+
+    const timer = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setActiveSolutionIndex((prev) => (prev + 1) % INTENT_SOLUTIONS.length);
+        setFade(true);
+      }, 250);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [isUrlLocked]);
+
+  const currentSolution = INTENT_SOLUTIONS[activeSolutionIndex];
 
   return (
     <section id="inicio" className="relative overflow-hidden bg-[#0a0000] text-white pt-12 sm:pt-16 pb-12 sm:pb-16 border-b border-[#8C0000]/40">
@@ -74,37 +155,34 @@ export const Hero: React.FC = () => {
         aria-hidden="true"
       />
 
-      {/* CONTENIDO SUPERIOR: Títulos y Llamado a la acción */}
+      {/* CONTENIDO SUPERIOR: Título que vende directamente la solución buscada */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center mb-8 sm:mb-12">
 
-        {/* Título Principal con tipografía Playwrite AU VIC */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.25] font-playwrite max-w-4xl tracking-normal drop-shadow-md">
-          Rótulos Luminosos y Letras 3D que Hacen Crecer tu Negocio
+        {/* Título Dinámico Enfocado 100% en la Solución Buscada */}
+        <h1 
+          className={`text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.25] font-playwrite max-w-4xl tracking-normal drop-shadow-md min-h-[80px] sm:min-h-[120px] lg:min-h-[145px] flex items-center justify-center transition-opacity duration-300 ${
+            fade ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {currentSolution.title}
         </h1>
 
-        {/* Subtítulo */}
-        <p className="text-base sm:text-lg lg:text-xl text-[#E8E5DF]/90 font-normal leading-relaxed mt-4 max-w-2xl text-balance">
-          Fabricación personalizada con <strong className="text-white font-semibold">tecnología LED de bajo consumo</strong>, corte láser de alta precisión y materiales resistentes al clima de Quito.
+        {/* Subtítulo enfocado en solución directa y beneficios técnicos */}
+        <p 
+          className={`text-base sm:text-lg lg:text-xl text-[#E8E5DF]/90 font-normal leading-relaxed mt-3 max-w-2xl text-balance min-h-[56px] sm:min-h-[60px] flex items-center justify-center transition-opacity duration-300 ${
+            fade ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          {currentSolution.subtitle}
         </p>
 
-        {/* Botones de Acción / CTAs (Negros) */}
-        <div className="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-4 mt-6 w-full sm:w-auto">
-          <a
-            href={buildWhatsAppUrl('Hola Mr Rótulos, quisiera cotizar un rótulo luminoso para mi negocio.')}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleWhatsAppClick}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl bg-[#191919] hover:bg-black text-white font-extrabold text-sm sm:text-base border border-white/20 shadow-xl shadow-black/40 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 cursor-pointer"
-          >
-            <WhatsAppIcon className="w-5 h-5 fill-current text-white" />
-            <span>Cotizar por WhatsApp</span>
-          </a>
-
+        {/* Botón Único Centrado: Ver Catálogo */}
+        <div className="flex justify-center items-center mt-6 w-full">
           <a
             href="#catalogo"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-[#191919] hover:bg-black text-white font-bold text-sm sm:text-base border border-white/20 shadow-xl shadow-black/40 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#191919] hover:bg-black text-white font-extrabold text-sm sm:text-base border border-white/20 shadow-xl shadow-black/40 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 cursor-pointer"
           >
-            <span>Ver Catálogo con Precios</span>
+            <span>Ver Catálogo de Trabajos</span>
             <ArrowRight className="w-4 h-4 text-white" />
           </a>
         </div>
@@ -119,16 +197,17 @@ export const Hero: React.FC = () => {
           intro="rise"
           cardHeight={0.85}
           fit="natural"
-          bend={0.12}
-          reach={0.40}
-          tilt={4}
+          bend={0.06}
+          reach={0.35}
+          tilt={0}
+          dispersion={0}
           gap={24}
           radius={22}
-          squeeze={0.10}
+          squeeze={0.04}
           focusOnClick
           autoplay
           continuous
-          speed={220}
+          speed={310}
           captions={false}
         />
       </div>

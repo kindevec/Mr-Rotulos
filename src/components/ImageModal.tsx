@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { X, MapPin, Sparkles, Layers, CheckCircle2, Tag, ShieldCheck } from 'lucide-react';
+import { X, MapPin, Sparkles, Layers, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { GalleryProject } from '../types';
 import { buildWhatsAppUrl, trackConversionEvent } from '../utils/analytics';
@@ -25,13 +25,11 @@ export const ImageModal: React.FC<ImageModalProps> = ({ project, onClose }) => {
       category: 'Lead',
       label: `Consulta por proyecto: ${project.title}`,
       source: 'catalog_modal',
-      metadata: { project: project.title, price: project.price || 'N/A' },
+      metadata: { project: project.title },
     });
   };
 
-  const whatsappMessage = project.price
-    ? `Hola Mister Rótulos, me interesa cotizar el producto "${project.title}" (${project.price}). ¿Podrían darme más información sobre la fabricación e instalación en mi local?`
-    : `Hola Mister Rótulos, me interesa cotizar un trabajo similar a "${project.title}" (${project.client || 'Catálogo'}). ¿Podrían asesorarme?`;
+  const whatsappMessage = `Hola Mister Rótulos, me interesa cotizar el producto "${project.title}". ¿Podrían brindarme más información sobre la fabricación e instalación en mi local?`;
 
   return (
     <div 
@@ -82,25 +80,6 @@ export const ImageModal: React.FC<ImageModalProps> = ({ project, onClose }) => {
               <Sparkles className="w-3.5 h-3.5" />
               <span>Especificación Técnica Mr. Rótulos</span>
             </div>
-
-            {/* Price display */}
-            {project.price && (
-              <div className="flex items-baseline gap-3 mb-3 bg-[#F0EDE8] p-3 rounded-2xl border border-[#E8E5DF]">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-black text-[#8C0000] font-display">
-                    {project.price}
-                  </span>
-                  {project.originalPrice && (
-                    <span className="text-base font-bold text-slate-400 line-through">
-                      {project.originalPrice}
-                    </span>
-                  )}
-                </div>
-                <span className="ml-auto text-xs font-bold text-emerald-800 bg-emerald-100/70 px-2.5 py-1 rounded-lg flex items-center gap-1">
-                  <Tag className="w-3.5 h-3.5 text-emerald-700" /> Oferta
-                </span>
-              </div>
-            )}
 
             <h3 className="text-xl sm:text-2xl font-black text-[#191919] leading-tight mb-2">
               {project.title}

@@ -70,17 +70,12 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     category: 'promociones',
     categoryLabel: 'Promoción Especial',
     badge: 'Oferta Especial',
-    price: '$900.00',
-    originalPrice: '$1,000.00',
     description: 'Rótulo con letras 3D más rótulo giratorio de 60 cm.',
     client: 'Sabores Lojanos',
     location: 'Quito, Ecuador',
-    image: '/catalog/catalog-1.webp',
+    image: '/catalog/catalog-saboreslojanos.webp',
     images: [
-      '/catalog/catalog-1.webp',
-      '/hero/hero-1.webp',
-      '/hero/hero-7.webp',
-      '/hero/hero-8.webp'
+      '/catalog/catalog-saboreslojanos.webp'
     ],
     lightingType: 'Iluminación LED 3D Frontal + Caja Giratoria',
     dimension: 'Fachada completa + Rótulo giratorio 60cm',
@@ -92,17 +87,18 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     title: 'Restaurantes & Asaderos',
     category: 'restaurantes',
     categoryLabel: 'Restaurantes & Asaderos',
-    badge: 'Desde $200',
-    price: '$200.00',
-    description: 'Rótulo de alto impacto visual para restaurantes, asaderos y locales gastronómicos.',
-    client: 'El Arepazo Paisa',
+    badge: 'Alta Demanda',
+    description: 'Rótulos de alto impacto visual para restaurantes, asaderos, pollerías y locales gastronómicos.',
+    client: 'Terra Manaba / Hornados Venga Mi Rey / Caravana / Rey Pollo / El Arepazo Paisa / Don Edgar',
     location: 'Quito, Ecuador',
-    image: '/catalog/catalog-2.webp',
+    image: '/catalog/catalog-restaurante-terramanaba.webp',
     images: [
-      '/catalog/catalog-2.webp',
-      '/hero/hero-4.webp',
-      '/hero/hero-2.webp',
-      '/hero/terramanaba-hero.webp'
+      '/catalog/catalog-restaurante-terramanaba.webp',
+      '/catalog/catalog-restaurante-vengamirey.webp',
+      '/catalog/catalog-restaurante-caravana.webp',
+      '/catalog/catalog-restaurante-reypollo.webp',
+      '/catalog/catalog-restaurante-arepazo.webp',
+      '/catalog/catalog-restaurante-donedgar.webp'
     ],
     lightingType: 'Luz LED 110V de alto brillo',
     dimension: 'A medida según fachada',
@@ -111,72 +107,87 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
   },
   {
     id: 'proj-3',
-    title: 'Rótulos de Alto Impacto Comercial',
-    category: 'comercial',
-    categoryLabel: 'Comercial & Fachadas',
-    badge: 'Gran Formato',
-    price: '$450.00',
-    originalPrice: '$550.00',
-    description: 'Rótulos comerciales y fachadas de gran formato para negocios de alto tráfico vehicular y peatonal.',
-    client: 'Asia Repuestos & La Trigana',
-    location: 'Sector Comercial, Quito',
-    image: '/catalog/catalog-3.webp',
+    title: 'Peluquerías',
+    category: 'peluquerias',
+    categoryLabel: 'Peluquerías & Barberías',
+    badge: 'Instalación Incluida',
+    description: 'Rótulos luminosos de alto estándar y distinción para peluquerías, salones de belleza y barberías.',
+    client: 'Karissma / Balú / Unisex María Gabriela / Barbershop / Hombres Peluquería',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-peluqueria-karissma.webp',
     images: [
-      '/catalog/catalog-3.webp',
-      '/hero/hero-3.webp',
-      '/hero/hero-6.webp',
-      '/hero/hero-1.webp'
+      '/catalog/catalog-peluqueria-karissma.webp',
+      '/catalog/catalog-peluqueria-balu.webp',
+      '/catalog/catalog-peluqueria-mariagabriela.webp',
+      '/catalog/catalog-peluqueria-barbershop.webp',
+      '/catalog/catalog-peluqueria-hombres.webp'
     ],
-    lightingType: 'Cajas de luz LED + Vinil traslúcido UV',
-    dimension: 'Gran formato en doble nivel',
-    materials: ['Estructura electrogalvanizada', 'Lona traslúcida pesada / Acrílico', 'Módulos LED de alto rendimiento'],
-    includes: 'Estructura metálica, rotulación e instalación en altura'
+    lightingType: 'Luz led 110v',
+    dimension: 'A medida según fachada comercial',
+    materials: [
+      'Marco metálico con alucubónd',
+      'Letras en acrílico',
+      'Luz led 110v'
+    ],
+    includes: 'Incluye fabricación e instalación'
   },
   {
     id: 'proj-4',
-    title: 'Peluquerías & Spa',
-    category: 'peluquerias',
-    categoryLabel: 'Peluquerías & Salones',
-    badge: 'Instalación Incluida',
-    price: '$350.00',
-    originalPrice: '$420.00',
-    description: 'Elegancia y distinción para peluquerías, barberías y centros estéticos.',
-    client: 'Karissma Peluquería & Salón',
-    location: 'Quito, Ecuador',
-    image: '/catalog/catalog-4.webp',
-    images: [
-      '/catalog/catalog-4.webp',
-      '/hero/hero-3.webp',
-      '/hero/hero-5.webp',
-      '/hero/hero-7.webp'
-    ],
-    lightingType: 'Luz LED 110V frontal difusa',
-    dimension: 'Fachada frontal completa',
-    materials: ['Marco metálico con alucobónd', 'Letras en acrílico', 'Luz LED 110V'],
-    includes: 'Incluye fabricación e instalación garantizada'
-  },
-  {
-    id: 'proj-5',
     title: 'Letras Acero Inoxidable',
     category: 'acero-inox',
     categoryLabel: 'Acero Inoxidable',
     badge: 'Garantía Total',
-    price: '$380.00',
-    description: 'Letras corpóreas de máxima distinción y durabilidad en acero inoxidable 304, aptas para exterior e interior.',
-    client: 'Dentrix Odontología Especializada',
-    location: 'Centro Médico, Quito',
-    image: '/catalog/catalog-5.webp',
+    description: 'Letras corpóreas de máxima distinción y durabilidad en acero inoxidable 304, de acabado elegante y profesional.',
+    client: 'Dentrix Odontología / CT Hydraulic / Vida Abundante',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-acero-dentrix.webp',
     images: [
-      '/catalog/catalog-5.webp',
-      '/hero/hero-6.webp',
-      '/hero/hero-8.webp',
-      '/hero/hero-1.webp'
+      '/catalog/catalog-acero-dentrix.webp',
+      '/catalog/catalog-acero-cthydraulic.webp',
+      '/catalog/catalog-acero-vida-abundante.webp'
     ],
-    lightingType: 'Opciones con o sin iluminación LED',
-    dimension: 'Formato corpóreo volumétrico',
-    materials: ['Acero inoxidable 304 cepillado / brillante', 'Aptas para exterior e interior', 'Garantía por escrito'],
-    features: ['Aptas para el exterior', 'Con o sin luz', 'Garantía por escrito'],
-    includes: 'Corte láser CNC de alta precisión, armado e instalación'
+    lightingType: 'Con o sin luz (LED frontal o halo indirecto)',
+    dimension: 'Formato corpóreo volumétrico a medida',
+    materials: [
+      'Acero inoxidable',
+      'Aptas para el exterior',
+      'Con o sin luz',
+      'Garantía'
+    ],
+    features: [
+      'Aptas para el exterior',
+      'Con o sin luz',
+      'Garantía'
+    ],
+    includes: 'Corte de precisión CNC, armado, instalación y garantía escrita'
+  },
+  {
+    id: 'proj-5',
+    title: 'Rompe Tráfico 🚦 Redondos',
+    category: 'rompetrafico',
+    categoryLabel: 'Rompe Tráfico 🚦',
+    badge: 'Doble Cara 360°',
+    description: 'Letreros redondos de dos caras con iluminación e impresión de alta calidad para máxima visibilidad peatonal y vehicular.',
+    client: 'Domus Fuego / Tattoo Ink / Locales Comerciales',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-rompetrafico-domusfuego.webp',
+    images: [
+      '/catalog/catalog-rompetrafico-domusfuego.webp',
+      '/catalog/catalog-rompetrafico-redondos.webp',
+      '/catalog/catalog-rompetrafico-tattoo.webp'
+    ],
+    lightingType: 'Iluminación LED interna de alta potencia',
+    dimension: 'Redondo de dos caras con soporte tipo bandera',
+    materials: [
+      'Letreros redondos de dos caras',
+      'Iluminación e impresión',
+      'Soporte metálico resistente'
+    ],
+    features: [
+      'Letreros redondos de dos caras',
+      'Iluminación e impresión'
+    ],
+    includes: 'Fabricación completa de doble cara, soporte e instalación'
   },
   {
     id: 'proj-6',
@@ -184,22 +195,286 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     category: 'panaderias',
     categoryLabel: 'Panaderías & Cafeterías',
     badge: 'Nuevo Modelo',
-    price: '$250.00',
-    originalPrice: '$310.00',
-    description: 'Rótulo corpóreo sobre fondo de alucobónd tipo madera con logotipo circular y letras en acrílico con iluminación en la base.',
-    client: 'Panadería Pastelería & Cafetería Kelly',
+    description: 'Rótulo corpóreo sobre fondo de alucobónd con letras en acrílico e iluminación en la base.',
+    client: 'Panadería Cafetería Alemar / Panadería Kelly',
     location: 'Quito, Ecuador',
-    image: '/catalog/catalog-6.webp',
+    image: '/catalog/catalog-panaderia-alemar.webp',
     images: [
-      '/catalog/catalog-6.webp',
-      '/reypollo-rotulo.webp',
-      '/autotec-rotulo.webp'
+      '/catalog/catalog-panaderia-alemar.webp',
+      '/catalog/catalog-panaderia-kelly.webp'
     ],
-    lightingType: 'Iluminación LED en la base y letras de acrílico',
+    lightingType: 'Iluminación en la base',
     dimension: 'A medida según fachada comercial',
-    materials: ['Fondo de alucobónd', 'Letras en acrílico', 'Iluminación LED en la base'],
-    features: ['Fondo alucobónd', 'Letras en acrílico', 'Iluminación en la base'],
+    materials: [
+      'Fondo alucobónd',
+      'Letras en acrílico',
+      'Iluminación en la base'
+    ],
+    features: [
+      'Fondo alucobónd',
+      'Letras en acrílico',
+      'Iluminación en la base'
+    ],
     includes: 'Diseño, fabricación milimétrica e instalación garantizada'
+  },
+  {
+    id: 'proj-7',
+    title: 'Letras en Acero inoxidable con césped sintético',
+    category: 'acero-cesped',
+    categoryLabel: 'Acero & Césped Sintético',
+    badge: 'Diseño Exclusivo',
+    description: 'Rótulo elegante con letras corpóreas de acero inoxidable sobre fondo verde de césped sintético o follaje artificial.',
+    client: 'La Soñadora Hospedaje y Eventos / Explorers Kindergarten',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-cesped-lasonadora.webp',
+    images: [
+      '/catalog/catalog-cesped-lasonadora.webp',
+      '/catalog/catalog-cesped-explorers.webp'
+    ],
+    lightingType: 'Luz LED con timer automático',
+    dimension: 'A medida según pared o fachada',
+    materials: [
+      'Fabricación con acero inoxidable',
+      'Luz LED',
+      'Timer de encendido y apagado automático'
+    ],
+    features: [
+      'Fabricación con acero inoxidable',
+      'Luz LED',
+      'Timer de encendido y apagado automático'
+    ],
+    includes: 'Fabricación con acero inoxidable, césped sintético, sistema LED, timer e instalación'
+  },
+  {
+    id: 'proj-8',
+    title: 'Letras 3D Acrílicas con Respaldo Alucubónd',
+    category: 'acrilicas-alucobond',
+    categoryLabel: 'Acrílico & Alucobónd',
+    badge: 'Alta Demanda',
+    description: 'Letras Acrílicas con respaldo de alucobónd con iluminación LED aptas para interior o exterior.',
+    client: 'Pethouse / El Cacho Loco / Odontología Parker / Importadora',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-acrilico-pethouse.webp',
+    images: [
+      '/catalog/catalog-acrilico-pethouse.webp',
+      '/catalog/catalog-acrilico-cacholoco.webp',
+      '/catalog/catalog-acrilico-odontologiaparker.webp',
+      '/catalog/catalog-acrilico-importadora.webp'
+    ],
+    lightingType: 'Iluminación LED de bajo consumo',
+    dimension: 'A medida según fachada o interior',
+    materials: [
+      'Letras acrílicas con respaldo de alucobónd',
+      'Iluminación LED',
+      'Aptas para interior o exterior'
+    ],
+    features: [
+      'Letras acrílicas con respaldo de alucobónd',
+      'Iluminación LED',
+      'Aptas para interior o exterior'
+    ],
+    includes: 'Fabricación completa con alucobónd, letras acrílicas 3D, sistema LED e instalación'
+  },
+  {
+    id: 'proj-9',
+    title: 'Letras volumétricas',
+    category: 'volumetricas',
+    categoryLabel: 'Letras Monumentales',
+    badge: 'Gran Formato',
+    description: 'Letras volumétricas de gran escala fabricadas en tool galvanizado con pintura automotriz de máxima durabilidad.',
+    client: 'Letras Monumentales Fajardo',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-volumetricas-fajardo.webp',
+    images: [
+      '/catalog/catalog-volumetricas-fajardo.webp'
+    ],
+    dimension: 'Altura de 1,5 metros | Profundidad de 30cm',
+    materials: [
+      'Tool galvanizado con alma de estructura',
+      'Pintura automotriz según color corporativo'
+    ],
+    features: [
+      'Altura de 1,5 metros y profundidad de 30cm',
+      'Tool galvanizado con alma de estructura',
+      'Pintura automotriz según color corporativo'
+    ],
+    includes: 'Fabricación y pintura (VALOR NO INCLUYE BASE NI INSTALACIÓN)'
+  },
+  {
+    id: 'proj-10',
+    title: 'Arañas Publicitarias',
+    category: 'aranas',
+    categoryLabel: 'Display Publicitario',
+    badge: 'Portátil & Económico',
+    description: 'Estructuras tipo araña (X-Banner) portátiles y livianas con impresión full color en lona de alta resistencia.',
+    client: 'Academia Bíblica Internacional / Eventos',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-aranas-publicitarias.webp',
+    images: [
+      '/catalog/catalog-aranas-publicitarias.webp'
+    ],
+    dimension: 'Tamaño 60x160 centímetros',
+    materials: [
+      'Estructura tipo araña (X-Banner)',
+      'Lona impresa full color',
+      'Ojalillos reforzados'
+    ],
+    features: [
+      'Tamaño 60x160 centímetros',
+      'Lona impresa full color'
+    ],
+    includes: 'Estructura tipo araña + Lona impresa full color'
+  },
+  {
+    id: 'proj-11',
+    title: 'Neón Flex',
+    category: 'neon-flex',
+    categoryLabel: 'Neón LED Flex',
+    badge: 'Tendencia 2026',
+    description: 'Letreros de Neón Flex modernos y luminosos con colores vivos y muy bajo consumo de energía eléctrica.',
+    client: 'Oh My Dog! / BE Clinique / Burger / Clínica Biodent',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-neon-ohmydog.webp',
+    images: [
+      '/catalog/catalog-neon-ohmydog.webp',
+      '/catalog/catalog-neon-beclinique.webp',
+      '/catalog/catalog-neon-burger.webp',
+      '/catalog/catalog-neon-biodent.webp',
+      '/catalog/catalog-neon-campanas.webp'
+    ],
+    lightingType: 'Neón LED Flex continuo de 12V',
+    dimension: 'A medida según diseño o silueta acrílica',
+    materials: [
+      'Letreros de Neon Flex',
+      'Aptos para Interior y Exterior',
+      'Consumo muy bajo de energía eléctrica'
+    ],
+    features: [
+      'Letreros de Neon Flex',
+      'Aptos para Interior y Exterior',
+      'Consumo muy bajo de energía eléctrica'
+    ],
+    includes: 'Base acrílica ruteada, Neón LED Flex, transformador 12V e instalación'
+  },
+  {
+    id: 'proj-12',
+    title: 'Letras 3D luz directa',
+    category: 'luz-directa',
+    categoryLabel: 'Luz Directa 3D',
+    badge: 'Impacto Visual',
+    description: 'Rótulos luminosos de alto impacto con base de alucobónd y letras acrílicas 3D de iluminación frontal directa.',
+    client: 'Maverlab / Óptica Veo Veo / Escuela Cenec / Tu Médico de Cabecera',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-luzdirecta-maverlab.webp',
+    images: [
+      '/catalog/catalog-luzdirecta-maverlab.webp',
+      '/catalog/catalog-luzdirecta-opticaveoveo.webp',
+      '/catalog/catalog-luzdirecta-cenec.webp',
+      '/catalog/catalog-luzdirecta-tumedicodecabecera.webp'
+    ],
+    lightingType: 'Luz LED blanca directa',
+    dimension: 'A medida según fachada comercial',
+    materials: [
+      'Alucobónd color azul o a elección',
+      'Letras en acrílico para exterior',
+      'Luz LED blanca'
+    ],
+    features: [
+      'Alucobónd color azul o a elección',
+      'Letras en acrílico para exterior',
+      'Luz LED blanca'
+    ],
+    includes: 'Fabricación con alucobónd, letras acrílicas 3D, módulos LED blancos e instalación garantizada'
+  },
+  {
+    id: 'proj-13',
+    title: 'Logos circulares',
+    category: 'logos-circulares',
+    categoryLabel: 'Logos Circulares',
+    badge: 'Elegancia Premium',
+    description: 'Logos circulares en acrílico con letras en acabado espejo dorado, rosado o plateado y sofisticada luz indirecta.',
+    client: 'Moonlight Mocktails / Rich Baby Store',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-circular-moonlight.webp',
+    images: [
+      '/catalog/catalog-circular-moonlight.webp',
+      '/catalog/catalog-circular-richbaby.webp'
+    ],
+    lightingType: 'Con luz indirecta perimetral',
+    dimension: 'Circular a medida según diseño',
+    materials: [
+      'Acrílico transparente',
+      'Letras en acrílico dorado rosado o plateado',
+      'Con luz indirecta y tornillos decorativos'
+    ],
+    features: [
+      'Acrílico transparente',
+      'Letras en acrílico dorado rosado o plateado',
+      'Con luz indirecta y tornillos decorativos'
+    ],
+    includes: 'Placa de acrílico circular, letras acrílicas, luz indirecta y tornillos decorativos'
+  },
+  {
+    id: 'proj-14',
+    title: 'Logotipo Empresarial Alto Relieves',
+    category: 'alto-relieve',
+    categoryLabel: 'Corporativo & Oficinas',
+    badge: 'Alta Distinción',
+    description: 'Logotipos empresariales en alto relieve milimétrico para oficinas, recepciones y muros corporativos.',
+    client: 'Cobro Fast / Andersen Tax / SISVAA / IMVEC / Ecofloor',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-altorelieve-cobrofast.webp',
+    images: [
+      '/catalog/catalog-altorelieve-cobrofast.webp',
+      '/catalog/catalog-altorelieve-andersen.webp',
+      '/catalog/catalog-altorelieve-sisvaa.webp',
+      '/catalog/catalog-altorelieve-imvec.webp',
+      '/catalog/catalog-altorelieve-ecofloor.webp'
+    ],
+    dimension: 'A medida según pared corporativa',
+    materials: [
+      'MDF',
+      'Acrílico Blanco - Dorado - Plata - Rosado',
+      'Instaladas',
+      'Garantía'
+    ],
+    features: [
+      'MDF y Acrílico (Blanco, Dorado, Plata, Rosado)',
+      'Instaladas con acabado profesional',
+      'Garantía por escrito'
+    ],
+    includes: 'Fabricación en MDF / Acrílico, corte de precisión, instalación y garantía'
+  },
+  {
+    id: 'proj-15',
+    title: 'Letras retro iluminacion',
+    category: 'retroiluminadas',
+    categoryLabel: 'Retroiluminadas',
+    badge: 'Luz Halo 3D',
+    description: 'Letras volumétricas retroiluminadas fabricadas en tool galvanizado con acabado en pintura automotriz y montaje directo a la pared.',
+    client: 'AYMESA / Mikuna / Chulpi',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-retroiluminadas-aymesa.webp',
+    images: [
+      '/catalog/catalog-retroiluminadas-aymesa.webp',
+      '/catalog/catalog-retroiluminadas-mikuna.webp',
+      '/catalog/catalog-retroiluminadas-chulpi.webp'
+    ],
+    lightingType: 'Luz LED blanca (Efecto Halo)',
+    dimension: 'Fabricación personalizada a medida',
+    materials: [
+      'Material tool galvanizado',
+      'Luz led blanca',
+      'Pintura automotriz a elección.',
+      'Directo a la pared'
+    ],
+    features: [
+      'Material tool galvanizado',
+      'Luz led blanca',
+      'Pintura automotriz a elección',
+      'Directo a la pared'
+    ],
+    includes: 'Fabricación en tool galvanizado, pintura automotriz a elección, sistema LED blanco e instalación directa a la pared'
   }
 ];
 

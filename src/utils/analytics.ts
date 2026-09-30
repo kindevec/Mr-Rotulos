@@ -111,9 +111,9 @@ export const sendToGoogleSheetsWebhook = async (payload: {
   };
 };
 
-export const PHONE_NUMBER = '+593991952889';
-export const FORMATTED_PHONE = '099 195 2889';
-export const WHATSAPP_BASE_URL = 'https://wa.me/593991952889';
+export const PHONE_NUMBER = '+593994957377';
+export const FORMATTED_PHONE = '099 495 7377';
+export const WHATSAPP_BASE_URL = 'https://wa.me/593994957377';
 
 export const buildWhatsAppUrl = (customText?: string) => {
   const defaultText = 'Hola Mister Rótulos, deseo cotizar un proyecto publicitario para mi negocio en Quito.';
