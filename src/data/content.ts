@@ -475,6 +475,37 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
       'Directo a la pared'
     ],
     includes: 'Fabricación en tool galvanizado, pintura automotriz a elección, sistema LED blanco e instalación directa a la pared'
+  },
+  {
+    id: 'proj-16',
+    title: 'Letreros Forma de nube',
+    category: 'forma-de-nube',
+    categoryLabel: 'Cajas Silueteadas',
+    badge: 'Silueta de Logotipo',
+    description: 'Cajas de luz silueteadas en forma de nube siguiendo el contorno exacto de tu logotipo para un impacto visual único y personalizado.',
+    client: 'Le Karbon´e / Dental Sí / Vicky Smile',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-nube-lekarbone.webp',
+    images: [
+      '/catalog/catalog-nube-lekarbone.webp',
+      '/catalog/catalog-nube-dentalsi.webp',
+      '/catalog/catalog-nube-vickysmile.webp'
+    ],
+    lightingType: 'Iluminación LED interna de alta intensidad',
+    dimension: 'Silueta y medidas según el diseño del logotipo',
+    materials: [
+      'El logotipo dando su característica',
+      'Acrílico difusor de alto impacto',
+      'Módulos LED de alta luminosidad',
+      'Estructura silueteada con cantos termoformados'
+    ],
+    features: [
+      'El logotipo dando su característica silueta',
+      'Caja de luz contorneada a medida',
+      'Iluminación LED uniforme y nítida',
+      'Apto para interior y fachada exterior'
+    ],
+    includes: 'Fabricación silueteada según forma del logotipo, sistema de iluminación LED interna e instalación'
   }
 ];
 

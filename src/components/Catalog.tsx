@@ -26,6 +26,7 @@ const PROJECT_REVIEWS: Record<string, { rating: number; count: number }> = {
   'proj-13': { rating: 5, count: 122 },
   'proj-14': { rating: 5, count: 118 },
   'proj-15': { rating: 5, count: 116 },
+  'proj-16': { rating: 5, count: 109 },
 };
 
 export const Catalog: React.FC = () => {
