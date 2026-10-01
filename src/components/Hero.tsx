@@ -174,7 +174,7 @@ export const Hero: React.FC = () => {
 
         {/* Botones de Acción: Cotizar por WhatsApp (Principal) y Ver catálogo (Secundario más pequeño) */}
         <div className="flex flex-col items-center justify-center gap-3 mt-6 sm:mt-8 w-full">
-          {/* Botón Principal: COTIZAR POR WHATSAPP */}
+          {/* Botón Principal: COTIZAR AQUÍ (Rojo con Icono Blanco) */}
           <a
             href={buildWhatsAppUrl(currentSolution.whatsappMessage)}
             target="_blank"
@@ -186,11 +186,11 @@ export const Hero: React.FC = () => {
                 source: 'hero_whatsapp',
               });
             }}
-            className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-[#141414] hover:bg-black text-white font-black text-sm sm:text-base tracking-wider uppercase border border-white/25 shadow-2xl shadow-black/60 hover:border-white/40 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 cursor-pointer group"
-            aria-label="Cotizar por WhatsApp"
+            className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-[#8C0000] hover:bg-[#730000] text-white font-black text-sm sm:text-base tracking-wider uppercase border border-red-500/50 shadow-2xl shadow-[#8C0000]/50 hover:border-red-400 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 cursor-pointer group"
+            aria-label="Cotizar Aquí"
           >
-            <WhatsAppIcon className="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform duration-200 fill-current" />
-            <span>COTIZAR POR WHATSAPP</span>
+            <WhatsAppIcon className="w-5 h-5 text-white fill-current group-hover:scale-110 transition-transform duration-200" />
+            <span>COTIZAR AQUÍ</span>
           </a>
 
           {/* Botón Secundario en Negro: Ver trabajos realizados */}
