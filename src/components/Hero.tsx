@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MapPin } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { buildWhatsAppUrl, trackConversionEvent } from '../utils/analytics';
 import FlexCarousel, { FlexCarouselItem } from './FlexCarousel';
@@ -19,34 +19,34 @@ const INTENT_SOLUTIONS: SolutionItem[] = [
   {
     id: 'letreros-3d',
     name: '⭐ Letreros 3D (Más Vendido)',
-    title: 'Letreros 3D y Letras Corpóreas en Quito',
-    subtitle: 'Fabricación directa de Letras en Acero Inoxidable, Acrílico con Alucobond, Letras Retroiluminadas Halo, Letras con Césped Sintético, Alto Relieve y Volumétricas. Cotización en 15 min.',
-    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar Letreros 3D para mi negocio en Quito.',
-    docTitle: 'Letreros 3D en Quito | Fabricación Directa - Mr. Rótulos',
+    title: 'Letreros 3D y Letras Corpóreas',
+    subtitle: 'Fabricación directa de Letras en Acero Inoxidable, Acrílico con Alucobond, Halo y Volumétricas. Instalamos en Quito, Sierra y Oriente (próximamente Costa). Cotización en 15 min.',
+    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar Letreros 3D para mi negocio.',
+    docTitle: 'Letreros 3D y Letras Corpóreas | Fabricación Directa - Mr. Rótulos',
   },
   {
     id: 'rotulos-fachadas',
     name: 'Rótulos & Fachadas Comerciales',
-    title: 'Rótulos Comerciales y Fachadas en Alucobond en Quito',
-    subtitle: 'Rótulos para Restaurantes, Asaderos, Peluquerías, Panaderías y Fachadas en Alucobond con electrocorte CNC y rótulos giratorios.',
-    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar un Rótulo Comercial o Fachada en Alucobond en Quito.',
-    docTitle: 'Rótulos Comerciales y Fachadas en Quito | Mr. Rótulos',
+    title: 'Rótulos Comerciales y Fachadas en Alucobond',
+    subtitle: 'Rótulos para Restaurantes, Asaderos, Peluquerías, Panaderías y Fachadas en Alucobond con electrocorte CNC. Cobertura directa en Quito, Sierra y Oriente (próximamente Costa).',
+    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar un Rótulo Comercial o Fachada en Alucobond.',
+    docTitle: 'Rótulos Comerciales y Fachadas | Mr. Rótulos',
   },
   {
     id: 'cajas-luz-menuderos',
     name: 'Cajas de Luz, Menuderos & Neón',
-    title: 'Cajas de Luz LED, Menuderos y Neón Flex en Quito',
-    subtitle: 'Cajas de luz silueteadas forma de nube, menuderos backlight para restaurantes, neón flex de colores y rompetráficos redondos de doble cara.',
-    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar una Caja de Luz, Menudero o Neón Flex en Quito.',
-    docTitle: 'Cajas de Luz LED y Menuderos en Quito | Mr. Rótulos',
+    title: 'Cajas de Luz LED, Menuderos y Neón Flex',
+    subtitle: 'Cajas de luz silueteadas forma de nube, menuderos backlight para restaurantes, neón flex y rompetráficos. Instalación en Quito, Sierra y Oriente (próximamente Costa).',
+    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar una Caja de Luz, Menudero o Neón Flex.',
+    docTitle: 'Cajas de Luz LED y Menuderos | Mr. Rótulos',
   },
   {
     id: 'stands-vallas-senaletica',
     name: 'Stands, Vallas & Señalética',
-    title: 'Stands para Ferias, Vallas y Señalética en Quito',
-    subtitle: 'Diseño y montaje de stands e islas comerciales para ferias, vallas publicitarias en azotea con grúa, placas en vidrio acrílico 4mm y arañas publicitarias.',
-    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar Stands, Vallas o Señalética en Quito.',
-    docTitle: 'Stands para Ferias, Vallas y Señalética en Quito | Mr. Rótulos',
+    title: 'Stands para Ferias, Vallas y Señalética',
+    subtitle: 'Diseño y montaje de stands e islas para ferias, vallas publicitarias en azotea con grúa, placas y señalética. Trabajos en Quito, Sierra y Oriente (próximamente Costa).',
+    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar Stands, Vallas o Señalética.',
+    docTitle: 'Stands para Ferias, Vallas y Señalética | Mr. Rótulos',
   },
 ];
 
@@ -153,6 +153,14 @@ export const Hero: React.FC = () => {
 
       {/* CONTENIDO SUPERIOR: Título que vende directamente la solución buscada */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center mb-8 sm:mb-12">
+
+        {/* Badge de Cobertura Geográfica */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/70 border border-[#8C0000]/60 text-xs sm:text-sm font-semibold text-white/90 mb-3 sm:mb-4 shadow-lg backdrop-blur-sm">
+          <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ff4d4d] shrink-0" />
+          <span>
+            Fabricación e instalación en <span className="text-white font-bold underline decoration-[#ff4d4d] underline-offset-2">Quito, Sierra y Oriente</span> <span className="text-white/70 text-[11px] sm:text-xs">(Próximamente Costa)</span>
+          </span>
+        </div>
 
         {/* Título Dinámico Enfocado 100% en la Solución Buscada */}
         <h1 

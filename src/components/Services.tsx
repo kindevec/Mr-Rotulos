@@ -242,32 +242,6 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
           ))}
         </div>
 
-        {/* Banner de Cobertura en Provincias */}
-        <div className="max-w-4xl mx-auto mb-14 md:mb-20 px-2 sm:px-4">
-          <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#8C0000]/10 via-[#8C0000]/20 to-[#8C0000]/10 border border-[#8C0000]/30 text-center flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
-            <div className="flex items-center gap-3.5 text-left">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#8C0000] text-white flex items-center justify-center shrink-0 shadow-md">
-                <MapPin className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.3]" />
-              </div>
-              <div>
-                <h4 className="font-extrabold text-[#191919] text-xs sm:text-base">
-                  ¿Realizan trabajos en otras Provincias?
-                </h4>
-                <p className="text-xs sm:text-sm text-slate-700 font-semibold mt-0.5">
-                  Sí, realizamos trabajos en <span className="text-[#8C0000] font-black">Sierra y Oriente</span>, próximamente en la <span className="text-[#8C0000] font-black">Costa</span>.
-                </p>
-              </div>
-            </div>
-            <a
-              href={buildWhatsAppUrl('Hola Mister Rótulos, deseo consultar por un trabajo publicitario para mi negocio en provincia.')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="shrink-0 px-5 py-2.5 rounded-full bg-[#8C0000] hover:bg-[#730000] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
-            >
-              Consultar Cobertura
-            </a>
-          </div>
-        </div>
 
         {/* =========================================================================
             PARTE 2: SECCIÓN NUESTROS RÓTULOS (ENCABEZADO ARRIBA & CARRUSEL DE ANCHO COMPLETO)
