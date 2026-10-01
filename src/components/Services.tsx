@@ -67,7 +67,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     },
     {
       id: 'letras-3d',
-      title: 'Letras Corpóreas & en Bloques',
+      title: 'Letras en Bloques, Corpóreas, Acero Inoxidable, Galvanizado y Madera',
       icon: <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
