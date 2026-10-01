@@ -13,7 +13,14 @@ import {
   ShieldCheck, 
   Ruler, 
   Eye, 
-  Cpu 
+  Cpu,
+  Building2,
+  TreePine,
+  Car,
+  Hammer,
+  Compass,
+  MapPin,
+  Box
 } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { ServiceId } from '../types';
@@ -56,36 +63,67 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     });
   }, [carouselApi]);
 
+  // Lista exacta de servicios según el catálogo y volante oficial de Mister Rótulos
   const serviceCards: ServiceCardItem[] = [
     {
-      id: 'letras-3d',
-      title: 'Letreros 3D & Letras Corpóreas',
-      icon: <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-    },
-    {
       id: 'rotulos-luminosos',
-      title: 'Rótulos & Fachadas Alucobond',
-      icon: <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-    },
-    {
-      id: 'cajas-de-luz',
-      title: 'Cajas de Luz & Menuderos Backlight',
+      title: 'Rótulos luminosos',
       icon: <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
+      id: 'letras-3d',
+      title: 'Letras en bloques',
+      icon: <Box className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'letras-3d',
+      title: 'Letras corpóreas',
+      icon: <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'letras-3d',
+      title: 'Letras en acero inoxidable',
+      icon: <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'letras-3d',
+      title: 'Letras en Acero galvanizado',
+      icon: <Hammer className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'letras-3d',
+      title: 'Letras en Madera',
+      icon: <TreePine className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'gigantografias',
+      title: 'Señaléticas Viales',
+      icon: <Compass className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'gigantografias',
+      title: 'Vallas Publicitarias',
+      icon: <Signpost className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'rotulos-luminosos',
+      title: 'Fachadas en ALUCOBOND',
+      icon: <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
       id: 'cajas-de-luz',
-      title: 'Neón Flex & Logos Circulares',
+      title: 'Avisos con Neón, LED, etc.',
       icon: <Flame className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
       id: 'gigantografias',
-      title: 'Stands Feriales & Comerciales',
-      icon: <Store className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+      title: 'Vinil para vehículos',
+      icon: <Car className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
-      id: 'gigantografias',
-      title: 'Vallas & Señalética en Vidrio',
-      icon: <Signpost className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+      id: 'letras-3d',
+      title: 'y Más Soluciones...',
+      icon: <Store className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     }
   ];
 
@@ -171,33 +209,64 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     <section id="servicios" className="pt-14 md:pt-20 pb-4 md:pb-6 bg-white relative overflow-hidden">
       
       {/* =========================================================================
-          PARTE 1: Encabezado y 6 Servicios Especializados en Grilla Limpia
+          PARTE 1: Encabezado y Servicios Reales en Grilla Limpia
          ========================================================================= */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Encabezado Principal */}
-        <div className="text-center mb-12 md:mb-16 max-w-3xl mx-auto">
+        <div className="text-center mb-10 md:mb-14 max-w-3xl mx-auto">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#191919] tracking-tight font-display">
-            Servicios Especializados de Rotulación
+            Nuestros Servicios
           </h2>
           <div className="w-16 h-1 bg-[#8C0000] rounded-full mx-auto mt-4 mb-2"></div>
+          <p className="text-xs sm:text-sm md:text-base text-slate-600 font-normal max-w-2xl mx-auto mt-2">
+            Fabricación directa con materiales de primera línea, corte láser de alta precisión e instalación garantizada.
+          </p>
         </div>
 
-        {/* Grilla de 6 Servicios (Solo Íconos y Títulos Informativos) */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mb-14 md:mb-18 max-w-5xl mx-auto">
+        {/* Grilla de 12 Servicios Reales */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16 max-w-6xl mx-auto">
           {serviceCards.map((item) => (
             <div 
               key={item.title}
-              className="flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1 p-2 sm:p-3 select-none"
+              onClick={() => handleServiceQuote(item.id, item.title)}
+              className="flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1 p-3 sm:p-4 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100 cursor-pointer select-none"
             >
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border-2 flex items-center justify-center mb-3 shadow-md black-icon-color-shift group-hover:scale-110 transition-transform duration-300 text-white">
                 {item.icon}
               </div>
-              <h3 className="text-sm sm:text-base md:text-lg font-black text-[#191919] group-hover:text-[#8C0000] transition-colors font-display max-w-[220px] leading-snug">
+              <h3 className="text-xs sm:text-sm md:text-base font-black text-[#191919] group-hover:text-[#8C0000] transition-colors font-display max-w-[200px] leading-snug">
                 {item.title}
               </h3>
             </div>
           ))}
+        </div>
+
+        {/* Banner de Cobertura en Provincias */}
+        <div className="max-w-4xl mx-auto mb-14 md:mb-20 px-2 sm:px-4">
+          <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#8C0000]/10 via-[#8C0000]/20 to-[#8C0000]/10 border border-[#8C0000]/30 text-center flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+            <div className="flex items-center gap-3.5 text-left">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#8C0000] text-white flex items-center justify-center shrink-0 shadow-md">
+                <MapPin className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.3]" />
+              </div>
+              <div>
+                <h4 className="font-extrabold text-[#191919] text-xs sm:text-base">
+                  ¿Realizan trabajos en otras Provincias?
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-700 font-semibold mt-0.5">
+                  Sí, realizamos trabajos en <span className="text-[#8C0000] font-black">Sierra y Oriente</span>, próximamente en la <span className="text-[#8C0000] font-black">Costa</span>.
+                </p>
+              </div>
+            </div>
+            <a
+              href={buildWhatsAppUrl('Hola Mister Rótulos, deseo consultar por un trabajo publicitario para mi negocio en provincia.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 px-5 py-2.5 rounded-full bg-[#8C0000] hover:bg-[#730000] text-white font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+            >
+              Consultar Cobertura
+            </a>
+          </div>
         </div>
 
         {/* =========================================================================

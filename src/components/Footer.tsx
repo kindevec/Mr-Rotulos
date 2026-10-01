@@ -173,7 +173,7 @@ export const Footer: React.FC = () => {
 
             {/* Misión y Especialidad */}
             <p className="text-[11.5px] sm:text-[12.5px] text-slate-300 font-medium leading-relaxed max-w-sm text-left">
-              Especialistas en rótulos luminosos LED, letras corpóreas 3D, cajas de luz y revestimientos de fachadas comerciales en Quito, Cumbayá y todo el Valle de los Chillos.
+              Especialistas en rótulos luminosos LED, letras corpóreas 3D, cajas de luz y fachadas en Alucobond. Realizamos trabajos en Sierra y Oriente, próximamente en la Costa.
             </p>
 
             {/* Redes Sociales Oficiales en PC/Tablet con sus Colores Distintivos */}
@@ -325,27 +325,39 @@ export const Footer: React.FC = () => {
             <ul className="space-y-1.5 sm:space-y-2 text-[12px] sm:text-[13px] text-slate-300 font-medium">
               <li className="flex items-center gap-1.5 hover:text-white transition-colors">
                 <span className="text-white text-[10px]">✦</span>
-                <span>Rótulos Luminosos LED</span>
+                <span>Rótulos luminosos</span>
               </li>
               <li className="flex items-center gap-1.5 hover:text-white transition-colors">
                 <span className="text-white text-[10px]">✦</span>
-                <span>Letras 3D Corpóreas</span>
+                <span>Letras en bloques & corpóreas</span>
               </li>
               <li className="flex items-center gap-1.5 hover:text-white transition-colors">
                 <span className="text-white text-[10px]">✦</span>
-                <span>Cajas de Luz Ultra-Bright</span>
+                <span>Letras en acero inoxidable</span>
               </li>
               <li className="flex items-center gap-1.5 hover:text-white transition-colors">
                 <span className="text-white text-[10px]">✦</span>
-                <span>Fachadas en Alucobond (ACM)</span>
+                <span>Letras en acero galvanizado</span>
               </li>
               <li className="flex items-center gap-1.5 hover:text-white transition-colors">
                 <span className="text-white text-[10px]">✦</span>
-                <span>Acero Inoxidable & Acrílico</span>
+                <span>Letras en madera</span>
               </li>
               <li className="flex items-center gap-1.5 hover:text-white transition-colors">
                 <span className="text-white text-[10px]">✦</span>
-                <span>Gigantografías & Gran Formato</span>
+                <span>Fachadas en ALUCOBOND</span>
+              </li>
+              <li className="flex items-center gap-1.5 hover:text-white transition-colors">
+                <span className="text-white text-[10px]">✦</span>
+                <span>Avisos con Neón, LED, etc.</span>
+              </li>
+              <li className="flex items-center gap-1.5 hover:text-white transition-colors">
+                <span className="text-white text-[10px]">✦</span>
+                <span>Señaléticas viales & Vallas</span>
+              </li>
+              <li className="flex items-center gap-1.5 hover:text-white transition-colors">
+                <span className="text-white text-[10px]">✦</span>
+                <span>Vinil para vehículos y Más...</span>
               </li>
             </ul>
           </div>
@@ -418,7 +430,7 @@ export const Footer: React.FC = () => {
                 </a>
               </motion.div>
 
-              {/* Horarios de Atención */}
+              {/* Horarios de Atención Actualizados */}
               <motion.div
                 whileHover={{ x: 3 }}
                 className="flex items-center gap-2.5 group cursor-default select-none"
@@ -427,9 +439,16 @@ export const Footer: React.FC = () => {
                   <Clock className="w-4 h-4 text-white stroke-[2.3]" />
                 </div>
                 <div className="leading-snug text-slate-300 select-none">
-                  <span>Lun - Sáb: 8:30 AM - 6:30 PM</span>
+                  <span className="font-semibold text-white">Lunes a domingo:</span>
+                  <span className="block text-slate-300">9:00 AM – 5:00 PM</span>
                 </div>
               </motion.div>
+
+              {/* Cobertura en Provincias */}
+              <div className="pt-2 border-t border-white/10 text-[11px] text-slate-300">
+                <span className="text-[#ff4d4d] font-bold block">📍 Cobertura Nacional:</span>
+                <span>Sierra y Oriente (próximamente Costa)</span>
+              </div>
 
             </div>
 
