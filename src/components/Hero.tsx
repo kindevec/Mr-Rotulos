@@ -206,7 +206,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* CARRUSEL DE ANCHO COMPLETO CON AVANCE CONTINUO FLUIDO */}
-      <div className="w-full h-[460px] sm:h-[520px] md:h-[580px] lg:h-[620px] relative z-10 px-0">
+      <div className="w-full h-[260px] sm:h-[360px] md:h-[460px] lg:h-[540px] relative z-10 px-0">
         <FlexCarousel
           items={SIGNAGE_ITEMS}
           preset="ribbon"
@@ -225,6 +225,7 @@ export const Hero: React.FC = () => {
           continuous
           speed={310}
           captions={false}
+          captureWheel={false}
         />
       </div>
 

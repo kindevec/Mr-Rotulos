@@ -212,7 +212,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 
                 {/* 1. Taller & Showroom */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md black-icon-color-shift group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#151515] border border-slate-700/60 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md group-hover:scale-105 group-hover:bg-[#8C0000] group-hover:border-[#8C0000] transition-all duration-300">
                     <MapPin className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
@@ -232,7 +232,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
                 {/* 2. Correo Electrónico */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md black-icon-color-shift group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#151515] border border-slate-700/60 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md group-hover:scale-105 group-hover:bg-[#8C0000] group-hover:border-[#8C0000] transition-all duration-300">
                     <Mail className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
@@ -250,7 +250,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
                 {/* 3. Teléfono / WhatsApp */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md black-icon-color-shift group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#151515] border border-slate-700/60 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md group-hover:scale-105 group-hover:bg-[#8C0000] group-hover:border-[#8C0000] transition-all duration-300">
                     <Phone className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
@@ -273,7 +273,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
                 {/* 4. Horarios de Atención */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md black-icon-color-shift group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-[#151515] border border-slate-700/60 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md group-hover:scale-105 group-hover:bg-[#8C0000] group-hover:border-[#8C0000] transition-all duration-300">
                     <Clock className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
@@ -544,16 +544,17 @@ export const ContactForm: React.FC<ContactFormProps> = ({
       {/* ========================================================
           3. MAPA DE GOOGLE INTERACTIVO DE ANCHO COMPLETO
          ======================================================== */}
-      <div className="w-full h-[320px] sm:h-[400px] border-t border-[#E8E5DF] relative">
+      <div className="w-full h-[340px] sm:h-[420px] border-t border-[#E8E5DF] relative bg-slate-100 z-10">
         <iframe
           title="Ubicación de Mr. Rótulos en Quito, Ecuador"
-          src="https://maps.google.com/maps?q=Av.+Maldonado+s38-200+y+Susana+Letor,+Quito,+Ecuador&z=15&output=embed"
+          src="https://maps.google.com/maps?width=100%25&height=420&hl=es&q=Av.+Maldonado+s38-200+y+Susana+Letor,+Quito,+Ecuador&t=&z=15&ie=UTF8&iwloc=B&output=embed"
           width="100%"
           height="100%"
-          style={{ border: 0 }}
+          style={{ border: 0, minHeight: '340px' }}
           loading="lazy"
+          allowFullScreen
           referrerPolicy="no-referrer-when-downgrade"
-          className="grayscale-15 contrast-105 w-full h-full block"
+          className="w-full h-full block"
         />
       </div>
 

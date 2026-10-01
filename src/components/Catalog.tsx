@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Sparkles, RotateCcw, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { GALLERY_PROJECTS } from '../data/content';
@@ -69,6 +69,40 @@ export const Catalog: React.FC = () => {
   const [flippedId, setFlippedId] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [activeCategory, setActiveCategory] = useState<CatalogCategory>('letreros-3d');
+  const flippedTimerRef = useRef<number | null>(null);
+  const catalogGridRef = useRef<HTMLDivElement>(null);
+
+  // Cerrar tarjeta volteada cuando se toca fuera en móvil
+  useEffect(() => {
+    const handleOutsideInteraction = (e: MouseEvent | TouchEvent) => {
+      if (catalogGridRef.current && !catalogGridRef.current.contains(e.target as Node)) {
+        setFlippedId(null);
+        if (flippedTimerRef.current) clearTimeout(flippedTimerRef.current);
+      }
+    };
+
+    document.addEventListener('touchstart', handleOutsideInteraction, { passive: true });
+    document.addEventListener('mousedown', handleOutsideInteraction);
+
+    return () => {
+      document.removeEventListener('touchstart', handleOutsideInteraction);
+      document.removeEventListener('mousedown', handleOutsideInteraction);
+      if (flippedTimerRef.current) clearTimeout(flippedTimerRef.current);
+    };
+  }, []);
+
+  const handleCardFlip = (id: string) => {
+    setFlippedId((prev) => {
+      const next = prev === id ? null : id;
+      if (flippedTimerRef.current) clearTimeout(flippedTimerRef.current);
+      if (next !== null) {
+        flippedTimerRef.current = window.setTimeout(() => {
+          setFlippedId(null);
+        }, 5000);
+      }
+      return next;
+    });
+  };
 
   // Pre-seleccionar la categoría según la búsqueda de Google Ads
   useEffect(() => {
@@ -208,7 +242,7 @@ export const Catalog: React.FC = () => {
            ======================================================== */}
 
           {/* Product Cards Grid (Horizontal Pill Video Style) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 justify-items-center">
+          <div ref={catalogGridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 justify-items-center">
             {currentProjects.map((project, index) => {
               const isFlipped = flippedId === project.id;
               const projectImages = project.images && project.images.length > 0 
@@ -240,7 +274,7 @@ export const Catalog: React.FC = () => {
                         CARA FRONTAL: ESTILO PILL/VIDEO CARD CON CARRUSEL CIRCULAR DE FONDO
                        ---------------------------------------------------- */}
                     <div 
-                      onClick={() => setFlippedId(project.id)}
+                      onClick={() => handleCardFlip(project.id)}
                       className={`absolute inset-0 w-full h-full [backface-visibility:hidden] rounded-[22px] overflow-hidden bg-[#141414] border border-white/10 shadow-lg ${
                         !isFlipped ? 'pointer-events-auto z-10' : 'pointer-events-none z-0'
                       }`}

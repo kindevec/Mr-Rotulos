@@ -182,7 +182,7 @@ export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ isAdsMode = fa
   return (
     <aside
       aria-label="Navegación Móvil"
-      className="fixed -bottom-[1px] inset-x-0 z-40 w-full lg:hidden pointer-events-auto select-none shadow-[0_-8px_30px_rgba(140,0,0,0.35)]"
+      className="fixed -bottom-[1px] inset-x-0 z-40 w-full lg:hidden pointer-events-auto select-none"
     >
       <AnimatedTabBar
         items={mobileTabItems}

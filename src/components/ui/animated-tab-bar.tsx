@@ -181,8 +181,6 @@ export const AnimatedTabBar: React.FC<AnimatedTabBarProps> = ({
         <motion.path
           d={generatePath(activeCenterX, width, 48, 76)}
           fill="#0a0000"
-          stroke="rgba(140, 0, 0, 0.45)"
-          strokeWidth="1.2"
           animate={pathControls}
         />
       </svg>

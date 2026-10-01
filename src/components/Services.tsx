@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowUpRight, 
   ArrowRight,
@@ -42,6 +42,27 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
+  const activeCardTimerRef = useRef<number | null>(null);
+  const carouselContainerRef = useRef<HTMLDivElement>(null);
+
+  // Auto-cerrar la tarjeta cuando el usuario toca fuera de ella o no interactúa
+  useEffect(() => {
+    const handleOutsideInteraction = (e: MouseEvent | TouchEvent) => {
+      if (carouselContainerRef.current && !carouselContainerRef.current.contains(e.target as Node)) {
+        setActiveCardIndex(null);
+        if (activeCardTimerRef.current) clearTimeout(activeCardTimerRef.current);
+      }
+    };
+
+    document.addEventListener('touchstart', handleOutsideInteraction, { passive: true });
+    document.addEventListener('mousedown', handleOutsideInteraction);
+
+    return () => {
+      document.removeEventListener('touchstart', handleOutsideInteraction);
+      document.removeEventListener('mousedown', handleOutsideInteraction);
+      if (activeCardTimerRef.current) clearTimeout(activeCardTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (!carouselApi) return;
@@ -51,12 +72,30 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     carouselApi.on('select', () => {
       setCanScrollPrev(carouselApi.canScrollPrev());
       setCanScrollNext(carouselApi.canScrollNext());
+      setActiveCardIndex(null);
+      if (activeCardTimerRef.current) clearTimeout(activeCardTimerRef.current);
     });
     carouselApi.on('reInit', () => {
       setCanScrollPrev(carouselApi.canScrollPrev());
       setCanScrollNext(carouselApi.canScrollNext());
+      setActiveCardIndex(null);
+      if (activeCardTimerRef.current) clearTimeout(activeCardTimerRef.current);
     });
   }, [carouselApi]);
+
+  const handleCardToggle = (index: number) => {
+    setActiveCardIndex((prev) => {
+      const next = prev === index ? null : index;
+      if (activeCardTimerRef.current) clearTimeout(activeCardTimerRef.current);
+      if (next !== null) {
+        // Si no se presiona cotizar tras 4.5 segundos, vuelve automáticamente a mostrar la imagen
+        activeCardTimerRef.current = window.setTimeout(() => {
+          setActiveCardIndex(null);
+        }, 4500);
+      }
+      return next;
+    });
+  };
 
   // Lista de servicios según catálogo oficial con letras agrupadas
   const serviceCards: ServiceCardItem[] = [
@@ -207,7 +246,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
               onClick={() => handleServiceQuote(item.id, item.title)}
               className="flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1 p-3 sm:p-4 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100 cursor-pointer select-none"
             >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border-2 flex items-center justify-center mb-3 shadow-md black-icon-color-shift group-hover:scale-110 transition-transform duration-300 text-white">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#151515] border border-slate-700/60 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 group-hover:bg-[#8C0000] group-hover:border-[#8C0000] transition-all duration-300 text-white">
                 {item.icon}
               </div>
               <h3 className="text-xs sm:text-sm md:text-base font-black text-[#191919] group-hover:text-[#8C0000] transition-colors font-display max-w-[200px] leading-snug">
@@ -247,7 +286,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
           </div>
 
           {/* Carrusel de Ancho Completo con 4 Tarjetas Visibles en Desktop */}
-          <div className="w-full min-w-0 relative group/carousel">
+          <div ref={carouselContainerRef} className="w-full min-w-0 relative group/carousel">
             <Carousel
               setApi={setCarouselApi}
               opts={{
@@ -265,7 +304,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                       className="pl-3 sm:pl-4 basis-[85%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
                     >
                       <div 
-                        onClick={() => setActiveCardIndex((prev) => (prev === index ? null : index))}
+                        onClick={() => handleCardToggle(index)}
                         className="relative w-full aspect-[16/11] sm:aspect-[16/10] min-h-[210px] sm:min-h-[240px] rounded-tl-[32px] rounded-br-[32px] rounded-tr-xl rounded-bl-xl overflow-hidden bg-[#151515] shadow-md hover:shadow-2xl transition-all duration-500 group border border-slate-200 cursor-pointer select-none"
                       >
                         {/* Imagen que llena el 100% de la tarjeta */}

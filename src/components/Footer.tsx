@@ -173,7 +173,7 @@ export const Footer: React.FC = () => {
 
             {/* Misión y Especialidad */}
             <p className="text-[11.5px] sm:text-[12.5px] text-slate-300 font-medium leading-relaxed max-w-sm text-left">
-              Especialistas en rótulos luminosos LED, letras corpóreas 3D, cajas de luz y fachadas en Alucobond. Realizamos trabajos en Sierra y Oriente, próximamente en la Costa.
+              Especialistas en rótulos luminosos LED, letras corpóreas 3D, cajas de luz y fachadas en Alucobond con tecnología de vanguardia.
             </p>
 
             {/* Redes Sociales Oficiales en PC/Tablet con sus Colores Distintivos */}
@@ -443,12 +443,6 @@ export const Footer: React.FC = () => {
                   <span className="block text-slate-300">9:00 AM – 5:00 PM</span>
                 </div>
               </motion.div>
-
-              {/* Cobertura en Provincias */}
-              <div className="pt-2 border-t border-white/10 text-[11px] text-slate-300">
-                <span className="text-[#ff4d4d] font-bold block">📍 Cobertura Nacional:</span>
-                <span>Sierra y Oriente (próximamente Costa)</span>
-              </div>
 
             </div>
 
