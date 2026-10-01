@@ -7,8 +7,9 @@ import {
   Layers, 
   Zap, 
   Sparkles, 
-  Printer, 
-  RotateCw, 
+  Flame, 
+  Store, 
+  Signpost, 
   ShieldCheck, 
   Ruler, 
   Eye, 
@@ -57,76 +58,76 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   const serviceCards: ServiceCardItem[] = [
     {
       id: 'rotulos-luminosos',
-      title: 'Rótulos Luminosos & Fachadas',
+      title: 'Rótulos & Fachadas Alucobond',
       icon: <Layers className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
     },
     {
-      id: 'cajas-de-luz',
-      title: 'Cajas de Luz LED Ultra-Bright',
-      icon: <Zap className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
-    },
-    {
       id: 'letras-3d',
-      title: 'Letras 3D & Corpóreos',
+      title: 'Letras 3D & Efecto Halo',
       icon: <Sparkles className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
     },
     {
-      id: 'gigantografias',
-      title: 'Gigantografías & Gran Formato',
-      icon: <Printer className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
+      id: 'cajas-de-luz',
+      title: 'Cajas de Luz & Menuderos Backlight',
+      icon: <Zap className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
     },
     {
       id: 'rotulos-luminosos',
-      title: 'Rótulos Circulares & Giratorios',
-      icon: <RotateCw className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
+      title: 'Neón Flex & Logos Circulares',
+      icon: <Flame className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
     },
     {
       id: 'gigantografias',
-      title: 'Viniles & Rotulación Comercial',
-      icon: <ShieldCheck className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
+      title: 'Stands Feriales & Comerciales',
+      icon: <Store className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
+    },
+    {
+      id: 'gigantografias',
+      title: 'Vallas & Señalética en Vidrio',
+      icon: <Signpost className="w-5 h-5 text-[#8C0000] group-hover:text-white transition-colors duration-300" />
     }
   ];
 
   const featuredRotulos = [
     {
       id: 'rotulos-luminosos' as ServiceId,
-      title: 'Rótulo 3D + Giratorio',
-      image: '/catalog/catalog-1.jpg',
-    },
-    {
-      id: 'cajas-de-luz' as ServiceId,
-      title: 'Cajas de Luz Ultra-Bright',
-      image: '/catalog/catalog-2.jpg',
+      title: 'Fachada Alucobond con Electrocorte',
+      image: '/catalog/catalog-alucobond-concesol.webp',
     },
     {
       id: 'letras-3d' as ServiceId,
-      title: 'Letras Corpóreas AUTOTEC 3D',
-      image: '/autotec-rotulo.jpg',
-    },
-    {
-      id: 'rotulos-luminosos' as ServiceId,
-      title: 'Rótulo Publicitario Rey Pollo',
-      image: '/reypollo-rotulo.jpg',
-    },
-    {
-      id: 'letras-3d' as ServiceId,
-      title: 'Letras 3D Corpóreas Nestlé',
-      image: '/nestle-rotulo.jpg',
+      title: 'Letras 3D Retroiluminadas Halo',
+      image: '/catalog/catalog-retro-myjoker.webp',
     },
     {
       id: 'gigantografias' as ServiceId,
-      title: 'Fachada Comercial Gran Formato',
-      image: '/catalog/catalog-3.jpg',
+      title: 'Stand Comercial & Ferial Dior',
+      image: '/catalog/catalog-stands-dior.webp',
     },
     {
       id: 'cajas-de-luz' as ServiceId,
-      title: 'Caja de Luz LED Comercial',
-      image: '/catalog/catalog-4.jpg',
+      title: 'Neón Flex Personalizado Oh My Dog',
+      image: '/catalog/catalog-neon-ohmydog.webp',
     },
     {
       id: 'rotulos-luminosos' as ServiceId,
-      title: 'Banderola Circular Doble Cara',
-      image: '/catalog/catalog-5.jpg',
+      title: 'Rótulo 3D Fritadas Sarita',
+      image: '/catalog/catalog-restaurante-fritadassarita.webp',
+    },
+    {
+      id: 'cajas-de-luz' as ServiceId,
+      title: 'Caja de Luz LED Farmacias Santa Martha',
+      image: '/catalog/catalog-luminoso-santamartha.webp',
+    },
+    {
+      id: 'letras-3d' as ServiceId,
+      title: 'Logotipo en Alto Relieve Cobro Fast',
+      image: '/catalog/catalog-altorelieve-cobrofast.webp',
+    },
+    {
+      id: 'gigantografias' as ServiceId,
+      title: 'Señalética Vidrio Acrílico Lafquén',
+      image: '/catalog/catalog-senaletica-lafquen.webp',
     }
   ];
 
@@ -181,13 +182,12 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
           <div className="w-16 h-1 bg-[#8C0000] rounded-full mx-auto mt-4 mb-2"></div>
         </div>
 
-        {/* Grilla de 6 Servicios (Solo Íconos y Títulos) */}
+        {/* Grilla de 6 Servicios (Solo Íconos y Títulos Informativos) */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mb-14 md:mb-18 max-w-5xl mx-auto">
           {serviceCards.map((item) => (
             <div 
               key={item.title}
-              onClick={() => handleServiceQuote(item.id, item.title)}
-              className="flex flex-col items-center text-center group cursor-pointer transition-all duration-300 hover:-translate-y-1 p-2 sm:p-3"
+              className="flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1 p-2 sm:p-3 select-none"
             >
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center mb-3 group-hover:bg-[#8C0000] group-hover:border-[#8C0000] transition-all duration-300 shadow-xs">
                 {item.icon}
@@ -244,8 +244,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                     className="pl-3 sm:pl-4 basis-[85%] sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
                   >
                     <div 
-                      onClick={() => handleServiceQuote(item.id, item.title)}
-                      className="relative w-full aspect-[16/11] sm:aspect-[16/10] min-h-[210px] sm:min-h-[240px] rounded-tl-[32px] rounded-br-[32px] rounded-tr-xl rounded-bl-xl overflow-hidden bg-[#151515] shadow-md hover:shadow-2xl transition-all duration-500 group cursor-pointer border border-slate-200"
+                      className="relative w-full aspect-[16/11] sm:aspect-[16/10] min-h-[210px] sm:min-h-[240px] rounded-tl-[32px] rounded-br-[32px] rounded-tr-xl rounded-bl-xl overflow-hidden bg-[#151515] shadow-md hover:shadow-2xl transition-all duration-500 group border border-slate-200"
                     >
                       {/* Imagen que llena el 100% de la tarjeta */}
                       <img
@@ -257,22 +256,14 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
                       {/* Gradiente sutil base */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none" />
 
-                      {/* Título y Botón de Cotizar que aparecen centrado al pasar el cursor */}
-                      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/35 backdrop-blur-[2px]">
-                        <h4 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider font-display mb-3 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300 drop-shadow-md">
+                      {/* Título que aparece centrado al pasar el cursor */}
+                      <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4 text-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/40 backdrop-blur-[2px]">
+                        <h4 className="text-xs sm:text-sm font-black text-white uppercase tracking-wider font-display mb-2 transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300 drop-shadow-md max-w-[200px]">
                           {item.title}
                         </h4>
-
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleServiceQuote(item.id, item.title);
-                          }}
-                          className="px-5 py-2.5 rounded-full bg-[#8C0000] hover:bg-[#730000] text-white font-bold text-xs tracking-wider shadow-xl transition-all duration-200 active:scale-95 cursor-pointer flex items-center gap-1.5 transform translate-y-3 group-hover:translate-y-0 duration-300 hover:scale-105"
-                        >
-                          <span>Cotizar</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </button>
+                        <span className="px-3 py-1 rounded-full bg-[#8C0000] text-white font-bold text-[10px] uppercase tracking-wider transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
+                          Calidad Garantizada
+                        </span>
                       </div>
                     </div>
                   </CarouselItem>

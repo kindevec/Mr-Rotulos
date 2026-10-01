@@ -11,28 +11,28 @@ interface SolutionItem {
 
 const INTENT_SOLUTIONS: SolutionItem[] = [
   {
-    id: 'cajas-de-luz',
-    name: 'Cajas de Luz LED',
-    title: 'Cajas de Luz LED y Letreros Luminosos a Medida en Quito',
-    subtitle: 'Cajas de luz slim y doble cara con módulos LED de alto brillo y bajo consumo. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+    id: 'rotulos-fachadas',
+    name: 'Rótulos & Fachadas Alucobond',
+    title: 'Rótulos Luminosos 3D y Fachadas en Alucobond en Quito',
+    subtitle: 'Fabricación con electrocorte CNC en Alucobond, acrílico virgen, acero inoxidable y módulos LED de alto brillo. Visita técnica sin costo en Quito y cotización en 15 minutos.',
   },
   {
     id: 'letras-corporeas',
-    name: 'Letras 3D Corpóreas',
-    title: 'Letras 3D Corpóreas y Rótulos en Acrílico y Acero en Quito',
-    subtitle: 'Letras volumétricas con corte láser CNC de alta precisión, iluminación frontal o efecto halo. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+    name: 'Letras 3D & Efecto Halo',
+    title: 'Letras 3D en Acero Inoxidable, Tool, Acrílico y MDF en Quito',
+    subtitle: 'Letras volumétricas con luz directa, retroiluminación halo o sin luz para exteriores, oficinas y eventos. Acabados automotrices y garantía escrita.',
   },
   {
-    id: 'rotulos-luminosos',
-    name: 'Rótulos Luminosos',
-    title: 'Rótulos Luminosos y Fachadas Comerciales en Quito',
-    subtitle: 'Fabricación en Alucobond (ACM), estructuras anticorrosivas e iluminación LED de máxima durabilidad. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+    id: 'cajas-luz-menuderos',
+    name: 'Cajas de Luz & Menuderos',
+    title: 'Cajas de Luz LED, Menuderos Backlight y Neón Flex en Quito',
+    subtitle: 'Cajas publicitarias de alta durabilidad, menuderos modulares backlight e iluminación Neón Flex de bajo consumo para locales comerciales y restaurantes.',
   },
   {
-    id: 'gigantografias',
-    name: 'Gigantografías',
-    title: 'Gigantografías, Viniles e Impresión Gran Formato en Quito',
-    subtitle: 'Impresión digital ecológica de alta definición resistente al sol andino de Quito. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+    id: 'stands-vallas-senaletica',
+    name: 'Stands, Vallas & Señalética',
+    title: 'Stands para Ferias, Vallas Publicitarias y Señalética en Vidrio',
+    subtitle: 'Diseño y montaje de stands e islas comerciales, vallas de gran formato con izaje en grúa y placas elegantes en vidrio acrílico con pernos decorativos.',
   },
 ];
 

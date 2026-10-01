@@ -3,63 +3,63 @@ import { ServiceItem, GalleryProject } from '../types';
 export const SERVICES_DATA: ServiceItem[] = [
   {
     id: 'rotulos-luminosos',
-    title: 'Rótulos Luminosos y Fachadas',
+    title: 'Rótulos Luminosos & Fachadas Alucobond',
     badge: 'Máximo Impacto Exterior',
-    description: 'Transformación total de la fachada comercial con estructuras de acero electrogalvanizado, paneles de aluminio compuesto (ACM) y lonas tensadas traslúcidas.',
+    description: 'Transformación total de fachadas comerciales con bandejas de Alucobond (ACM), electrocorte CNC computarizado, iluminación LED de alto brillo y lonas translúcidas de 1440dpi.',
     features: [
-      'Tratamiento anticorrosivo para el clima de Quito',
-      'Iluminación uniforme sin sombras internas',
-      'Diseño estructural sismo-resistente y seguro',
-      'Acabados mate, brillante o madera arquitectónica'
+      'Bandejas de Alucobond con electrocorte y difusores acrílicos',
+      'Estructuras metálicas soldadas y protegidas contra el clima andino',
+      'Módulos LED de alto brillo con 25.000 horas continuas de vida útil',
+      'Instalación garantizada en altura para locales y restaurantes'
     ],
-    materials: 'ACM (Alucobond) + Estructura soldada + Módulos LED IP67',
-    warranty: 'Garantía extendida de 24 meses',
-    image: 'https://images.unsplash.com/photo-1541888946425-d0fbb186f5f7?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    id: 'cajas-de-luz',
-    title: 'Cajas de Luz LED (Slim & Ultra-Bright)',
-    badge: 'Ahorro 70% de Energía',
-    description: 'Estructuras perimetrales de aluminio extruido con difusores acrílicos de alta transmitancia lumínica. Visibilidad 24/7 con consumo eléctrico mínimo.',
-    features: [
-      'Módulos LED Samsung de alta eficiencia lumínica',
-      'Perfilería extrafina para acabados premium',
-      'Fácil recambio de gráfica para promociones',
-      'Fuentes de poder MeanWell con supresión de picos'
-    ],
-    materials: 'Aluminio anodizado + Acrílico colado 3-5mm + LED 6500K / 3000K',
-    warranty: 'Garantía de 3 años en módulos LED',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80',
+    materials: 'Alucobond (ACM), Acrílico virgen 2-5mm, Estructura soldada, Módulos LED IP67',
+    warranty: 'Garantía extendida y soporte técnico',
+    image: '/catalog/catalog-alucobond-concesol.webp',
   },
   {
     id: 'letras-3d',
-    title: 'Letras 3D Corpóreas (Canal / Halo)',
-    badge: 'Elegancia Corporativa',
-    description: 'Letras volumétricas cortadas milimétricamente en Router CNC y láser de fibra. Opciones con luz frontal difusa, iluminación halo indirecta o acabado macizo sin luz.',
+    title: 'Letras 3D Corpóreas & Efecto Halo',
+    badge: 'Corte Láser & CNC',
+    description: 'Letras y logotipos volumétricos en Acero Inoxidable 304, Acrílico virgen, Tool galvanizado con pintura automotriz y MDF. Opciones con luz directa, retroiluminación halo o sin luz.',
     features: [
-      'Corte de precisión CNC en acrílico, acero y aluminio',
-      'Iluminación indirecta Halo (luz cálida o fría sobre pared)',
-      'Ideal para recepciones, edificios y locales de alto tráfico',
-      'Pintura electrostática con código Pantone de tu marca'
+      'Acabados en Acero Inox espejo/cepillado, Acrílico, Tool galvanizado y MDF',
+      'Iluminación halo indirecta (luz cálida/fría) o luz LED directa',
+      'Acabado con pintura automotriz al tono corporativo exacto',
+      'Opciones combinadas con césped sintético y respaldos en Alucobond'
     ],
-    materials: 'Acero inoxidable 304, Acrílico virgen, MDF hidrófugo',
-    warranty: 'Garantía estructural de 3 años',
-    image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80',
+    materials: 'Acero Inox 304, Tool galvanizado, Acrílico virgen, MDF, Pintura automotriz',
+    warranty: 'Garantía por escrito de fabricación e instalación',
+    image: '/catalog/catalog-retro-myjoker.webp',
+  },
+  {
+    id: 'cajas-de-luz',
+    title: 'Cajas de Luz LED, Menuderos & Neón Flex',
+    badge: 'Alta Visibilidad 24/7',
+    description: 'Cajas de luz publicitarias, menuderos modulares con película backlight intercambiable y letreros de Neón Flex de bajo consumo para locales gastronómicos y comerciales.',
+    features: [
+      'Menuderos modulares curvos y planos con recambio rápido de menú',
+      'Lona traslúcida tensada 1440dpi y cajas con formas silueteadas (tipo nube)',
+      'Diseños exclusivos en Neón Flex de colores intensos y bajo consumo',
+      'Rótulos circulares y giratorios de doble cara'
+    ],
+    materials: 'Cajas plásticas/metálicas, Backlight Film, Neón Flex 12V, Lona 1440dpi',
+    warranty: 'Garantía en iluminación LED y fuentes de poder',
+    image: '/catalog/catalog-luminoso-santamartha.webp',
   },
   {
     id: 'gigantografias',
-    title: 'Gigantografías y Gran Formato',
-    badge: 'Alta Definición 1440 DPI',
-    description: 'Impresión digital ecológica de alta resistencia a los rayos UV del sol andino de Quito. Vallas publicitarias, viniles microperforados para vitrinas y lonas frontlit.',
+    title: 'Stands Feriales, Vallas & Señalética',
+    badge: 'Gran Formato & Corporativo',
+    description: 'Diseño y montaje de stands e islas comerciales para ferias, vallas publicitarias en azoteas con izaje técnico en grúa y señalética en vidrio acrílico con pernos decorativos.',
     features: [
-      'Tintas eco-solventes con filtro UV de larga duración',
-      'Vinil microperforado con homologación de visibilidad',
-      'Lona frontlit y backlit pesada anti-desgarre (13oz y 15oz)',
-      'Instalación profesional en vidrieras y alturas'
+      'Stands e islas comerciales para centros comerciales y ferias (Dior, Pichincha)',
+      'Vallas publicitarias de gran formato y cálculo estructural',
+      'Placas corporativas y señalética médica en vidrio acrílico de 4mm con pernos inox',
+      'Displays portátiles tipo araña X-Banner 60x160cm'
     ],
-    materials: 'Lona Panamá / Lona Frontlit 13oz + Viniles Arlon / 3M',
-    warranty: '12 meses contra decoloración solar',
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80',
+    materials: 'Vidrio acrílico 4mm, Tornillos decorativos inox, Estructuras tubulares, Lona intemperie',
+    warranty: 'Montaje profesional garantizado',
+    image: '/catalog/catalog-stands-dior.webp',
   },
 ];
 
@@ -89,12 +89,12 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     categoryLabel: 'Restaurantes & Asaderos',
     badge: 'Alta Demanda',
     description: 'Rótulos de alto impacto visual para restaurantes, asaderos, pollerías y locales gastronómicos.',
-    client: 'Terra Manaba / Hornados Venga Mi Rey / Caravana / Rey Pollo / El Arepazo Paisa / Don Edgar',
+    client: 'Terra Manaba / Fritadas Sarita / Caravana / Rey Pollo / El Arepazo Paisa / Don Edgar',
     location: 'Quito, Ecuador',
     image: '/catalog/catalog-restaurante-terramanaba.webp',
     images: [
       '/catalog/catalog-restaurante-terramanaba.webp',
-      '/catalog/catalog-restaurante-vengamirey.webp',
+      '/catalog/catalog-restaurante-fritadassarita.webp',
       '/catalog/catalog-restaurante-caravana.webp',
       '/catalog/catalog-restaurante-reypollo.webp',
       '/catalog/catalog-restaurante-arepazo.webp',
@@ -281,24 +281,28 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
     category: 'volumetricas',
     categoryLabel: 'Letras Monumentales',
     badge: 'Gran Formato',
-    description: 'Letras volumétricas de gran escala fabricadas en tool galvanizado con pintura automotriz de máxima durabilidad.',
-    client: 'Letras Monumentales Fajardo',
+    description: 'Letras volumétricas disponibles en 2 tipos: en Tool galvanizado con alma de estructura (exterior) y en MDF (interiores y eventos). Altura de 1,5 metros y profundidad de 30cm.',
+    client: 'Letras Monumentales Fajardo / ROKU',
     location: 'Quito, Ecuador',
     image: '/catalog/catalog-volumetricas-fajardo.webp',
     images: [
-      '/catalog/catalog-volumetricas-fajardo.webp'
+      '/catalog/catalog-volumetricas-fajardo.webp',
+      '/catalog/catalog-volumetricas-roku.webp'
     ],
     dimension: 'Altura de 1,5 metros | Profundidad de 30cm',
     materials: [
-      'Tool galvanizado con alma de estructura',
-      'Pintura automotriz según color corporativo'
+      'Fabricación en Tool galvanizado con alma de estructura',
+      'Fabricación en MDF de alta densidad',
+      'Pintura automotriz según color corporativo',
+      'VALOR NO INCLUYE BASE INSTALACIÓN'
     ],
     features: [
+      'Disponibles en Tool galvanizado (exterior) y MDF (interior/eventos)',
       'Altura de 1,5 metros y profundidad de 30cm',
-      'Tool galvanizado con alma de estructura',
-      'Pintura automotriz según color corporativo'
+      'Pintura automotriz según color corporativo',
+      'VALOR NO INCLUYE BASE INSTALACIÓN'
     ],
-    includes: 'Fabricación y pintura (VALOR NO INCLUYE BASE NI INSTALACIÓN)'
+    includes: 'Fabricación en Tool galvanizado o MDF con pintura automotriz (VALOR NO INCLUYE BASE NI INSTALACIÓN)'
   },
   {
     id: 'proj-10',
@@ -506,6 +510,248 @@ export const GALLERY_PROJECTS: GalleryProject[] = [
       'Apto para interior y fachada exterior'
     ],
     includes: 'Fabricación silueteada según forma del logotipo, sistema de iluminación LED interna e instalación'
+  },
+  {
+    id: 'proj-17',
+    title: 'Señalética en vidrio acrílico',
+    category: 'senaletica',
+    categoryLabel: 'Señalética & Directorios',
+    badge: 'Vidrio 4mm + Pernos',
+    description: 'Placas y señalética corporativa en vidrio acrílico de 4mm con tornillos decorativos de acero para clínicas, oficinas y consultorios.',
+    client: 'Lafquén Constructora / Clínica Génesis',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-senaletica-lafquen.webp',
+    images: [
+      '/catalog/catalog-senaletica-lafquen.webp',
+      '/catalog/catalog-senaletica-recepcion.webp',
+      '/catalog/catalog-senaletica-signosvitales.webp',
+      '/catalog/catalog-senaletica-ginecologia.webp'
+    ],
+    lightingType: 'Acabado esmerilado / traslúcido elegante',
+    dimension: 'Medidas estándar y personalizadas según área',
+    materials: [
+      'Vidrio de 4mm',
+      'Tornillos decorativos'
+    ],
+    features: [
+      'Vidrio acrílico de 4mm',
+      'Tornillos decorativos de acero inoxidable',
+      'Impresión de alta resolución / vinil',
+      'Ideal para consultorios, clínicas y oficinas'
+    ],
+    includes: 'Placa en vidrio acrílico 4mm, gráfica corporativa personalizada y kit de tornillos decorativos de fijación'
+  },
+  {
+    id: 'proj-18',
+    title: 'Letras retro iluminacion',
+    category: 'retroiluminadas',
+    categoryLabel: 'Retroiluminadas',
+    badge: 'Efecto Halo LED',
+    description: 'Letras volumétricas con retroiluminación halo fabricadas en tool galvanizado con acabado en pintura automotriz para fachadas e interiores.',
+    client: 'Federación Ecuatoriana de Enfermeras / My Joker',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-retro-myjoker.webp',
+    images: [
+      '/catalog/catalog-retro-myjoker.webp',
+      '/catalog/catalog-retro-enfermeras.webp'
+    ],
+    lightingType: 'Luz LED blanca (Halo indirecto)',
+    dimension: 'Fabricación personalizada a medida',
+    materials: [
+      'Material tool galvanizado',
+      'Luz led blanca',
+      'Pintura automotriz a elección.',
+      'Directo a la pared'
+    ],
+    features: [
+      'Material tool galvanizado',
+      'Luz led blanca',
+      'Pintura automotriz a elección',
+      'Directo a la pared'
+    ],
+    includes: 'Fabricación en tool galvanizado, pintura automotriz a elección, módulos LED blancos e instalación directa a la pared'
+  },
+  {
+    id: 'proj-19',
+    title: 'Stands',
+    category: 'stands-ferias',
+    categoryLabel: 'Stands & Ferias',
+    badge: 'Todo para Ferias',
+    description: 'Diseño, fabricación y montaje de stands corporativos e islas comerciales de alto impacto para ferias, exposiciones y centros comerciales.',
+    client: 'Dior / Banco Pichincha / Floralp',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-stands-dior.webp',
+    images: [
+      '/catalog/catalog-stands-dior.webp',
+      '/catalog/catalog-stands-bancopichincha.webp',
+      '/catalog/catalog-stands-floralp.webp'
+    ],
+    lightingType: 'Iluminación LED integrada en estructuras y tarimas',
+    dimension: 'Diseño y dimensiones a medida según espacio',
+    materials: [
+      'Todo para ferias',
+      'MDF, Melamina y Acabados Dorados / Madera',
+      'Sistemas de iluminación LED directa e indirecta',
+      'Mobiliario y counter de atención'
+    ],
+    features: [
+      'Todo para ferias',
+      'Diseño personalizado y arquitectura comercial',
+      'Montaje y desmontaje profesional',
+      'Acabados de alta gama e iluminación integrada'
+    ],
+    includes: 'Diseño modular, fabricación de estructuras y counter, iluminación LED integrada, rotulación corporativa y montaje'
+  },
+  {
+    id: 'proj-20',
+    title: 'Letras 3D sin luz + Instalación',
+    category: 'letras-sin-luz',
+    categoryLabel: 'Rótulos Económicos 3D',
+    badge: 'Rótulos Económicos',
+    description: 'Rótulos económicos de alto impacto visual aptos para exterior con estructura metálica, lona impresa laminada y letras volumétricas en acero galvanizado.',
+    client: 'Sweet Waffles / Sede Social / Maitane',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-sinluz-sweetwaffles.webp',
+    images: [
+      '/catalog/catalog-sinluz-sweetwaffles.webp',
+      '/catalog/catalog-sinluz-sedesocial.webp',
+      '/catalog/catalog-sinluz-maitane.webp'
+    ],
+    lightingType: 'Sin iluminación interna (Apto para reflectores)',
+    dimension: 'A partir de 3 metros baja a $150',
+    materials: [
+      'Rótulos Económicos aptos para el exterior',
+      'Estructura metálica, lona impresa laminada',
+      'Letras metálicas en acero galvanizado',
+      'Pintura a elección.',
+      'Su costo baja a partir de los 3 metros a 150 dólares'
+    ],
+    features: [
+      'Rótulos Económicos aptos para el exterior',
+      'Estructura metálica y lona impresa laminada',
+      'Letras metálicas en acero galvanizado',
+      'Pintura a elección',
+      'Su costo baja a partir de los 3 metros a $150'
+    ],
+    includes: 'Estructura metálica, lona laminada, letras en acero galvanizado con pintura a elección e instalación'
+  },
+  {
+    id: 'proj-21',
+    title: 'Rótulo luminoso',
+    category: 'cajas-de-luz',
+    categoryLabel: 'Cajas de Luz & Rótulos',
+    badge: 'Instalación GRATIS',
+    description: 'Cajas de luz y rótulos luminosos de alto impacto para negocios con estructura metálica reforzada, lona traslúcida 1440dpi y tecnología LED continua.',
+    client: 'Farmacias Santa Martha / MDO Menudo / Chavitas',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-luminoso-santamartha.webp',
+    images: [
+      '/catalog/catalog-luminoso-santamartha.webp',
+      '/catalog/catalog-luminoso-mdomenudo.webp',
+      '/catalog/catalog-luminoso-chavitas.webp'
+    ],
+    lightingType: 'Luz LED 25.000 horas continuas de alta durabilidad',
+    dimension: 'Fabricación a medida frontal o esquinera',
+    materials: [
+      'Estructura metálica',
+      'Lona Impresa full color 1440dpi',
+      'Luz LED 25mil horas continuas',
+      'Instalación GRATIS'
+    ],
+    features: [
+      'Estructura metálica reforzada',
+      'Lona Impresa full color 1440dpi',
+      'Luz LED 25mil horas continuas',
+      'Instalación GRATIS incluida'
+    ],
+    includes: 'Estructura metálica, impresión en lona traslúcida 1440dpi, iluminación LED 25.000 hrs e instalación gratuita'
+  },
+  {
+    id: 'proj-22',
+    title: 'Menudero individuales',
+    category: 'menuderos',
+    categoryLabel: 'Menús & Displays',
+    badge: 'Backlight HD',
+    description: 'Cajas plásticas de luz y paneles menuderos modulares con película back light intercambiable de alta definición para locales gastronómicos.',
+    client: 'Scooby Duu / La Salchipapería / Dorichoclo',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-menuderos-scoobyduu.webp',
+    images: [
+      '/catalog/catalog-menuderos-scoobyduu.webp',
+      '/catalog/catalog-menuderos-choclito.webp'
+    ],
+    lightingType: 'Iluminación LED interna para película Backlight',
+    dimension: 'Módulos individuales combinables a medida',
+    materials: [
+      'Caja plástica de luz',
+      'Impresiones back light'
+    ],
+    features: [
+      'Caja plástica de luz de fácil apertura',
+      'Impresiones back light de alta definición',
+      'Gráfica intercambiable rápida',
+      'Iluminación uniforme de alto impacto'
+    ],
+    includes: 'Caja plástica de luz individual, lámina back light impresa full color y sistema de iluminación integrado'
+  },
+  {
+    id: 'proj-23',
+    title: 'Alucobond',
+    category: 'alucobond-corte',
+    categoryLabel: 'Alucobond & Fachadas',
+    badge: 'Electrocorte CNC',
+    description: 'Rótulos arquitectónicos tipo bandeja en panel de Alucobond con electrocorte CNC de alta precisión, difusor en acrílico blanco 2mm y luz LED interna.',
+    client: 'CONCESOL Residencia para mayores',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-alucobond-concesol.webp',
+    images: [
+      '/catalog/catalog-alucobond-concesol.webp'
+    ],
+    lightingType: 'Luz LED interna con difusor acrílico',
+    dimension: 'Bandeja arquitectónica a medida corporativa',
+    materials: [
+      'Alucobond con electrocorte',
+      'Acrílico blanco 2mm',
+      'Estructura metálica',
+      'Luz led'
+    ],
+    features: [
+      'Alucobond con electrocorte de precisión',
+      'Acrílico blanco difusor de 2mm',
+      'Estructura metálica interior reforzada',
+      'Sistema de iluminación LED de alta duración'
+    ],
+    includes: 'Bandeja en Alucobond calada con electrocorte, acrílico blanco 2mm, estructura metálica, módulos LED e instalación'
+  },
+  {
+    id: 'proj-24',
+    title: 'Vallas publicitarias',
+    category: 'vallas-publicitarias',
+    categoryLabel: 'Vallas & Gran Formato',
+    badge: 'Gran Formato',
+    description: 'Estructuras de gran formato y vallas publicitarias en azoteas o exteriores con lonas de alta resistencia o letras volumétricas e izaje técnico con grúa.',
+    client: 'El Ordeño / Hornados Venga Mi Rey',
+    location: 'Quito, Ecuador',
+    image: '/catalog/catalog-vallas-elordeno.webp',
+    images: [
+      '/catalog/catalog-vallas-elordeno.webp',
+      '/catalog/catalog-vallas-vengamirey.webp'
+    ],
+    lightingType: 'Opción con reflectores LED o letras 3D luminosas',
+    dimension: 'Gran formato a medida según terreno o azotea',
+    materials: [
+      'Estructura metálica de alta resistencia',
+      'Lona de alta densidad para intemperie',
+      'Letras volumétricas 3D (opcional)',
+      'Montaje especializado con grúa'
+    ],
+    features: [
+      'Estructuras de ingeniería para altura',
+      'Materiales resistentes a viento y clima',
+      'Izaje y montaje profesional con grúa',
+      'Máximo alcance y visibilidad publicitaria'
+    ],
+    includes: 'Fabricación de estructura metálica, confección de lona/letras, transporte, montaje con grúa y fijación de seguridad'
   }
 ];
 

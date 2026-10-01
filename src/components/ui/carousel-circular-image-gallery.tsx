@@ -156,7 +156,7 @@ export function ImageGallery({
   return (
     <div className={`relative w-full h-full overflow-hidden select-none group/gallery ${className}`}>
       <div 
-        className={`relative w-full h-full ${aspectRatio} overflow-hidden rounded-[28px] bg-[#121212] shadow-sm`}
+        className={`relative w-full h-full ${aspectRatio} overflow-hidden rounded-[22px] bg-[#121212] shadow-sm`}
         onClick={() => onImageClick && onImageClick(images[opened], opened)}
       >
         {images.length === 1 ? (
@@ -193,13 +193,6 @@ export function ImageGallery({
               alt={images[0]?.title || 'Imagen'} 
               className="w-full h-full object-cover"
             />
-          </div>
-        )}
-
-        {/* Circular thumbnails / tabs inside gallery */}
-        {images.length > 1 && (
-          <div className="absolute left-0 top-0 z-[50] h-full w-full pointer-events-none">
-            <Tabs images={images} instanceId={instanceId} onSelect={onClick} />
           </div>
         )}
       </div>
@@ -280,7 +273,7 @@ function GalleryImage({ url, title, open, inPlace, id, instanceId, onInPlace, to
   const defaults = { transformOrigin: "center center" }
   const duration = 0.4
   const width = 400
-  const height = 480
+  const height = 340
   const scale = 700
 
   const bigSize = circleRadius * scale
@@ -289,7 +282,7 @@ function GalleryImage({ url, title, open, inPlace, id, instanceId, onInPlace, to
   // --- Position Calculation Functions ---
   const getPosSmall = () => ({
     cx: width / 2 - (total * (circleRadius * 2 + gap) - gap) / 2 + id * (circleRadius * 2 + gap),
-    cy: height - 20,
+    cy: 22,
     r: circleRadius,
   })
   const getPosSmallAbove = () => ({
@@ -360,7 +353,9 @@ function GalleryImage({ url, title, open, inPlace, id, instanceId, onInPlace, to
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox={`0 0 ${width} ${height}`}
       preserveAspectRatio="xMidYMid slice"
-      className="h-full w-full"
+      className={`h-full w-full object-cover transition-opacity duration-200 ${
+        open || inPlace ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
     >
       <defs>
         <clipPath id={`gal_${instanceId}_${id}_circleClip`}>
@@ -387,11 +382,11 @@ function Tabs({ images, instanceId, onSelect }: TabsProps) {
   const gap = 8
   const circleRadius = 5.5
   const width = 400
-  const height = 480
+  const height = 290
 
   const getPosX = (i: number) =>
     width / 2 - (images.length * (circleRadius * 2 + gap) - gap) / 2 + i * (circleRadius * 2 + gap)
-  const getPosY = () => height - 20
+  const getPosY = () => 22
 
   return (
     <svg
@@ -399,7 +394,7 @@ function Tabs({ images, instanceId, onSelect }: TabsProps) {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox={`0 0 ${width} ${height}`}
       preserveAspectRatio="xMidYMid slice"
-      className="h-full w-full"
+      className="h-full w-full pointer-events-none"
     >
       {images.map((image, i) => (
         <g key={`tab_${instanceId}_${image.url}_${i}`} className="pointer-events-auto">
@@ -423,7 +418,7 @@ function Tabs({ images, instanceId, onSelect }: TabsProps) {
               e.stopPropagation()
               onSelect(i)
             }}
-            className="cursor-pointer fill-white/0 stroke-white/80 hover:stroke-[#8C0000] hover:stroke-[2.5px] transition-all"
+            className="cursor-pointer fill-white/10 stroke-white/90 hover:stroke-[#8C0000] hover:stroke-[2.5px] transition-all shadow-md"
             strokeWidth="1.5"
             cx={getPosX(i)}
             cy={getPosY()}
