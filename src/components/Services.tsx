@@ -6,7 +6,6 @@ import {
   ChevronRight,
   Layers, 
   Zap, 
-  Sparkles, 
   Flame, 
   Store, 
   Signpost, 
@@ -15,12 +14,8 @@ import {
   Eye, 
   Cpu,
   Building2,
-  TreePine,
   Car,
-  Hammer,
-  Compass,
-  MapPin,
-  Box
+  Compass
 } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { ServiceId } from '../types';
@@ -63,7 +58,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     });
   }, [carouselApi]);
 
-  // Lista exacta de servicios según el catálogo y volante oficial de Mister Rótulos
+  // Lista de servicios según catálogo oficial con letras agrupadas
   const serviceCards: ServiceCardItem[] = [
     {
       id: 'rotulos-luminosos',
@@ -72,38 +67,8 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
     },
     {
       id: 'letras-3d',
-      title: 'Letras en bloques',
-      icon: <Box className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-    },
-    {
-      id: 'letras-3d',
-      title: 'Letras corpóreas',
+      title: 'Letras Corpóreas & en Bloques',
       icon: <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-    },
-    {
-      id: 'letras-3d',
-      title: 'Letras en acero inoxidable',
-      icon: <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-    },
-    {
-      id: 'letras-3d',
-      title: 'Letras en Acero galvanizado',
-      icon: <Hammer className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-    },
-    {
-      id: 'letras-3d',
-      title: 'Letras en Madera',
-      icon: <TreePine className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-    },
-    {
-      id: 'gigantografias',
-      title: 'Señaléticas Viales',
-      icon: <Compass className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
-    },
-    {
-      id: 'gigantografias',
-      title: 'Vallas Publicitarias',
-      icon: <Signpost className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
       id: 'rotulos-luminosos',
@@ -114,6 +79,16 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
       id: 'cajas-de-luz',
       title: 'Avisos con Neón, LED, etc.',
       icon: <Flame className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'gigantografias',
+      title: 'Señaléticas Viales',
+      icon: <Compass className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
+    },
+    {
+      id: 'gigantografias',
+      title: 'Vallas Publicitarias',
+      icon: <Signpost className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
       id: 'gigantografias',
