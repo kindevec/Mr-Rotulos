@@ -286,18 +286,6 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                   </div>
                 </div>
 
-                {/* 5. Cobertura en Provincias */}
-                <div className="p-3.5 sm:p-4 rounded-2xl bg-[#8C0000]/10 border border-[#8C0000]/25 text-left space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm">📍</span>
-                    <h4 className="font-extrabold text-[#8C0000] text-xs sm:text-sm">
-                      ¿Realizan trabajos en otras Provincias?
-                    </h4>
-                  </div>
-                  <p className="text-slate-700 text-xs sm:text-sm font-medium leading-relaxed pl-5 sm:pl-6">
-                    <strong>Sí</strong>, realizamos trabajos en <strong>Sierra y Oriente</strong>, próximamente en la <strong>Costa</strong>.
-                  </p>
-                </div>
 
               </div>
 

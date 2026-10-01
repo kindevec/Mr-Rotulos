@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, MapPin } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { buildWhatsAppUrl, trackConversionEvent } from '../utils/analytics';
 import FlexCarousel, { FlexCarouselItem } from './FlexCarousel';
@@ -153,14 +153,6 @@ export const Hero: React.FC = () => {
 
       {/* CONTENIDO SUPERIOR: Título que vende directamente la solución buscada */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center mb-8 sm:mb-12">
-
-        {/* Badge de Cobertura Geográfica */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-950/70 border border-[#8C0000]/60 text-xs sm:text-sm font-semibold text-white/90 mb-3 sm:mb-4 shadow-lg backdrop-blur-sm">
-          <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#ff4d4d] shrink-0" />
-          <span>
-            Fabricación e instalación en <span className="text-white font-bold underline decoration-[#ff4d4d] underline-offset-2">Quito, Sierra y Oriente</span> <span className="text-white/70 text-[11px] sm:text-xs">(Próximamente Costa)</span>
-          </span>
-        </div>
 
         {/* Título Dinámico Enfocado 100% en la Solución Buscada */}
         <h1 
