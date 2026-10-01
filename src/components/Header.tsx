@@ -3,7 +3,11 @@ import { Phone } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { trackConversionEvent, PHONE_NUMBER, buildWhatsAppUrl } from '../utils/analytics';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+  isAdsMode?: boolean;
+}
+
+export const Header: React.FC<HeaderProps> = ({ isAdsMode = false }) => {
   const handleCallClick = (source: 'header_call') => {
     trackConversionEvent('click_to_call', {
       category: 'Contact',
@@ -24,21 +28,23 @@ export const Header: React.FC = () => {
     <header className="sticky top-0 z-40 bg-[#191919] border-b border-[#2d2d2d] transition-shadow duration-300">
       <div className="w-full max-w-[1800px] mx-auto px-3 xs:px-4 sm:px-8 lg:px-12 xl:px-16 h-16 sm:h-18 lg:h-20 flex items-center justify-between">
         
-        {/* LADO IZQUIERDO: 3 Secciones de navegación en Desktop */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-10 2xl:gap-12 text-base lg:text-lg xl:text-xl font-extrabold text-[#F0EDE8] flex-1 justify-end">
-          <a href="#inicio" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
-            Inicio
-          </a>
-          <a href="#servicios" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
-            Servicios
-          </a>
-          <a href="#nosotros" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
-            Nosotros
-          </a>
-        </nav>
+        {/* LADO IZQUIERDO: 3 Secciones de navegación en Desktop (Ocultas en Modo Ads) */}
+        {!isAdsMode && (
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-10 2xl:gap-12 text-base lg:text-lg xl:text-xl font-extrabold text-[#F0EDE8] flex-1 justify-end">
+            <a href="#inicio" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
+              Inicio
+            </a>
+            <a href="#servicios" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
+              Servicios
+            </a>
+            <a href="#nosotros" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
+              Nosotros
+            </a>
+          </nav>
+        )}
 
-        {/* CENTRO: Logo y Nombre del Negocio */}
-        <div className="flex items-center justify-start lg:justify-center px-0 xs:px-2 sm:px-6 xl:px-10 2xl:px-12">
+        {/* CENTRO / LOGO: Logo y Nombre del Negocio */}
+        <div className={`flex items-center ${isAdsMode ? 'justify-start' : 'justify-start lg:justify-center'} px-0 xs:px-2 sm:px-6 xl:px-10 2xl:px-12`}>
           <a href="#" className="flex items-center gap-2 xs:gap-3 sm:gap-3.5 group">
             <img
               src="/logo.png"
@@ -51,16 +57,18 @@ export const Header: React.FC = () => {
           </a>
         </div>
 
-        {/* LADO DERECHO: 2 Secciones restantes + Botones (WhatsApp directo en móvil) */}
+        {/* LADO DERECHO: 2 Secciones restantes (Ocultas en Modo Ads) + Botones de Contacto */}
         <div className="flex items-center gap-2 xs:gap-3 sm:gap-5 flex-1 justify-end">
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-10 2xl:gap-12 text-base lg:text-lg xl:text-xl font-extrabold text-[#F0EDE8]">
-            <a href="#catalogo" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
-              Catálogo
-            </a>
-            <a href="#contactos" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
-              Contactos
-            </a>
-          </nav>
+          {!isAdsMode && (
+            <nav className="hidden lg:flex items-center gap-6 xl:gap-10 2xl:gap-12 text-base lg:text-lg xl:text-xl font-extrabold text-[#F0EDE8]">
+              <a href="#catalogo" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
+                Catálogo
+              </a>
+              <a href="#contactos" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
+                Contactos
+              </a>
+            </nav>
+          )}
 
           <div className="ml-auto flex items-center gap-2 xs:gap-3 sm:gap-4">
             {/* Botón Llamar (Tablet / Desktop) */}

@@ -1,8 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatedTabBar, TabItem } from './ui/animated-tab-bar';
 import { Home, Layers, Sparkles, Users, Send } from 'lucide-react';
+import { WhatsAppIcon } from './icons/WhatsAppIcon';
+import { buildWhatsAppUrl, trackConversionEvent } from '../utils/analytics';
 
-export const MobileBottomNav: React.FC = () => {
+interface MobileBottomNavProps {
+  isAdsMode?: boolean;
+}
+
+export const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ isAdsMode = false }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const isNavigatingRef = useRef(false);
   const navigationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -146,6 +152,32 @@ export const MobileBottomNav: React.FC = () => {
       isNavigatingRef.current = false;
     }, 1100);
   };
+
+  if (isAdsMode) {
+    return (
+      <aside
+        aria-label="Cotización Inmediata Móvil"
+        className="fixed bottom-0 inset-x-0 z-40 w-full lg:hidden bg-[#0d0000]/95 backdrop-blur-xl border-t border-[#8C0000]/60 px-3 py-2.5 shadow-[0_-10px_35px_rgba(140,0,0,0.5)] flex items-center justify-center pointer-events-auto"
+      >
+        <a
+          href={buildWhatsAppUrl('Hola Mister Rótulos, deseo una cotización inmediata para mi negocio en Quito.')}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => {
+            trackConversionEvent('click_whatsapp', {
+              category: 'Lead',
+              label: 'WhatsApp Barra Móvil Ads',
+              source: 'floating_whatsapp',
+            });
+          }}
+          className="w-full flex items-center justify-center gap-2.5 py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-black text-xs xs:text-sm uppercase tracking-wider shadow-lg active:scale-95 transition-all duration-200 shadow-black/40"
+        >
+          <WhatsAppIcon className="w-5 h-5 fill-current text-white" />
+          <span>COTIZAR POR WHATSAPP EN 15 MIN</span>
+        </a>
+      </aside>
+    );
+  }
 
   return (
     <aside

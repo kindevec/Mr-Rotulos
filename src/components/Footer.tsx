@@ -125,7 +125,7 @@ export const Footer: React.FC = () => {
               {/* En móvil: redes sociales compactas en la misma fila con sus colores distintivos */}
               <div className="flex sm:hidden items-center gap-1.5 shrink-0">
                 <motion.a
-                  href="https://www.tiktok.com"
+                  href="https://www.tiktok.com/@misterrotulosquito"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok Mr. Rótulos"
@@ -136,7 +136,7 @@ export const Footer: React.FC = () => {
                   <TikTokIcon className="w-3.5 h-3.5 text-white" />
                 </motion.a>
                 <motion.a
-                  href="https://www.instagram.com"
+                  href="https://www.instagram.com/mr_rotulos?stkn=MWlrMTluZ2NkYTcyMg=="
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram Mr. Rótulos"
@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
                   <Instagram className="w-3.5 h-3.5 text-white stroke-[2.2]" />
                 </motion.a>
                 <motion.a
-                  href="https://www.facebook.com"
+                  href="https://www.facebook.com/mr.rotulos3d/?locale=es_LA"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook Mr. Rótulos"
@@ -183,7 +183,7 @@ export const Footer: React.FC = () => {
               </span>
               <div className="flex items-center gap-2.5">
                 <motion.a
-                  href="https://www.tiktok.com"
+                  href="https://www.tiktok.com/@misterrotulosquito"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="TikTok Mr. Rótulos"
@@ -196,7 +196,7 @@ export const Footer: React.FC = () => {
                 </motion.a>
 
                 <motion.a
-                  href="https://www.instagram.com"
+                  href="https://www.instagram.com/mr_rotulos?stkn=MWlrMTluZ2NkYTcyMg=="
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram Mr. Rótulos"
@@ -209,7 +209,7 @@ export const Footer: React.FC = () => {
                 </motion.a>
 
                 <motion.a
-                  href="https://www.facebook.com"
+                  href="https://www.facebook.com/mr.rotulos3d/?locale=es_LA"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook Mr. Rótulos"

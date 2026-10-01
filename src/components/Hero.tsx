@@ -1,38 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import { WhatsAppIcon } from './icons/WhatsAppIcon';
+import { buildWhatsAppUrl, trackConversionEvent } from '../utils/analytics';
 import FlexCarousel, { FlexCarouselItem } from './FlexCarousel';
+
+import { detectSearchIntent } from '../utils/analytics';
 
 interface SolutionItem {
   id: string;
   name: string;
   title: string;
   subtitle: string;
+  whatsappMessage: string;
+  docTitle: string;
 }
 
 const INTENT_SOLUTIONS: SolutionItem[] = [
   {
-    id: 'rotulos-fachadas',
-    name: 'Rótulos & Fachadas Alucobond',
-    title: 'Rótulos Luminosos 3D y Fachadas en Alucobond en Quito',
-    subtitle: 'Fabricación con electrocorte CNC en Alucobond, acrílico virgen, acero inoxidable y módulos LED de alto brillo. Visita técnica sin costo en Quito y cotización en 15 minutos.',
+    id: 'letreros-3d',
+    name: '⭐ Letreros 3D (Más Vendido)',
+    title: 'Letreros 3D y Letras Corpóreas en Quito',
+    subtitle: 'Fabricación directa de Letras en Acero Inoxidable, Acrílico con Alucobond, Letras Retroiluminadas Halo, Letras con Césped Sintético, Alto Relieve y Volumétricas. Cotización en 15 min.',
+    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar Letreros 3D para mi negocio en Quito.',
+    docTitle: 'Letreros 3D en Quito | Fabricación Directa - Mr. Rótulos',
   },
   {
-    id: 'letras-corporeas',
-    name: 'Letras 3D & Efecto Halo',
-    title: 'Letras 3D en Acero Inoxidable, Tool, Acrílico y MDF en Quito',
-    subtitle: 'Letras volumétricas con luz directa, retroiluminación halo o sin luz para exteriores, oficinas y eventos. Acabados automotrices y garantía escrita.',
+    id: 'rotulos-fachadas',
+    name: 'Rótulos & Fachadas Comerciales',
+    title: 'Rótulos Comerciales y Fachadas en Alucobond en Quito',
+    subtitle: 'Rótulos para Restaurantes, Asaderos, Peluquerías, Panaderías y Fachadas en Alucobond con electrocorte CNC y rótulos giratorios.',
+    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar un Rótulo Comercial o Fachada en Alucobond en Quito.',
+    docTitle: 'Rótulos Comerciales y Fachadas en Quito | Mr. Rótulos',
   },
   {
     id: 'cajas-luz-menuderos',
-    name: 'Cajas de Luz & Menuderos',
-    title: 'Cajas de Luz LED, Menuderos Backlight y Neón Flex en Quito',
-    subtitle: 'Cajas publicitarias de alta durabilidad, menuderos modulares backlight e iluminación Neón Flex de bajo consumo para locales comerciales y restaurantes.',
+    name: 'Cajas de Luz, Menuderos & Neón',
+    title: 'Cajas de Luz LED, Menuderos y Neón Flex en Quito',
+    subtitle: 'Cajas de luz silueteadas forma de nube, menuderos backlight para restaurantes, neón flex de colores y rompetráficos redondos de doble cara.',
+    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar una Caja de Luz, Menudero o Neón Flex en Quito.',
+    docTitle: 'Cajas de Luz LED y Menuderos en Quito | Mr. Rótulos',
   },
   {
     id: 'stands-vallas-senaletica',
     name: 'Stands, Vallas & Señalética',
-    title: 'Stands para Ferias, Vallas Publicitarias y Señalética en Vidrio',
-    subtitle: 'Diseño y montaje de stands e islas comerciales, vallas de gran formato con izaje en grúa y placas elegantes en vidrio acrílico con pernos decorativos.',
+    title: 'Stands para Ferias, Vallas y Señalética en Quito',
+    subtitle: 'Diseño y montaje de stands e islas comerciales para ferias, vallas publicitarias en azotea con grúa, placas en vidrio acrílico 4mm y arañas publicitarias.',
+    whatsappMessage: 'Hola Mister Rótulos, vi su anuncio y deseo cotizar Stands, Vallas o Señalética en Quito.',
+    docTitle: 'Stands para Ferias, Vallas y Señalética en Quito | Mr. Rótulos',
   },
 ];
 
@@ -72,43 +86,25 @@ export const Hero: React.FC = () => {
   const [isUrlLocked, setIsUrlLocked] = useState(false);
   const [fade, setFade] = useState(true);
 
-  // Detect Google Ads Search Intent from URL query parameters (e.g. ?servicio=cajas-de-luz or ?kw=cajas+de+luz or ?utm_term=...)
+  // Detect Google Ads Search Intent from URL query parameters and paths
   useEffect(() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const query = (
-        params.get('servicio') || 
-        params.get('kw') || 
-        params.get('utm_term') || 
-        params.get('q') || 
-        params.get('buscar') || 
-        ''
-      ).toLowerCase();
-
-      if (query) {
-        if (query.includes('caja') || query.includes('luz')) {
-          setActiveSolutionIndex(0);
-          setIsUrlLocked(true);
-          return;
-        }
-        if (query.includes('letra') || query.includes('corporea') || query.includes('corpórea') || query.includes('3d')) {
-          setActiveSolutionIndex(1);
-          setIsUrlLocked(true);
-          return;
-        }
-        if (query.includes('rotulo') || query.includes('rótulo') || query.includes('letrero') || query.includes('fachada')) {
-          setActiveSolutionIndex(2);
-          setIsUrlLocked(true);
-          return;
-        }
-        if (query.includes('giganto') || query.includes('vinil') || query.includes('impresion') || query.includes('impresión')) {
-          setActiveSolutionIndex(3);
-          setIsUrlLocked(true);
-          return;
-        }
-      }
-    } catch {
-      // fallback to cycling
+    const intent = detectSearchIntent();
+    if (intent === 'letras-3d') {
+      setActiveSolutionIndex(0);
+      setIsUrlLocked(true);
+      document.title = INTENT_SOLUTIONS[0].docTitle;
+    } else if (intent === 'rotulos') {
+      setActiveSolutionIndex(1);
+      setIsUrlLocked(true);
+      document.title = INTENT_SOLUTIONS[1].docTitle;
+    } else if (intent === 'cajas-de-luz') {
+      setActiveSolutionIndex(2);
+      setIsUrlLocked(true);
+      document.title = INTENT_SOLUTIONS[2].docTitle;
+    } else if (intent === 'stands') {
+      setActiveSolutionIndex(3);
+      setIsUrlLocked(true);
+      document.title = INTENT_SOLUTIONS[3].docTitle;
     }
   }, []);
 
@@ -176,14 +172,34 @@ export const Hero: React.FC = () => {
           {currentSolution.subtitle}
         </p>
 
-        {/* Botón Único Centrado: Ver Catálogo */}
-        <div className="flex justify-center items-center mt-6 w-full">
+        {/* Botones de Acción: Cotizar por WhatsApp (Principal) y Ver catálogo (Secundario más pequeño) */}
+        <div className="flex flex-col items-center justify-center gap-3 mt-6 sm:mt-8 w-full">
+          {/* Botón Principal: COTIZAR POR WHATSAPP */}
+          <a
+            href={buildWhatsAppUrl(currentSolution.whatsappMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => {
+              trackConversionEvent('click_whatsapp', {
+                category: 'Lead',
+                label: `Cotizar por WhatsApp - Hero CTA (${currentSolution.name})`,
+                source: 'hero_whatsapp',
+              });
+            }}
+            className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-2xl bg-[#141414] hover:bg-black text-white font-black text-sm sm:text-base tracking-wider uppercase border border-white/25 shadow-2xl shadow-black/60 hover:border-white/40 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 cursor-pointer group"
+            aria-label="Cotizar por WhatsApp"
+          >
+            <WhatsAppIcon className="w-5 h-5 text-[#25D366] group-hover:scale-110 transition-transform duration-200 fill-current" />
+            <span>COTIZAR POR WHATSAPP</span>
+          </a>
+
+          {/* Botón Secundario en Negro: Ver trabajos realizados */}
           <a
             href="#catalogo"
-            className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-2xl bg-[#191919] hover:bg-black text-white font-extrabold text-sm sm:text-base border border-white/20 shadow-xl shadow-black/40 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-2 px-5 sm:px-6 py-2 sm:py-2.5 rounded-xl bg-[#141414] hover:bg-black text-white font-bold text-xs sm:text-sm border border-white/20 hover:border-white/40 shadow-lg shadow-black/50 hover:-translate-y-0.5 transition-all duration-200 active:scale-95 cursor-pointer group mt-0.5"
           >
-            <span>Ver Catálogo de Trabajos</span>
-            <ArrowRight className="w-4 h-4 text-white" />
+            <span>Ver trabajos realizados</span>
+            <ChevronDown className="w-3.5 h-3.5 text-white/80 group-hover:text-white group-hover:translate-y-0.5 transition-transform" />
           </a>
         </div>
 

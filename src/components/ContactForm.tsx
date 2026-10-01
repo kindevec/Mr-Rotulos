@@ -129,14 +129,14 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
   const getServiceLabel = (id: string) => {
     switch (id) {
-      case 'rotulos-luminosos':
-        return 'Rótulo Luminoso / Fachada Comercial';
-      case 'cajas-de-luz':
-        return 'Caja de Luz LED (Slim)';
       case 'letras-3d':
-        return 'Letras 3D Corpóreas (Acrílico / Acero / Neón)';
+        return '⭐ Letreros 3D & Letras Corpóreas (Más Vendido)';
+      case 'rotulos-luminosos':
+        return 'Rótulos Comerciales & Fachadas Alucobond';
+      case 'cajas-de-luz':
+        return 'Cajas de Luz LED, Menuderos & Neón Flex';
       case 'gigantografias':
-        return 'Gigantografía / Impresión Gran Formato';
+        return 'Stands para Ferias, Vallas & Señalética';
       default:
         return 'Cotización General de Rotulación';
     }
@@ -212,7 +212,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 
                 {/* 1. Taller & Showroom */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white icon-color-shift mt-0.5 shadow-sm">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md black-icon-color-shift group-hover:scale-105 transition-transform duration-300">
                     <MapPin className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
@@ -232,7 +232,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
                 {/* 2. Correo Electrónico */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white icon-color-shift mt-0.5 shadow-sm">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md black-icon-color-shift group-hover:scale-105 transition-transform duration-300">
                     <Mail className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
@@ -250,7 +250,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
 
                 {/* 3. Teléfono / WhatsApp */}
                 <div className="flex items-start gap-3 sm:gap-4 group">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white icon-color-shift mt-0.5 shadow-sm">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl border-2 flex items-center justify-center shrink-0 text-white mt-0.5 shadow-md black-icon-color-shift group-hover:scale-105 transition-transform duration-300">
                     <Phone className="w-5 h-5 stroke-[2.3] text-white" />
                   </div>
                   <div>
@@ -280,7 +280,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                 </span>
                 <div className="flex items-center gap-2.5 sm:gap-3">
                   <a
-                    href="https://www.tiktok.com"
+                    href="https://www.tiktok.com/@misterrotulosquito"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="TikTok Mr. Rótulos"
@@ -289,7 +289,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     <TikTokIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </a>
                   <a
-                    href="https://www.instagram.com"
+                    href="https://www.instagram.com/mr_rotulos?stkn=MWlrMTluZ2NkYTcyMg=="
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram Mr. Rótulos"
@@ -298,7 +298,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                     <InstagramIcon className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                   </a>
                   <a
-                    href="https://www.facebook.com"
+                    href="https://www.facebook.com/mr.rotulos3d/?locale=es_LA"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook Mr. Rótulos"
@@ -411,13 +411,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({
                           setFormData({ ...formData, servicio: val });
                           onServiceChange(val);
                         }}
-                        className="w-full pb-2.5 sm:pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] outline-none transition-colors cursor-pointer"
+                        className="w-full pb-2.5 sm:pb-3 pt-1 bg-transparent border-b-2 border-slate-200 focus:border-[#8C0000] text-sm text-[#191919] outline-none transition-colors cursor-pointer font-medium"
                       >
                         <option value="">Selecciona una opción...</option>
-                        <option value="rotulos-luminosos">Rótulos Luminosos & Fachadas</option>
-                        <option value="cajas-de-luz">Cajas de Luz LED (Slim)</option>
-                        <option value="letras-3d">Letras 3D Corpóreas (Acrílico/Acero)</option>
-                        <option value="gigantografias">Gigantografías y Gran Formato</option>
+                        <option value="letras-3d">⭐ Letreros 3D & Letras Corpóreas (Más Vendido)</option>
+                        <option value="rotulos-luminosos">Rótulos Comerciales & Fachadas Alucobond</option>
+                        <option value="cajas-de-luz">Cajas de Luz LED, Menuderos & Neón Flex</option>
+                        <option value="gigantografias">Stands para Ferias, Vallas & Señalética</option>
                       </select>
                     </div>
                   </div>

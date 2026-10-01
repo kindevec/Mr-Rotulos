@@ -2,62 +2,62 @@ import { ServiceItem, GalleryProject } from '../types';
 
 export const SERVICES_DATA: ServiceItem[] = [
   {
-    id: 'rotulos-luminosos',
-    title: 'Rótulos Luminosos & Fachadas Alucobond',
-    badge: 'Máximo Impacto Exterior',
-    description: 'Transformación total de fachadas comerciales con bandejas de Alucobond (ACM), electrocorte CNC computarizado, iluminación LED de alto brillo y lonas translúcidas de 1440dpi.',
+    id: 'letras-3d',
+    title: 'Letreros 3D & Letras Corpóreas',
+    badge: '⭐ El Más Vendido',
+    description: 'Fabricación directa de Letras en Acero Inoxidable 304, Acrílico virgen sobre Alucobond, Letras Retroiluminadas con Luz Halo LED, Letras con Césped Sintético, Alto Relieve y Letras Volumétricas monumentales.',
     features: [
-      'Bandejas de Alucobond con electrocorte y difusores acrílicos',
-      'Estructuras metálicas soldadas y protegidas contra el clima andino',
-      'Módulos LED de alto brillo con 25.000 horas continuas de vida útil',
-      'Instalación garantizada en altura para locales y restaurantes'
+      'Letras en Acero Inoxidable 304 (espejo/cepillado) y Acrílico virgen',
+      'Iluminación halo indirecta (efecto silueta) o luz LED directa',
+      'Combinaciones exclusivas con césped sintético y bandejas de Alucobond',
+      'Logotipos empresariales en alto relieve y letras volumétricas monumentales'
+    ],
+    materials: 'Acero Inox 304, Acrílico virgen, Tool galvanizado, Césped sintético, MDF, LED IP67',
+    warranty: 'Garantía por escrito de fabricación e instalación',
+    image: '/catalog/catalog-retro-myjoker.webp',
+  },
+  {
+    id: 'rotulos-luminosos',
+    title: 'Rótulos Comerciales & Fachadas Alucobond',
+    badge: 'Fachadas de Alto Impacto',
+    description: 'Rótulos personalizados para restaurantes, panaderías, peluquerías y fachadas integrales en Alucobond (ACM) con electrocorte CNC computarizado y rótulos giratorios.',
+    features: [
+      'Rótulos para Restaurantes, Asaderos, Peluquerías y Panaderías',
+      'Bandejas de Alucobond con electrocorte CNC y difusor acrílico',
+      'Rótulos con sistema giratorio circular de 60cm',
+      'Estructuras metálicas soldadas de alta resistencia para intemperie'
     ],
     materials: 'Alucobond (ACM), Acrílico virgen 2-5mm, Estructura soldada, Módulos LED IP67',
     warranty: 'Garantía extendida y soporte técnico',
     image: '/catalog/catalog-alucobond-concesol.webp',
   },
   {
-    id: 'letras-3d',
-    title: 'Letras 3D Corpóreas & Efecto Halo',
-    badge: 'Corte Láser & CNC',
-    description: 'Letras y logotipos volumétricos en Acero Inoxidable 304, Acrílico virgen, Tool galvanizado con pintura automotriz y MDF. Opciones con luz directa, retroiluminación halo o sin luz.',
-    features: [
-      'Acabados en Acero Inox espejo/cepillado, Acrílico, Tool galvanizado y MDF',
-      'Iluminación halo indirecta (luz cálida/fría) o luz LED directa',
-      'Acabado con pintura automotriz al tono corporativo exacto',
-      'Opciones combinadas con césped sintético y respaldos en Alucobond'
-    ],
-    materials: 'Acero Inox 304, Tool galvanizado, Acrílico virgen, MDF, Pintura automotriz',
-    warranty: 'Garantía por escrito de fabricación e instalación',
-    image: '/catalog/catalog-retro-myjoker.webp',
-  },
-  {
     id: 'cajas-de-luz',
     title: 'Cajas de Luz LED, Menuderos & Neón Flex',
-    badge: 'Alta Visibilidad 24/7',
-    description: 'Cajas de luz publicitarias, menuderos modulares con película backlight intercambiable y letreros de Neón Flex de bajo consumo para locales gastronómicos y comerciales.',
+    badge: 'Visibilidad 24/7',
+    description: 'Cajas de luz silueteadas tipo nube, menuderos modulares con película backlight intercambiable, letreros en Neón Flex 12V y rompetráficos redondos de doble cara.',
     features: [
-      'Menuderos modulares curvos y planos con recambio rápido de menú',
-      'Lona traslúcida tensada 1440dpi y cajas con formas silueteadas (tipo nube)',
-      'Diseños exclusivos en Neón Flex de colores intensos y bajo consumo',
-      'Rótulos circulares y giratorios de doble cara'
+      'Cajas de luz con silueta del contorno del logotipo (tipo nube)',
+      'Menuderos individuales y modulares para comida rápida y restaurantes',
+      'Letreros personalizados en Neón LED Flex de bajo consumo',
+      'Rompe tráficos redondos de doble cara con soporte tipo bandera'
     ],
-    materials: 'Cajas plásticas/metálicas, Backlight Film, Neón Flex 12V, Lona 1440dpi',
+    materials: 'Cajas plásticas/metálicas, Backlight Film, Neón Flex 12V, Acrílico termoformado',
     warranty: 'Garantía en iluminación LED y fuentes de poder',
     image: '/catalog/catalog-luminoso-santamartha.webp',
   },
   {
     id: 'gigantografias',
-    title: 'Stands Feriales, Vallas & Señalética',
+    title: 'Stands para Ferias, Vallas & Señalética',
     badge: 'Gran Formato & Corporativo',
-    description: 'Diseño y montaje de stands e islas comerciales para ferias, vallas publicitarias en azoteas con izaje técnico en grúa y señalética en vidrio acrílico con pernos decorativos.',
+    description: 'Diseño y montaje de stands e islas para ferias (Dior, Pichincha), vallas publicitarias en azoteas con izaje en grúa, señalética en vidrio acrílico 4mm y arañas publicitarias.',
     features: [
-      'Stands e islas comerciales para centros comerciales y ferias (Dior, Pichincha)',
-      'Vallas publicitarias de gran formato y cálculo estructural',
-      'Placas corporativas y señalética médica en vidrio acrílico de 4mm con pernos inox',
+      'Stands e islas comerciales para ferias y centros comerciales',
+      'Vallas publicitarias de gran formato y cálculo estructural con grúa',
+      'Señalética en vidrio acrílico de 4mm con tornillos decorativos de acero',
       'Displays portátiles tipo araña X-Banner 60x160cm'
     ],
-    materials: 'Vidrio acrílico 4mm, Tornillos decorativos inox, Estructuras tubulares, Lona intemperie',
+    materials: 'Vidrio acrílico 4mm, Pernos decorativos inox, Estructuras tubulares, Lona intemperie',
     warranty: 'Montaje profesional garantizado',
     image: '/catalog/catalog-stands-dior.webp',
   },

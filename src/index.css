@@ -193,6 +193,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =========================================================
+   Efecto de Cambio de Color para Íconos Negros (Bordes y Resplandor Dinámico)
+   ========================================================= */
+@keyframes blackIconColorShift {
+  0%, 100% {
+    background-color: #151515;
+    border-color: #8C0000;
+    box-shadow: 0 0 16px rgba(140, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  33% {
+    background-color: #101010;
+    border-color: #ff3b30;
+    box-shadow: 0 0 22px rgba(255, 59, 48, 0.55), 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+  66% {
+    background-color: #151515;
+    border-color: #e11d48;
+    box-shadow: 0 0 18px rgba(225, 29, 72, 0.5), 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.black-icon-color-shift {
+  animation: blackIconColorShift 3.5s ease-in-out infinite;
+}
+
+/* =========================================================
    Efecto de Cambio de Color y Resplandor para Botón Flotante WhatsApp Rojo y Blanco
    ========================================================= */
 @keyframes whatsappRedColorCycle {
