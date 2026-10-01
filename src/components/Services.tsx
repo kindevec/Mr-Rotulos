@@ -9,13 +9,13 @@ import {
   Flame, 
   Store, 
   Signpost, 
-  ShieldCheck, 
-  Ruler, 
-  Eye, 
-  Cpu,
   Building2,
   Car,
-  Compass
+  Compass,
+  PenTool,
+  Scissors,
+  Truck,
+  CheckCircle2
 } from 'lucide-react';
 import { WhatsAppIcon } from './icons/WhatsAppIcon';
 import { ServiceId } from '../types';
@@ -45,12 +45,21 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   const activeCardTimerRef = useRef<number | null>(null);
   const carouselContainerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-cerrar la tarjeta cuando el usuario toca fuera de ella o no interactúa
+  const [activeServiceIndex, setActiveServiceIndex] = useState<number | null>(null);
+  const activeServiceTimerRef = useRef<number | null>(null);
+  const serviceGridRef = useRef<HTMLDivElement>(null);
+
+  // Auto-cerrar la tarjeta de rótulos o de servicios cuando el usuario toca fuera de ellas
   useEffect(() => {
     const handleOutsideInteraction = (e: MouseEvent | TouchEvent) => {
-      if (carouselContainerRef.current && !carouselContainerRef.current.contains(e.target as Node)) {
+      const target = e.target as Node;
+      if (carouselContainerRef.current && !carouselContainerRef.current.contains(target)) {
         setActiveCardIndex(null);
         if (activeCardTimerRef.current) clearTimeout(activeCardTimerRef.current);
+      }
+      if (serviceGridRef.current && !serviceGridRef.current.contains(target)) {
+        setActiveServiceIndex(null);
+        if (activeServiceTimerRef.current) clearTimeout(activeServiceTimerRef.current);
       }
     };
 
@@ -61,6 +70,7 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
       document.removeEventListener('touchstart', handleOutsideInteraction);
       document.removeEventListener('mousedown', handleOutsideInteraction);
       if (activeCardTimerRef.current) clearTimeout(activeCardTimerRef.current);
+      if (activeServiceTimerRef.current) clearTimeout(activeServiceTimerRef.current);
     };
   }, []);
 
@@ -95,6 +105,24 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
       }
       return next;
     });
+  };
+
+  const handleServiceCardTap = (index: number, item: ServiceCardItem) => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
+    if (isMobile) {
+      setActiveServiceIndex((prev) => {
+        const next = prev === index ? null : index;
+        if (activeServiceTimerRef.current) clearTimeout(activeServiceTimerRef.current);
+        if (next !== null) {
+          activeServiceTimerRef.current = window.setTimeout(() => {
+            setActiveServiceIndex(null);
+          }, 4500);
+        }
+        return next;
+      });
+    } else {
+      handleServiceQuote(item.id, item.title);
+    }
   };
 
   // Lista de servicios según catálogo oficial con letras agrupadas
@@ -202,20 +230,20 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
 
   const workSteps = [
     {
-      icon: <Ruler className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white" />,
-      desc: 'Visita técnica sin costo en tu local.'
+      description: 'Boceto y diseño a medida de tu marca.',
+      icon: <PenTool className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
-      icon: <Eye className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white" />,
-      desc: 'Visualiza tu rótulo antes de fabricar.'
+      description: 'Corte de alta precisión e integración de luces LED.',
+      icon: <Scissors className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
-      icon: <Cpu className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white" />,
-      desc: 'Corte de precisión y módulos Samsung IP67.'
+      description: 'Traslado e instalación técnica en tu local.',
+      icon: <Truck className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     },
     {
-      icon: <ShieldCheck className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white" />,
-      desc: 'Montaje profesional con hasta 3 años de garantía.'
+      description: 'Entrega e instalación de tu rótulo listo en solo 10 días.',
+      icon: <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.2]" />
     }
   ];
 
@@ -238,22 +266,61 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
           </p>
         </div>
 
-        {/* Grilla de 12 Servicios Reales */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 mb-12 md:mb-16 max-w-6xl mx-auto">
-          {serviceCards.map((item) => (
-            <div 
-              key={item.title}
-              onClick={() => handleServiceQuote(item.id, item.title)}
-              className="flex flex-col items-center text-center group transition-all duration-300 hover:-translate-y-1 p-3 sm:p-4 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100 cursor-pointer select-none"
-            >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#151515] border border-slate-700/60 flex items-center justify-center mb-3 shadow-md group-hover:scale-110 group-hover:bg-[#8C0000] group-hover:border-[#8C0000] transition-all duration-300 text-white">
-                {item.icon}
+        {/* Grilla de Servicios Reales */}
+        <div ref={serviceGridRef} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8 mb-12 md:mb-16 max-w-6xl mx-auto">
+          {serviceCards.map((item, index) => {
+            const isServiceActive = activeServiceIndex === index;
+
+            return (
+              <div 
+                key={item.title}
+                onClick={() => handleServiceCardTap(index, item)}
+                className={`flex flex-col items-center justify-between text-center transition-all duration-300 p-3 sm:p-4 rounded-2xl border cursor-pointer select-none group ${
+                  isServiceActive 
+                    ? 'bg-red-50/80 border-[#8C0000]/40 shadow-lg scale-[1.02]' 
+                    : 'hover:bg-slate-50 border-transparent hover:border-slate-100 hover:-translate-y-1'
+                }`}
+              >
+                <div className="flex flex-col items-center text-center w-full">
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl border flex items-center justify-center mb-3 shadow-md transition-all duration-300 text-white ${
+                    isServiceActive
+                      ? 'bg-[#8C0000] border-[#8C0000] scale-110 shadow-red-900/40'
+                      : 'bg-[#151515] border-slate-700/60 group-hover:scale-110 group-hover:bg-[#8C0000] group-hover:border-[#8C0000]'
+                  }`}>
+                    {item.icon}
+                  </div>
+                  <h3 className={`text-xs sm:text-sm md:text-base font-black transition-colors font-display max-w-[200px] leading-snug ${
+                    isServiceActive ? 'text-[#8C0000]' : 'text-[#191919] group-hover:text-[#8C0000]'
+                  }`}>
+                    {item.title}
+                  </h3>
+                </div>
+
+                {/* Botón Cotizar por WhatsApp que aparece al hacer tap en móvil */}
+                {isServiceActive && (
+                  <div className="mt-3 pt-2 border-t border-[#8C0000]/20 w-full flex justify-center animate-in fade-in duration-200">
+                    <a
+                      href={buildWhatsAppUrl(`Hola Mister Rótulos, deseo cotizar el servicio: ${item.title}`)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        trackConversionEvent('click_whatsapp', {
+                          category: 'Lead',
+                          label: `Cotizar servicio WhatsApp: ${item.title}`,
+                          source: 'service_grid_quote',
+                        });
+                      }}
+                      className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#8C0000] hover:bg-[#730000] text-white font-black text-[11px] uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer w-full max-w-[160px]"
+                    >
+                      <WhatsAppIcon className="w-3.5 h-3.5 fill-current text-white" />
+                      <span>Cotizar aquí</span>
+                    </a>
+                  </div>
+                )}
               </div>
-              <h3 className="text-xs sm:text-sm md:text-base font-black text-[#191919] group-hover:text-[#8C0000] transition-colors font-display max-w-[200px] leading-snug">
-                {item.title}
-              </h3>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
 
@@ -423,21 +490,21 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
             {/* Lado Izquierdo: Información con ÍCONOS BLANCOS */}
             <div className="lg:col-span-6 flex flex-col justify-between space-y-4 p-6 sm:p-8 lg:p-10 xl:p-12">
               
-              <div className="text-center lg:text-left">
-                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-display leading-tight mb-2 text-center lg:text-left">
+              <div className="text-center w-full">
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight font-display leading-tight mb-2 text-center">
                   ¿Cómo trabajamos en MR Rótulos?
                 </h3>
               </div>
 
-              {/* 4 Pasos con ÍCONOS GRANDES Y EFECTO DE CAMBIO DE COLOR */}
-              <div className="space-y-3.5 sm:space-y-4 text-xs sm:text-sm md:text-base text-white/90">
+              {/* 4 Pasos Oficiales con descripción corta */}
+              <div className="space-y-3 sm:space-y-3.5 text-xs sm:text-sm md:text-base text-white/95">
                 {workSteps.map((ws, idx) => (
-                  <div key={idx} className="flex items-center gap-3.5 sm:gap-4 text-left">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-300 icon-color-shift">
+                  <div key={idx} className="flex items-center gap-3.5 sm:gap-4 text-left group">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center shrink-0 border-2 transition-all duration-300 icon-color-shift text-white">
                       {ws.icon}
                     </div>
-                    <p className="leading-snug font-semibold text-white/95 text-xs sm:text-sm md:text-base">
-                      {ws.desc}
+                    <p className="font-semibold text-white/95 text-xs sm:text-sm md:text-base leading-snug">
+                      {ws.description}
                     </p>
                   </div>
                 ))}

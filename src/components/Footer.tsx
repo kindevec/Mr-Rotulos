@@ -351,14 +351,6 @@ export const Footer: React.FC = () => {
                 <span className="text-white text-[10px]">✦</span>
                 <span>Avisos con Neón, LED, etc.</span>
               </li>
-              <li className="flex items-center gap-1.5 hover:text-white transition-colors">
-                <span className="text-white text-[10px]">✦</span>
-                <span>Señaléticas viales & Vallas</span>
-              </li>
-              <li className="flex items-center gap-1.5 hover:text-white transition-colors">
-                <span className="text-white text-[10px]">✦</span>
-                <span>Vinil para vehículos y Más...</span>
-              </li>
             </ul>
           </div>
 
