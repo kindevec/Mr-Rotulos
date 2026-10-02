@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, ExternalLink, Play } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ExternalLink, Play, Volume2, VolumeX } from 'lucide-react';
 
 export interface ZoomSliderItem {
   id: string;
@@ -88,6 +88,7 @@ export function ZoomSliderComp({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const [isAudioEnabled, setIsAudioEnabled] = useState(true);
 
   const isMobile = containerWidth < MOBILE_BREAKPOINT;
   const isTablet = containerWidth >= MOBILE_BREAKPOINT && containerWidth < TABLET_BREAKPOINT;
@@ -170,7 +171,7 @@ export function ZoomSliderComp({
           }
         }
         try {
-          video.muted = false;
+          video.muted = !isAudioEnabled;
           video.volume = 1;
           await video.play();
         } catch {
@@ -186,11 +187,11 @@ export function ZoomSliderComp({
         }
       }
     });
-  }, [activeIndex, isInView]);
+  }, [activeIndex, isInView, isAudioEnabled]);
 
-  // Activación automática de audio con el scroll del usuario al llegar a la sección
+  // Activación automática de audio con cualquier interacción o scroll del usuario al llegar a la sección
   useEffect(() => {
-    const triggerAudioOnScroll = () => {
+    const triggerAudioOnInteraction = () => {
       const container = containerRef.current;
       if (container) {
         const rect = container.getBoundingClientRect();
@@ -203,38 +204,34 @@ export function ZoomSliderComp({
       if (!isInView) return;
       const activeVideo = videoRefs.current[activeIndex];
       if (activeVideo) {
+        activeVideo.muted = false;
+        activeVideo.volume = 1;
+        setIsAudioEnabled(true);
         if (activeVideo.paused) {
           activeVideo.currentTime = activeVideo.currentTime || 0;
-          activeVideo.muted = false;
-          activeVideo.volume = 1;
-          const playPromise = activeVideo.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(() => {
-              activeVideo.muted = true;
-              activeVideo.play().catch(() => {});
-            });
-          }
-        } else if (activeVideo.muted) {
-          activeVideo.muted = false;
-          activeVideo.volume = 1;
+          activeVideo.play().catch(() => {});
         }
       }
     };
 
-    window.addEventListener('scroll', triggerAudioOnScroll, { passive: true });
-    window.addEventListener('wheel', triggerAudioOnScroll, { passive: true });
-    window.addEventListener('touchmove', triggerAudioOnScroll, { passive: true });
-    window.addEventListener('touchstart', triggerAudioOnScroll, { passive: true });
-    window.addEventListener('mousemove', triggerAudioOnScroll, { passive: true });
-    window.addEventListener('pointerdown', triggerAudioOnScroll, { passive: true });
+    window.addEventListener('scroll', triggerAudioOnInteraction, { passive: true });
+    window.addEventListener('wheel', triggerAudioOnInteraction, { passive: true });
+    window.addEventListener('touchmove', triggerAudioOnInteraction, { passive: true });
+    window.addEventListener('touchstart', triggerAudioOnInteraction, { passive: true });
+    window.addEventListener('touchend', triggerAudioOnInteraction, { passive: true });
+    window.addEventListener('pointerdown', triggerAudioOnInteraction, { passive: true });
+    window.addEventListener('click', triggerAudioOnInteraction, { passive: true });
+    document.addEventListener('scroll', triggerAudioOnInteraction, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', triggerAudioOnScroll);
-      window.removeEventListener('wheel', triggerAudioOnScroll);
-      window.removeEventListener('touchmove', triggerAudioOnScroll);
-      window.removeEventListener('touchstart', triggerAudioOnScroll);
-      window.removeEventListener('mousemove', triggerAudioOnScroll);
-      window.removeEventListener('pointerdown', triggerAudioOnScroll);
+      window.removeEventListener('scroll', triggerAudioOnInteraction);
+      window.removeEventListener('wheel', triggerAudioOnInteraction);
+      window.removeEventListener('touchmove', triggerAudioOnInteraction);
+      window.removeEventListener('touchstart', triggerAudioOnInteraction);
+      window.removeEventListener('touchend', triggerAudioOnInteraction);
+      window.removeEventListener('pointerdown', triggerAudioOnInteraction);
+      window.removeEventListener('click', triggerAudioOnInteraction);
+      document.removeEventListener('scroll', triggerAudioOnInteraction);
     };
   }, [activeIndex, isInView]);
 
@@ -423,9 +420,37 @@ export function ZoomSliderComp({
                   playsInline
                   autoPlay={isCenter}
                   preload="auto"
-                  muted={!isCenter}
+                  muted={!isCenter || !isAudioEnabled}
                   className="w-full h-full object-cover rounded-2xl pointer-events-none"
                 />
+
+                {/* Botón de control de Audio en la esquina superior derecha del video activo */}
+                {isCenter && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const activeVideo = videoRefs.current[index];
+                      if (activeVideo) {
+                        const newMuted = !activeVideo.muted;
+                        activeVideo.muted = newMuted;
+                        activeVideo.volume = 1;
+                        setIsAudioEnabled(!newMuted);
+                        if (!newMuted && activeVideo.paused) {
+                          activeVideo.play().catch(() => {});
+                        }
+                      }
+                    }}
+                    aria-label={isAudioEnabled ? "Silenciar video" : "Activar sonido del video"}
+                    className="absolute top-3 right-3 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/75 hover:bg-[#8C0000] text-white border border-white/25 flex items-center justify-center backdrop-blur-md shadow-lg transition-all hover:scale-110 active:scale-90 cursor-pointer pointer-events-auto"
+                  >
+                    {isAudioEnabled ? (
+                      <Volume2 className="w-4 h-4 text-white" />
+                    ) : (
+                      <VolumeX className="w-4 h-4 text-white/80" />
+                    )}
+                  </button>
+                )}
 
                 {/* Ícono de Reproducir central para identificar claramente que es un video */}
                 {!isCenter && (
