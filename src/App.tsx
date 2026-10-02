@@ -8,6 +8,7 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { AboutUs } from './components/AboutUs';
+import { ReelsShowcase } from './components/ReelsShowcase';
 import { Catalog } from './components/Catalog';
 import { ContactForm } from './components/ContactForm';
 import { Footer } from './components/Footer';
@@ -43,6 +44,9 @@ export default function App() {
 
         {/* SECCIÓN 3: SOBRE NOSOTROS */}
         <AboutUs />
+
+        {/* SECCIÓN: CARRUSEL DE VIDEOS / REELS 9:16 */}
+        <ReelsShowcase />
 
         {/* SECCIÓN 4: CATÁLOGO */}
         <Catalog />

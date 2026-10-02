@@ -20,6 +20,8 @@ export type ConversionSource =
   | 'hero_primary_cta' 
   | 'floating_whatsapp' 
   | 'service_quote' 
+  | 'service_grid_quote'
+  | 'video_reels_cta'
   | 'form_submission' 
   | 'catalog_card_cta' 
   | 'catalog_modal' 

@@ -61,6 +61,9 @@ export const Header: React.FC<HeaderProps> = ({ isAdsMode = false }) => {
         <div className="flex items-center gap-2 xs:gap-3 sm:gap-5 flex-1 justify-end">
           {!isAdsMode && (
             <nav className="hidden lg:flex items-center gap-6 xl:gap-10 2xl:gap-12 text-base lg:text-lg xl:text-xl font-extrabold text-[#F0EDE8]">
+              <a href="#videos" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
+                Videos
+              </a>
               <a href="#catalogo" className="hover:text-[#8C0000] transition-colors py-1 px-1 tracking-wide">
                 Catálogo
               </a>

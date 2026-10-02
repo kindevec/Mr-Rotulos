@@ -30,7 +30,7 @@ export const AboutUs: React.FC = () => {
               <div className="grid grid-cols-2 gap-4 sm:gap-5.5 w-full">
                 
                 {/* 1. Imagen Superior Izquierda: Instalación en proceso */}
-                <div className="relative w-full min-w-0 aspect-[4/3.4] sm:aspect-[4/3.35] rounded-tl-[36px] sm:rounded-tl-[48px] rounded-tr-2xl rounded-br-2xl rounded-bl-2xl overflow-hidden bg-slate-900 shadow-lg group">
+                <div className="relative w-full min-w-0 aspect-[4/4.6] sm:aspect-[4/4.6] rounded-tl-[36px] sm:rounded-tl-[48px] rounded-tr-2xl rounded-br-2xl rounded-bl-2xl overflow-hidden bg-slate-900 shadow-lg group">
                   <img
                     src="/about/about-instalacion-odontologia.jpg"
                     alt="Equipo técnico de MR Rótulos instalando rótulo luminoso en fachada"
@@ -40,22 +40,22 @@ export const AboutUs: React.FC = () => {
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
                 </div>
 
-                {/* 2. Imagen Superior Derecha: Chulpi */}
-                <div className="relative w-full min-w-0 aspect-[4/3.4] sm:aspect-[4/3.35] rounded-tr-[36px] sm:rounded-tr-[48px] rounded-tl-2xl rounded-br-2xl rounded-bl-2xl overflow-hidden bg-slate-900 shadow-lg group">
+                {/* 2. Imagen Superior Derecha: Maquinaria Láser CNC de Precisión */}
+                <div className="relative w-full min-w-0 aspect-[4/4.6] sm:aspect-[4/4.6] rounded-tr-[36px] sm:rounded-tr-[48px] rounded-tl-2xl rounded-br-2xl rounded-bl-2xl overflow-hidden bg-slate-900 shadow-lg group">
                   <img
-                    src="/about/about-chulpi-rotulo.jpg"
-                    alt="Letras 3D corpóreas con retroiluminación LED Chulpi"
+                    src="/about/about-corte-laser-cnc.jpg"
+                    alt="Maquinaria de corte láser CNC de alta precisión en taller MR Rótulos"
                     loading="lazy"
                     className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
                 </div>
 
-                {/* 3. Imagen Inferior Izquierda: Sede Vida Abundante */}
-                <div className="relative w-full min-w-0 aspect-[4/3.4] sm:aspect-[4/3.35] rounded-bl-[36px] sm:rounded-bl-[48px] rounded-tl-2xl rounded-tr-2xl rounded-br-2xl overflow-hidden bg-slate-900 shadow-lg group">
+                {/* 3. Imagen Inferior Izquierda: Impresión de Gran Formato y Gigantografías */}
+                <div className="relative w-full min-w-0 aspect-[4/4.6] sm:aspect-[4/4.6] rounded-bl-[36px] sm:rounded-bl-[48px] rounded-tl-2xl rounded-tr-2xl rounded-br-2xl overflow-hidden bg-slate-900 shadow-lg group">
                   <img
-                    src="/about/about-vida-abundante.jpg"
-                    alt="Rótulo corpóreo luminoso SEDE VA Vida Abundante"
+                    src="/about/about-impresion-gigantografia.jpg"
+                    alt="Impresión de gran formato y gigantografías publicitarias de alta resolución"
                     loading="lazy"
                     className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700"
                   />
@@ -63,7 +63,7 @@ export const AboutUs: React.FC = () => {
                 </div>
 
                 {/* 4. Imagen Inferior Derecha: Instalación El Ordeño con grúa y andamios */}
-                <div className="relative w-full min-w-0 aspect-[4/3.4] sm:aspect-[4/3.35] rounded-br-[36px] sm:rounded-br-[48px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl overflow-hidden bg-slate-900 shadow-lg group">
+                <div className="relative w-full min-w-0 aspect-[4/4.6] sm:aspect-[4/4.6] rounded-br-[36px] sm:rounded-br-[48px] rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl overflow-hidden bg-slate-900 shadow-lg group">
                   <img
                     src="/about/about-el-ordeno-instalacion.jpg"
                     alt="Instalación industrial de rótulo gran formato El Ordeño con grúa y equipo técnico"
