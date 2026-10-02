@@ -89,6 +89,7 @@ export function ZoomSliderComp({
   const [isHovered, setIsHovered] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const [isAudioEnabled, setIsAudioEnabled] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const isMobile = containerWidth < MOBILE_BREAKPOINT;
   const isTablet = containerWidth >= MOBILE_BREAKPOINT && containerWidth < TABLET_BREAKPOINT;
@@ -138,139 +139,31 @@ export function ZoomSliderComp({
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
-  // Observador de visibilidad: detecta exactamente cuando el usuario llega a la sección de videos al hacer scroll
+  // Observador de visibilidad: detecta la presencia del componente en pantalla
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Chequeo inmediato al montar o recargar
-    const checkInitialVisibility = () => {
-      const rect = container.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        setIsInView(true);
-      }
-    };
-    checkInitialVisibility();
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
+        if (!entry.isIntersecting) {
+          // Pausar si el usuario se aleja de la sección
+          videoRefs.current.forEach((video) => {
+            if (video) video.pause();
+          });
+          setIsPlaying(false);
+        }
       },
       {
-        threshold: [0, 0.05, 0.1, 0.25, 0.5],
-        rootMargin: "100px 0px 100px 0px"
+        threshold: [0, 0.1, 0.5],
+        rootMargin: "50px 0px 50px 0px"
       }
     );
 
     observer.observe(container);
     return () => observer.disconnect();
   }, []);
-
-  // Control de reproducción: el video arranca automáticamente y activa audio al estar visible
-  useEffect(() => {
-    const activeVideo = videoRefs.current[activeIndex];
-    if (activeVideo && isInView) {
-      if (!hasEnteredViewRef.current) {
-        hasEnteredViewRef.current = true;
-        try {
-          activeVideo.currentTime = 0;
-        } catch {
-          // ignore
-        }
-      }
-
-      const startPlay = async () => {
-        try {
-          activeVideo.muted = !isAudioEnabled;
-          activeVideo.volume = 1;
-          await activeVideo.play();
-        } catch {
-          // Fallback garantizado: si el navegador bloquea audio inicial sin gesto previo, arranca en mudo de inmediato
-          activeVideo.muted = true;
-          try {
-            await activeVideo.play();
-          } catch {
-            // ignore
-          }
-        }
-      };
-
-      startPlay();
-    }
-
-    // Pausar y silenciar los otros videos no activos
-    videoRefs.current.forEach((video, i) => {
-      if (!video) return;
-      if (i !== activeIndex || !isInView) {
-        video.muted = true;
-        video.pause();
-      }
-    });
-
-    if (!isInView) {
-      hasEnteredViewRef.current = false;
-    }
-  }, [activeIndex, isInView, isAudioEnabled]);
-
-  // Activación automática de audio con cualquier interacción o scroll del usuario al llegar a la sección
-  useEffect(() => {
-    const triggerAudioOnInteraction = () => {
-      const container = containerRef.current;
-      if (container) {
-        const rect = container.getBoundingClientRect();
-        const inViewport = rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1;
-        if (inViewport && !isInView) {
-          setIsInView(true);
-        }
-      }
-
-      if (!isInView) return;
-      const activeVideo = videoRefs.current[activeIndex];
-      if (activeVideo) {
-        activeVideo.muted = false;
-        activeVideo.volume = 1;
-        setIsAudioEnabled(true);
-        if (activeVideo.paused) {
-          activeVideo.play().catch(() => {
-            activeVideo.muted = true;
-            activeVideo.play().catch(() => {});
-          });
-        }
-      }
-    };
-
-    window.addEventListener('scroll', triggerAudioOnInteraction, { passive: true });
-    window.addEventListener('wheel', triggerAudioOnInteraction, { passive: true });
-    window.addEventListener('touchmove', triggerAudioOnInteraction, { passive: true });
-    window.addEventListener('touchstart', triggerAudioOnInteraction, { passive: true });
-    window.addEventListener('touchend', triggerAudioOnInteraction, { passive: true });
-    window.addEventListener('pointerdown', triggerAudioOnInteraction, { passive: true });
-    window.addEventListener('click', triggerAudioOnInteraction, { passive: true });
-    document.addEventListener('scroll', triggerAudioOnInteraction, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', triggerAudioOnInteraction);
-      window.removeEventListener('wheel', triggerAudioOnInteraction);
-      window.removeEventListener('touchmove', triggerAudioOnInteraction);
-      window.removeEventListener('touchstart', triggerAudioOnInteraction);
-      window.removeEventListener('touchend', triggerAudioOnInteraction);
-      window.removeEventListener('pointerdown', triggerAudioOnInteraction);
-      window.removeEventListener('click', triggerAudioOnInteraction);
-      document.removeEventListener('scroll', triggerAudioOnInteraction);
-    };
-  }, [activeIndex, isInView]);
-
-  // Al cambiar activamente de índice, reiniciar el video seleccionado desde el principio
-  useEffect(() => {
-    const activeVideo = videoRefs.current[activeIndex];
-    if (activeVideo) {
-      try {
-        activeVideo.currentTime = 0;
-      } catch {
-        // ignore
-      }
-    }
-  }, [activeIndex]);
 
   // Posicionamiento de tarjetas al centro y a los lados - ratio 9:16 exacto idéntico en PC y móvil
   const renderCards = useCallback((currentOffset: number) => {
@@ -358,14 +251,16 @@ export function ZoomSliderComp({
         } catch {
           // ignore
         }
-        video.muted = false;
+        video.muted = !isAudioEnabled;
         video.volume = 1;
         const playPromise = video.play();
         if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            video.muted = true;
-            video.play().catch(() => {});
-          });
+          playPromise
+            .then(() => setIsPlaying(true))
+            .catch(() => {
+              video.muted = true;
+              video.play().then(() => setIsPlaying(true)).catch(() => {});
+            });
         }
       } else {
         video.muted = true;
@@ -427,12 +322,20 @@ export function ZoomSliderComp({
                   const video = videoRefs.current[index];
                   if (video) {
                     if (video.paused) {
-                      video.muted = false;
+                      video.muted = !isAudioEnabled;
                       video.volume = 1;
-                      setIsAudioEnabled(true);
-                      video.play().catch(() => {});
+                      const playPromise = video.play();
+                      if (playPromise !== undefined) {
+                        playPromise
+                          .then(() => setIsPlaying(true))
+                          .catch(() => {
+                            video.muted = true;
+                            video.play().then(() => setIsPlaying(true)).catch(() => {});
+                          });
+                      }
                     } else {
                       video.pause();
+                      setIsPlaying(false);
                     }
                   }
                 }
@@ -457,9 +360,7 @@ export function ZoomSliderComp({
                   poster={item.poster}
                   loop
                   playsInline
-                  autoPlay={isCenter}
-                  preload="auto"
-                  muted={!isCenter || !isAudioEnabled}
+                  preload="metadata"
                   className="w-full h-full object-cover rounded-2xl pointer-events-none"
                 />
 
@@ -470,13 +371,13 @@ export function ZoomSliderComp({
                     onClick={(e) => {
                       e.stopPropagation();
                       const activeVideo = videoRefs.current[index];
+                      const newAudioEnabled = !isAudioEnabled;
+                      setIsAudioEnabled(newAudioEnabled);
                       if (activeVideo) {
-                        const newMuted = !activeVideo.muted;
-                        activeVideo.muted = newMuted;
+                        activeVideo.muted = !newAudioEnabled;
                         activeVideo.volume = 1;
-                        setIsAudioEnabled(!newMuted);
-                        if (!newMuted && activeVideo.paused) {
-                          activeVideo.play().catch(() => {});
+                        if (newAudioEnabled && activeVideo.paused) {
+                          activeVideo.play().then(() => setIsPlaying(true)).catch(() => {});
                         }
                       }
                     }}
@@ -492,10 +393,10 @@ export function ZoomSliderComp({
                 )}
 
                 {/* Ícono de Reproducir central para identificar claramente que es un video */}
-                {!isCenter && (
+                {(!isCenter || (isCenter && !isPlaying)) && (
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-black/60 text-white flex items-center justify-center backdrop-blur-md border border-white/35 shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 transform group-hover:scale-110">
-                      <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-white text-white translate-x-0.5" />
+                    <div className="w-13 h-13 sm:w-16 sm:h-16 rounded-full bg-black/65 text-white flex items-center justify-center backdrop-blur-md border border-white/35 shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 transform group-hover:scale-110">
+                      <Play className="w-6 h-6 sm:w-7 sm:h-7 fill-white text-white translate-x-0.5" />
                     </div>
                   </div>
                 )}
