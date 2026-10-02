@@ -172,43 +172,28 @@ export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   const featuredRotulos = [
     {
       id: 'rotulos-luminosos' as ServiceId,
-      title: 'Fachada Alucobond con Electrocorte',
-      image: '/catalog/catalog-alucobond-concesol.webp',
+      title: 'Rótulo Luminoso 3D Gamacell',
+      image: '/catalog/catalog-gamacell-telefonia.jpg',
     },
     {
       id: 'letras-3d' as ServiceId,
-      title: 'Letras 3D Retroiluminadas Halo',
-      image: '/catalog/catalog-retro-myjoker.webp',
-    },
-    {
-      id: 'gigantografias' as ServiceId,
-      title: 'Stand Comercial & Ferial Dior',
-      image: '/catalog/catalog-stands-dior.webp',
-    },
-    {
-      id: 'cajas-de-luz' as ServiceId,
-      title: 'Neón Flex Personalizado Oh My Dog',
-      image: '/catalog/catalog-neon-ohmydog.webp',
+      title: 'Letras Corpóreas 3D EMDI School',
+      image: '/catalog/catalog-emdi-school.jpg',
     },
     {
       id: 'rotulos-luminosos' as ServiceId,
-      title: 'Rótulo 3D Fritadas Sarita',
-      image: '/catalog/catalog-restaurante-fritadassarita.webp',
+      title: 'Letrero 3D Neón LED Flashback',
+      image: '/catalog/catalog-flashback-discoteca.jpg',
     },
     {
       id: 'cajas-de-luz' as ServiceId,
-      title: 'Caja de Luz LED Farmacias Santa Martha',
-      image: '/catalog/catalog-luminoso-santamartha.webp',
+      title: 'Caja de Luz 3D Mariscos Manta',
+      image: '/catalog/catalog-mariscos-manta.jpg',
     },
     {
-      id: 'letras-3d' as ServiceId,
-      title: 'Logotipo en Alto Relieve Cobro Fast',
-      image: '/catalog/catalog-altorelieve-cobrofast.webp',
-    },
-    {
-      id: 'gigantografias' as ServiceId,
-      title: 'Señalética Vidrio Acrílico Lafquén',
-      image: '/catalog/catalog-senaletica-lafquen.webp',
+      id: 'rotulos-luminosos' as ServiceId,
+      title: 'Rótulo Comercial 3D Autotec',
+      image: '/catalog/catalog-autotec-seguridad.jpg',
     }
   ];
 
