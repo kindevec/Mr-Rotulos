@@ -232,6 +232,35 @@ export function ZoomSliderComp({
     };
   }, [count, renderCards]);
 
+  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1) {
+      touchStartRef.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+        time: Date.now(),
+      };
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartRef.current || e.changedTouches.length === 0) return;
+    const diffX = e.changedTouches[0].clientX - touchStartRef.current.x;
+    const diffY = e.changedTouches[0].clientY - touchStartRef.current.y;
+    const elapsed = Date.now() - touchStartRef.current.time;
+    touchStartRef.current = null;
+
+    // Solo considerar swipe si el movimiento horizontal es dominante
+    if (Math.abs(diffX) > 35 && Math.abs(diffX) > Math.abs(diffY) * 1.2 && elapsed < 800) {
+      if (diffX < 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+  };
+
   const goToSlide = (index: number) => {
     const state = stateRef.current;
     const currentNormalized = ((state.current % count) + count) % count;
@@ -241,28 +270,11 @@ export function ZoomSliderComp({
     state.target = Math.round(state.current + diff);
 
     setActiveIndex(index);
+    setIsPlaying(false);
 
-    // Reproducir inmediatamente el video de la tarjeta seleccionada con sonido y desde 0:00
-    videoRefs.current.forEach((video, i) => {
-      if (!video) return;
-      if (i === index) {
-        try {
-          video.currentTime = 0;
-        } catch {
-          // ignore
-        }
-        video.muted = !isAudioEnabled;
-        video.volume = 1;
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise
-            .then(() => setIsPlaying(true))
-            .catch(() => {
-              video.muted = true;
-              video.play().then(() => setIsPlaying(true)).catch(() => {});
-            });
-        }
-      } else {
+    // Pausar todos los videos para que la nueva tarjeta quede lista con su botón de reproducir
+    videoRefs.current.forEach((video) => {
+      if (video) {
         video.muted = true;
         video.pause();
       }
@@ -284,6 +296,8 @@ export function ZoomSliderComp({
       ref={containerRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       className="group/reels relative w-full select-none"
       style={{ height: `${calculatedContainerHeight}px` }}
     >
