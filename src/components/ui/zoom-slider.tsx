@@ -143,13 +143,22 @@ export function ZoomSliderComp({
     const container = containerRef.current;
     if (!container) return;
 
+    // Chequeo inmediato al montar o recargar
+    const checkInitialVisibility = () => {
+      const rect = container.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        setIsInView(true);
+      }
+    };
+    checkInitialVisibility();
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInView(entry.isIntersecting);
       },
       {
         threshold: [0, 0.05, 0.1, 0.25, 0.5],
-        rootMargin: "80px 0px 80px 0px"
+        rootMargin: "100px 0px 100px 0px"
       }
     );
 
@@ -159,34 +168,48 @@ export function ZoomSliderComp({
 
   // Control de reproducción: el video arranca automáticamente y activa audio al estar visible
   useEffect(() => {
-    videoRefs.current.forEach(async (video, i) => {
-      if (!video) return;
-      if (i === activeIndex && isInView) {
-        if (!hasEnteredViewRef.current) {
-          hasEnteredViewRef.current = true;
+    const activeVideo = videoRefs.current[activeIndex];
+    if (activeVideo && isInView) {
+      if (!hasEnteredViewRef.current) {
+        hasEnteredViewRef.current = true;
+        try {
+          activeVideo.currentTime = 0;
+        } catch {
+          // ignore
+        }
+      }
+
+      const startPlay = async () => {
+        try {
+          activeVideo.muted = !isAudioEnabled;
+          activeVideo.volume = 1;
+          await activeVideo.play();
+        } catch {
+          // Fallback garantizado: si el navegador bloquea audio inicial sin gesto previo, arranca en mudo de inmediato
+          activeVideo.muted = true;
           try {
-            video.currentTime = 0;
+            await activeVideo.play();
           } catch {
             // ignore
           }
         }
-        try {
-          video.muted = !isAudioEnabled;
-          video.volume = 1;
-          await video.play();
-        } catch {
-          // Si el navegador requiere interacción inicial antes de habilitar audio, reproduce inmediatamente
-          video.muted = true;
-          video.play().catch(() => {});
-        }
-      } else {
+      };
+
+      startPlay();
+    }
+
+    // Pausar y silenciar los otros videos no activos
+    videoRefs.current.forEach((video, i) => {
+      if (!video) return;
+      if (i !== activeIndex || !isInView) {
         video.muted = true;
         video.pause();
-        if (!isInView) {
-          hasEnteredViewRef.current = false;
-        }
       }
     });
+
+    if (!isInView) {
+      hasEnteredViewRef.current = false;
+    }
   }, [activeIndex, isInView, isAudioEnabled]);
 
   // Activación automática de audio con cualquier interacción o scroll del usuario al llegar a la sección
@@ -195,7 +218,7 @@ export function ZoomSliderComp({
       const container = containerRef.current;
       if (container) {
         const rect = container.getBoundingClientRect();
-        const inViewport = rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.15;
+        const inViewport = rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1;
         if (inViewport && !isInView) {
           setIsInView(true);
         }
@@ -208,8 +231,10 @@ export function ZoomSliderComp({
         activeVideo.volume = 1;
         setIsAudioEnabled(true);
         if (activeVideo.paused) {
-          activeVideo.currentTime = activeVideo.currentTime || 0;
-          activeVideo.play().catch(() => {});
+          activeVideo.play().catch(() => {
+            activeVideo.muted = true;
+            activeVideo.play().catch(() => {});
+          });
         }
       }
     };
@@ -396,11 +421,25 @@ export function ZoomSliderComp({
                 cardRefs.current[index] = el;
               }}
               onClick={() => {
-                if (!isCenter) goToSlide(index);
+                if (!isCenter) {
+                  goToSlide(index);
+                } else {
+                  const video = videoRefs.current[index];
+                  if (video) {
+                    if (video.paused) {
+                      video.muted = false;
+                      video.volume = 1;
+                      setIsAudioEnabled(true);
+                      video.play().catch(() => {});
+                    } else {
+                      video.pause();
+                    }
+                  }
+                }
               }}
               className={`absolute top-0 left-0 rounded-2xl overflow-hidden bg-black transition-shadow duration-300 ${
                 isCenter
-                  ? 'ring-2 ring-[#8C0000] shadow-[0_22px_60px_rgba(140,0,0,0.35)] cursor-default'
+                  ? 'ring-2 ring-[#8C0000] shadow-[0_22px_60px_rgba(140,0,0,0.35)] cursor-pointer'
                   : 'ring-1 ring-slate-200 hover:ring-[#8C0000]/40 cursor-pointer shadow-lg hover:shadow-xl'
               }`}
               style={{
