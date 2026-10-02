@@ -459,7 +459,6 @@ export function ZoomSliderComp({
                   playsInline
                   autoPlay={isCenter}
                   preload="auto"
-                  muted={!isCenter || !isAudioEnabled}
                   className="w-full h-full object-cover rounded-2xl pointer-events-none"
                 />
 
@@ -471,22 +470,28 @@ export function ZoomSliderComp({
                       e.stopPropagation();
                       const activeVideo = videoRefs.current[index];
                       if (activeVideo) {
-                        const newMuted = !activeVideo.muted;
-                        activeVideo.muted = newMuted;
+                        const newMuted = !isAudioEnabled;
+                        activeVideo.muted = !newMuted;
                         activeVideo.volume = 1;
-                        setIsAudioEnabled(!newMuted);
-                        if (!newMuted && activeVideo.paused) {
+                        setIsAudioEnabled(newMuted);
+                        if (newMuted && activeVideo.paused) {
                           activeVideo.play().catch(() => {});
                         }
                       }
                     }}
                     aria-label={isAudioEnabled ? "Silenciar video" : "Activar sonido del video"}
-                    className="absolute top-3 right-3 z-30 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/75 hover:bg-[#8C0000] text-white border border-white/25 flex items-center justify-center backdrop-blur-md shadow-lg transition-all hover:scale-110 active:scale-90 cursor-pointer pointer-events-auto"
+                    className="absolute top-3 right-3 z-30 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 hover:bg-[#8C0000] text-white border border-white/30 backdrop-blur-md shadow-lg transition-all hover:scale-105 active:scale-95 cursor-pointer pointer-events-auto"
                   >
                     {isAudioEnabled ? (
-                      <Volume2 className="w-4 h-4 text-white" />
+                      <>
+                        <Volume2 className="w-4 h-4 text-white animate-pulse" />
+                        <span className="text-[11px] font-bold text-white">Audio activado</span>
+                      </>
                     ) : (
-                      <VolumeX className="w-4 h-4 text-white/80" />
+                      <>
+                        <VolumeX className="w-4 h-4 text-white/90" />
+                        <span className="text-[11px] font-bold text-white/90">Activar audio</span>
+                      </>
                     )}
                   </button>
                 )}
