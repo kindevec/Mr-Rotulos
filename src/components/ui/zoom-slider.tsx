@@ -144,11 +144,11 @@ export function ZoomSliderComp({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting && entry.intersectionRatio >= 0.12);
+        setIsInView(entry.isIntersecting);
       },
       {
-        threshold: [0, 0.12, 0.25, 0.5, 0.8],
-        rootMargin: "0px 0px -5% 0px"
+        threshold: [0, 0.05, 0.1, 0.25, 0.5],
+        rootMargin: "80px 0px 80px 0px"
       }
     );
 
@@ -156,9 +156,9 @@ export function ZoomSliderComp({
     return () => observer.disconnect();
   }, []);
 
-  // Control de reproducción: el video espera en 0:00 y se reproduce AUTOMÁTICAMENTE con audio al llegar a la sección
+  // Control de reproducción: el video arranca automáticamente y activa audio al estar visible
   useEffect(() => {
-    videoRefs.current.forEach((video, i) => {
+    videoRefs.current.forEach(async (video, i) => {
       if (!video) return;
       if (i === activeIndex && isInView) {
         if (!hasEnteredViewRef.current) {
@@ -169,15 +169,14 @@ export function ZoomSliderComp({
             // ignore
           }
         }
-        video.muted = false;
-        video.volume = 1;
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Si el navegador bloquea temporalmente el audio antes de interacción
-            video.muted = true;
-            video.play().catch(() => {});
-          });
+        try {
+          video.muted = false;
+          video.volume = 1;
+          await video.play();
+        } catch {
+          // Si el navegador requiere interacción inicial antes de habilitar audio, reproduce inmediatamente
+          video.muted = true;
+          video.play().catch(() => {});
         }
       } else {
         video.muted = true;
@@ -192,6 +191,15 @@ export function ZoomSliderComp({
   // Activación automática de audio con el scroll del usuario al llegar a la sección
   useEffect(() => {
     const triggerAudioOnScroll = () => {
+      const container = containerRef.current;
+      if (container) {
+        const rect = container.getBoundingClientRect();
+        const inViewport = rect.top < window.innerHeight * 0.85 && rect.bottom > window.innerHeight * 0.15;
+        if (inViewport && !isInView) {
+          setIsInView(true);
+        }
+      }
+
       if (!isInView) return;
       const activeVideo = videoRefs.current[activeIndex];
       if (activeVideo) {
@@ -199,7 +207,13 @@ export function ZoomSliderComp({
           activeVideo.currentTime = activeVideo.currentTime || 0;
           activeVideo.muted = false;
           activeVideo.volume = 1;
-          activeVideo.play().catch(() => {});
+          const playPromise = activeVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              activeVideo.muted = true;
+              activeVideo.play().catch(() => {});
+            });
+          }
         } else if (activeVideo.muted) {
           activeVideo.muted = false;
           activeVideo.volume = 1;
@@ -407,7 +421,8 @@ export function ZoomSliderComp({
                   poster={item.poster}
                   loop
                   playsInline
-                  preload="metadata"
+                  autoPlay={isCenter}
+                  preload="auto"
                   muted={!isCenter}
                   className="w-full h-full object-cover rounded-2xl pointer-events-none"
                 />
